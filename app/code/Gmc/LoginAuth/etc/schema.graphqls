@@ -1,0 +1,18 @@
+type Mutation {
+    loginAuth(
+        input: loginInput! @doc(description: "An input object that defines the customer to be created.")
+    ): loginOutput @resolver(class: "\\Gmc\\LoginAuth\\Model\\Resolver\\CreateAccount")
+}
+
+input loginInput @doc(description: "An input object for creating a customer.") {
+    name: String! @doc(description: "Customer Name")
+    mobileNumber: String! @doc(description: "Customer Mobile number")
+}
+
+type loginOutput @doc(description: "Contains details about a newly-created or updated customer.") {
+    customer: Customer! @doc(description: "Customer details after creating or updating a customer.")
+}
+
+type Customer {
+    id: ID!
+}
