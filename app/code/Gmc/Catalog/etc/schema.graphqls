@@ -1,0 +1,11 @@
+# Copyright © Magento, Inc. All rights reserved.
+# See COPYING.txt for license details.
+
+interface ProductInterface {
+    contribution_price_range: ContributionPriceRange @resolver(class: "Gmc\\Catalog\\Model\\Resolver\\Product\\ContributionPriceRange") @doc(description: "Product Contribution Price Range.")
+}
+type ContributionPriceRange @doc(description: "Contains the results of a `ContributionPriceRange`") {
+    min_price: Float @doc(description: "Min Price Contribution.")
+    max_price: Float @doc(description: "Max Price Contribution.")
+    price_range_step: Int @doc(description: "Contribution Price Step.")
+}
