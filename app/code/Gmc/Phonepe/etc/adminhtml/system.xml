@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="gmc" translate="label" sortOrder="100">
+            <label>GMC Settings</label>
+        </tab>
+        <section id="phonepe_settings" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>PhonePe Configuration</label>
+            <tab>gmc</tab>
+            <resource>Gmc_Phonepe::config_phonepe_settings</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="debug_mode" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Debug Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable this to enable debug mode.</comment>
+                </field>
+                <field id="sandbox_mode" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sandbox Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable this to enable sandbox mode.</comment>
+                </field>
+                <field id="production_url" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Production URL</label>
+                    <comment>Enter the URL for the production environment.</comment>
+                </field>
+                <field id="uat_url" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UAT URL</label>
+                    <comment>Enter the URL for the UAT environment.</comment>
+                </field>
+                <field id="redirect_url" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Redirect URL</label>
+                    <comment>Enter the site redirect URL.</comment>
+                </field>
+                <field id="callback_url" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Callback URL</label>
+                    <comment>Enter the site callback URL.</comment>
+                </field>
+            </group>
+            <group id="security" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Security Settings</label>
+                <field id="production_mid" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Production MID</label>
+                    <comment>Enter the MID for the production environment.</comment>
+                </field>
+                <field id="uat_mid" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UAT MID</label>
+                    <comment>Enter the MID for the uat environment.</comment>
+                </field>
+                <field id="production_salt_key" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Production Salt Key</label>
+                    <comment>Enter the salt key for the production environment.</comment>
+                </field>
+                <field id="production_salt_index" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Production Salt Index</label>
+                    <comment>Enter the salt index for the production environment.</comment>
+                </field>
+                <field id="uat_salt_key" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UAT Salt Key</label>
+                    <comment>Enter the salt key for the UAT environment.</comment>
+                </field>
+                <field id="uat_salt_index" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UAT Salt Index</label>
+                    <comment>Enter the salt index for the production environment.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+
