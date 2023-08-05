@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Gmc_PatnerContribution
+ *
+ * PHP version 8.x
+ *
+ * @category  XML
+ * @package   Gmc\PatnerContribution
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="gmc_product_patner_price_range" engine="innodb" comment="Dedicated table for product patner price range">
+        <column xsi:type="int" name="id" padding="10" nullable="false" identity="true" comment="Primary ID"/>
+        <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" comment="Product ID"/>
+        <column name="min_contribution_price" xsi:type="decimal"  nullable="false" scale="2" precision="12" comment="Min Contribution Price"/>
+        <column name="max_contribution_price" xsi:type="decimal"  nullable="false" scale="2" precision="12" comment="Max Contribution Price"/>
+        <column name="price" xsi:type="decimal"  nullable="false" scale="2" precision="12" comment="MRP Price"/>
+        <column name="patner_price" xsi:type="decimal"  nullable="false" scale="2" precision="12" comment="Patner (Special) Price"/>
+        <column xsi:type="int" name="status" padding="5" unsigned="false" default="0" comment="Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>        
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index xsi:type="index" referenceId="product_id" indexType="btree">
+            <column name="product_id"/>
+        </index>
+        <constraint xsi:type="unique" referenceId="GMC_PRODUCT_PATNER_PRICE_RANGE_PRODUCT_ID_STATUS">
+            <column name="product_id"/>
+            <column name="status"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="GMC_PRODUCT_PATNER_PRICE_RANGE_PRODUCT_ID" table="gmc_product_patner_price_range" column="product_id"
+                    referenceTable="catalog_product_entity" referenceColumn="entity_id"/>        
+    </table>
+    <table name="gmc_patner_contribution" engine="innodb" comment="Dedicated table for patner price contribution">
+        <column xsi:type="int" name="id" padding="10" nullable="false" identity="true" comment="Primary ID"/>
+        <column xsi:type="int" name="order_id" padding="10" unsigned="true" nullable="false" comment="Order ID"/>
+        <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" comment="Product ID"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="Customer ID"/>
+        <column xsi:type="decimal" name="price_contributed" nullable="false" scale="2" precision="12" comment="Price Contributed"/>
+        <column xsi:type="int" name="status" padding="5" unsigned="false" default="0" comment="Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>        
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index xsi:type="index" referenceId="product_id" indexType="btree">
+            <column name="product_id"/>
+        </index>
+        <index xsi:type="index" referenceId="customer_id" indexType="btree">
+            <column name="customer_id"/>
+        </index>        
+        <constraint xsi:type="unique" referenceId="GMC_PATNER_CONTRIBUTION_ORDER_ID_PRODUCT_ID_CUSTOMER_ID">
+            <column name="order_id"/>
+            <column name="product_id"/>
+            <column name="customer_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="GMC_PATNER_CONTRIBUTION_ORDER_ID" table="gmc_patner_contribution" column="order_id"
+                    referenceTable="sales_order" referenceColumn="entity_id"/>
+        <constraint xsi:type="foreign" referenceId="GMC_PATNER_CONTRIBUTION_PRODUCT_ID" table="gmc_patner_contribution" column="product_id"
+                    referenceTable="catalog_product_entity" referenceColumn="entity_id"/>  
+        <constraint xsi:type="foreign" referenceId="GMC_PATNER_CONTRIBUTION_CUSTOMER_ID" table="gmc_patner_contribution" column="customer_id"
+                    referenceTable="customer_entity" referenceColumn="entity_id"/>                                                 
+    </table>
+</schema>

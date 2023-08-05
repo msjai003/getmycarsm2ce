@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Gmc_PatnerContribution
+ *
+ * PHP version 8.x
+ *
+ * @category  XML
+ * @package   Gmc\PatnerContribution
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Gmc_PatnerContribution" setup_version="0.0.1"/>
+</config>

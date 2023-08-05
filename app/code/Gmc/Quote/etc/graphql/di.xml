@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Gmc_Quote
+ *
+ * PHP version 8.x
+ *
+ * @category  XML
+ * @package   Gmc\Quote
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Quote\Model\Cart\BuyRequest\CustomizableOptionDataProvider">
+        <plugin name="addCustomOptionToBuyRequest" type="Gmc\Quote\Plugin\GraphQl\Quote\Model\Cart\BuyRequest\AddCustomOption" sortOrder="1"/>
+    </type>
+</config>

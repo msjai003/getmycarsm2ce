@@ -1,0 +1,9 @@
+# Copyright © Magento, Inc. All rights reserved.
+# See COPYING.txt for license details.
+
+type Mutation {
+    addProductsToCart(cartId: String!, cartItems: [CartItemInput!]!): AddProductsToCartOutput @doc(description:"Add any type of product to the cart") @resolver(class: "Gmc\\Quote\\Model\\QuoteGraphQl\\Resolver\\AddProductsToCart")
+}
+input CartItemInput @doc(description: "Defines an item to be added to the cart.") {
+    price_contribution: Float! @doc(description: "Patner Price Contribution.")
+}
