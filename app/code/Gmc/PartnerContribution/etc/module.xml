@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Gmc_PatnerContribution
+ * Gmc_PartnerContribution
  *
  * PHP version 8.x
  *
@@ -12,5 +12,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Gmc_PatnerContribution" setup_version="0.0.1"/>
+    <module name="Gmc_PartnerContribution" setup_version="0.0.1"/>
 </config>

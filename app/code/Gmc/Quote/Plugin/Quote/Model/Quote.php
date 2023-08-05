@@ -17,7 +17,7 @@ namespace Gmc\Quote\Plugin\Quote\Model;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Quote\Model\Quote as CoreQuote;
 use Magento\Quote\Model\Quote\Item;
-use Gmc\PatnerContribution\Model\Logger\Logger as LoggerInterface;
+use Gmc\PartnerContribution\Model\Logger\Logger as LoggerInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DataObject;
 

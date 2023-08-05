@@ -1,20 +1,17 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
 	<system>
-		<tab id="gmc" translate="label" sortOrder="999">
-			<label>GMC</label>
-		</tab>
-		<section id="gmc" sortOrder="10" showInWebsite="1" showInStore="0" showInDefault="1" translate="label">
-			<label>Configuration</label>
+		<section id="partner_settings" sortOrder="10" showInWebsite="1" showInStore="0" showInDefault="1" translate="label">
+			<label>Partner Configuration</label>
 			<tab>gmc</tab>
-			<resource>Gmc_PatnerContribution::gmc_config</resource>
+			<resource>Gmc_PartnerContribution::gmc_config</resource>
 			<group id="general" sortOrder="10" showInWebsite="1" showInStore="0" showInDefault="1" translate="label">
 				<label>General Configurations</label>
 				<field id="contribution_price_step" type="text"  sortOrder="10" showInWebsite="1" showInStore="0" showInDefault="1" translate="label">
 					<label>Contribution Price Range Step</label>
 					<validate>required-entry required-number validate-number validate-greater-than-zero</validate>
 				</field>
-			</group>	
+			</group>
 		</section>
 	</system>
 </config>

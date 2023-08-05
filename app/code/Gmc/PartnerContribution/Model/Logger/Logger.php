@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Gmc_PatnerContribution
+ * Gmc_PartnerContribution
  *
  * PHP version 8.x
  *
@@ -11,13 +11,13 @@
  * @copyright 2023 Copyright Gmc
  */
 
-namespace Gmc\PatnerContribution\Model\Logger;
+namespace Gmc\PartnerContribution\Model\Logger;
 
 use Monolog\Logger as MonoLogger;
 
 /**
  * Class GraphQl
- * Gmc\PatnerContribution\Model\Logger
+ * Gmc\PartnerContribution\Model\Logger
  */
 class Logger extends MonoLogger
 {
