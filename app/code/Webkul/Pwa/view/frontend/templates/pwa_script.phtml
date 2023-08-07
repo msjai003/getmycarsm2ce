@@ -1,0 +1,341 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Pwa
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<div class="wk-prompt" id="wk-prompt-id" style="display:none">
+    <div class="icon-plus gray w25"></div>
+</div>
+<?php
+$serviceWorkerJs = $block->getSecureUrl().'service-worker.js';
+$helper = $block->helperObject();
+$publickey = $helper->getPublicKey();
+$browser = $block->getBrowser();
+?>
+<script type="module" defer>
+import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-window.prod.mjs';
+    require([
+        "jquery",
+        'mage/storage',
+        '@firebase/app',
+        '@firebase/messaging',
+        '@firebase/analytics'
+    ], function($, storage, firebase){
+        'use strict';
+        var firebaseConfig = {
+            apiKey: '<?= $block->escapeHtml($helper->getFCMConfigEncrypted('application_apiKey')) ?>',
+            authDomain: '<?= $block->escapeHtml($helper->getFCMConfig('application_authDomain')) ?>',
+            databaseURL: '<?= $block->escapeHtml($helper->getFCMConfig('application_databaseURL')) ?>',
+            projectId: '<?= $block->escapeHtml($helper->getFCMConfig('application_projectId')) ?>',
+            storageBucket: '<?= $block->escapeHtml($helper->getFCMConfig('application_storageBucket')) ?>',
+            messagingSenderId: '<?= $block->escapeHtml($helper->getFCMConfigEncrypted('application_sender_id')) ?>',
+            appId: '<?= $block->escapeHtml($helper->getFCMConfigEncrypted('application_appId')) ?>',
+            measurementId: '<?= $block->escapeHtml($helper->getFCMConfigEncrypted('measurement_id')) ?>'
+        };
+
+        var win_wid = $(window).width()
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        var iframe = document.getElementsByTagName("iframe");
+        if(iframe.length != 0)
+        {
+            var width = document.getElementsByTagName("iframe")[0].clientWidth;
+        }
+
+        if(!isMobile || win_wid > "767"){
+            if(jQuery('#wk-prompt-id').is(':visible')){
+                jQuery('#wk-prompt-id').css('margin-right','-=8px');
+                jQuery('#wk-prompt-id').css('margin-top','5px');
+                jQuery('#wk-prompt-id').css('padding-left','5px');
+            }
+        }
+        if (isMobile || (win_wid <= "767") || ((iframe.length > 0) && ("295" <= width <= "688"))) {
+            jQuery(document).on('click','.ui-menu-item', function() {
+                if ((jQuery(this).children().length) == 1) {
+                    jQuery("body").trigger('processStart')
+                } else {
+                    if (
+                        jQuery(this).find('a').attr('role') == 'menuitem' ||
+                        jQuery(this).find('a').hasClass('ui-state-focus')
+                    ) {
+                        if(
+                            !(jQuery(this).parent().find('li').hasClass('level-top') &&
+                            jQuery(this).parent().find('li').hasClass('parent'))
+                        ){
+                            jQuery("body").trigger('processStart')
+                        }
+                    }
+                }
+
+            })
+
+            jQuery(document).on('click','.nav-sections-item-content  a',function() {
+                if (
+                    jQuery(this).parent().parent().hasClass('header') ||
+                    jQuery(this).parent().parent().hasClass('links') ||
+                    jQuery(this).find('a').attr('role') == 'menuitem'
+                ) {
+                    jQuery("body").trigger('processStart')
+                }
+            })
+
+            jQuery(document).on('click','.item',function(){
+                if(jQuery(this).children('a').length){
+                    jQuery("body").trigger('processStart')
+                }
+            })
+
+            jQuery(document).on('click','.product-item-photo',function(){
+                jQuery("body").trigger('processStart')
+            })
+        }
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        if (firebase.messaging.isSupported()) {
+
+            // firebase.analytics();
+        }
+        // [END get_messaging_object]
+        // [START set_public_vapid_key]
+        // Add the public key generated from the console here.
+
+
+        let isSubscribed;
+        function saveEndPointForLaterUse(registrationId, endpoint) {
+            $.ajax({
+                url: '<?= $block->escapeUrl($block->getUrl('pwa/index/index'))?>',
+                data: {
+                    regId: registrationId,
+                    endpoint: endpoint,
+                },
+                method: 'post',
+                dataType: 'json',
+                success: function() {
+                    console.log("<?=
+                        $block->escapeHtml(__('You have successfully subscribed for push notifications!'))
+                    ?>");
+                }
+            })
+        }
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                const wb = new Workbox('<?= $block->escapeHtml($serviceWorkerJs);?>');
+                var Regis;
+                wb.register().then(function(registration) {
+                    Regis = registration;
+
+                }).catch(function(error) {
+                    console.log("Service Worker Registration Failed", error);
+                });
+
+                wb.addEventListener('activated', (event) => {
+                    // Get the current page URL + all resources the page loaded.
+                    const urlsToCache = [
+                        location.href,
+                        ...performance.getEntriesByType('resource').map((r) => r.name),
+                    ];
+                    // Send that list of URLs to your router in the service worker.
+                    wb.messageSW({
+                        type: 'CACHE_URLS',
+                        payload: {urlsToCache},
+                    });
+                    if (firebase.messaging.isSupported()) {
+                        if ('PushManager' in window) {
+                            const messaging = firebase.messaging();
+                            messaging.usePublicVapidKey('<?= $block->escapeHtml($publickey) ?>');
+                            messaging.useServiceWorker(Regis);
+                            initializeUI();
+
+                        }
+                    }
+
+                });
+
+                callbeforeinstaller();
+            });
+        } else {
+            console.log('<?= $block->escapeHtml(__("service_workers_are_not_supported_in_this_browser"))?>');
+        }
+
+        window.addEventListener('appinstalled', (evt) => {
+            // Log install to analytics
+            var payload = {
+                trakingData: {}
+            }
+            storage.post('rest/V1/pwa-analytics/download', JSON.stringify(payload)).fail(
+                function (response) {
+                    console.log(response);
+                }
+            ).done(
+                function (response) {
+                    console.log(response);
+                }
+            );
+        });
+
+        function initializeUI() {
+            // [END set_public_vapid_key]
+                const messaging = firebase.messaging();
+                messaging.getToken().then(function(currentToken) {
+                    if (currentToken) {
+                        sendTokenToServer(currentToken);
+                    } else {
+                        // Show permission request.
+                        console.log('No Instance ID token available. Request permission to generate one.');
+                        // Show permission UI.
+                        requestPermission();
+                        setTokenSentToServer(false);
+                    }
+                    }).catch(function(err) {
+                    console.log('An error occurred while retrieving token. ', err);
+                    // showToken('Error retrieving Instance ID token. ', err);
+                    setTokenSentToServer(false);
+                });
+        }
+
+        function isTokenSentToServer() {
+            return window.localStorage.getItem('sentToServer') === '1';
+        }
+
+        function setTokenSentToServer(sent) {
+                window.localStorage.setItem('sentToServer', sent ? '1' : '0');
+        }
+
+
+        // Send the Instance ID token your application server, so that it can:
+        // - send messages back to this app
+        // - subscribe/unsubscribe the token from topics
+        function sendTokenToServer(currentToken) {
+            // alert(currentToken);
+            if (!isTokenSentToServer()) {
+                console.log('Sending token to server...');
+                // TODO(developer): Send the current token to your server.
+                setTokenSentToServer(true);
+                saveEndPointForLaterUse(currentToken, currentToken)
+            } else {
+                console.log('Token already sent to server so won\'t send it again ' +
+                    'unless it changes');
+            }
+        }
+
+        function subscribeUser(swRegistration) {
+
+            const applicationServerKey =  urlB64ToUint8Array('<?= $block->escapeHtml($publickey) ?>');
+            swRegistration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: applicationServerKey
+            })
+            .then(function(subscription) {
+
+                    var endpoint = subscription.endpoint;
+                    var subscriberId = subscription.endpoint.split("/").slice(-1)[0];
+                    saveEndPointForLaterUse(subscriberId, endpoint);
+
+            })
+            .catch(function(err) {
+                if (Notification.permission === 'denied') {
+                    console.warn('Permission for notifications was denied');
+                } else {
+                    console.error('Unable to subscribe to push', err);
+                }
+            });
+
+        }
+
+    function urlB64ToUint8Array(base64String) {
+        const padding = '='.repeat((4 - base64String.length % 4) % 4);
+        const base64 = (base64String + padding)
+            .replace(/\-/g, '+')
+            .replace(/_/g, '/')
+        ;
+        const rawData = window.atob(base64);
+        return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+    }
+
+
+    function requestPermission() {
+        console.log('Requesting permission...');
+
+        Notification.requestPermission().then(function(permission) {
+        if (permission === 'granted') {
+            console.log('Notification permission granted.');
+
+            initializeUI();
+
+        } else {
+            console.log('Unable to get permission to notify.');
+        }
+        });
+
+    }
+
+    });
+
+    function callbeforeinstaller() {
+        let deferredPrompt;
+        var win_wid = jQuery(window).width()
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        var iframe = document.getElementsByTagName("iframe");
+        if(iframe.length > 0)
+        {
+            var width = document.getElementsByTagName("iframe")[0].clientWidth;
+        }
+
+        window.addEventListener('beforeinstallprompt', function (e) {
+            deferredPrompt = e;
+            document.getElementById("wk-prompt-id").style.display = "block";
+            if (!isMobile || (win_wid > "767") || ((iframe.length > 0) && !("295" <= width <= "688"))) {
+                if(jQuery('#wk-prompt-id').is(':visible')){
+                    jQuery('#wk-prompt-id').css('margin-right','-=8px');
+                    jQuery('#wk-prompt-id').css('margin-top','5px');
+                    jQuery('#wk-prompt-id').css('padding-left','5px');
+                }
+                document.getElementById('wk-prompt-id').style.display = "none";
+            }
+            deferredPrompt.userChoice.then(function(result) {
+                if(result.outcome == 'dismissed') {
+                    var payload = {
+                        trakingData: {}
+                    }
+                    require(['mage/storage'], function (storage){
+                        storage.post('rest/V1/pwa-analytics/reject', JSON.stringify(payload)).fail(
+                            function (response) {
+                                console.log(response);
+                            }
+                        ).done(
+                            function (response) {
+                                console.log(response);
+                            }
+                        );
+                    });
+
+                }
+            });
+        });
+
+        document.querySelector('.wk-prompt').addEventListener('click',function(){
+            document.getElementById("wk-prompt-id").style.display = "none";
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(function (choiceResult) {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted PWA ');
+                } else {
+                    console.log('User dismissed PWA');
+                }
+                deferredPrompt = null;
+            })
+        });
+    }
+
+    function isUrl(s) {
+        var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        return regexp.test(s);
+    }
+</script>

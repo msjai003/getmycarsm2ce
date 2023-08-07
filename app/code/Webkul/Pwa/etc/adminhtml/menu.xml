@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Pwa
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Webkul_Pwa::pwa" title="Pwa" translate="title" module="Webkul_Pwa" sortOrder="10" resource="Webkul_Pwa::pwa" dependsOnConfig="pwa/general_settings/status"/>
+        <add id="Webkul_Pwa::notificationmessage" title="Manage Pwa Notifications" translate="title" module="Webkul_Pwa" sortOrder="1" parent="Webkul_Pwa::pwa" dependsOnModule="Webkul_Pwa" action="pwa/notificationmessage" resource="Webkul_Pwa::notificationmessage"/>
+        <add id="Webkul_Pwa::analytics" title="Pwa Analytics" translate="title" module="Webkul_Pwa" sortOrder="20" parent="Webkul_Pwa::pwa" dependsOnModule="Webkul_Pwa" action="pwa/analytics" resource="Webkul_Pwa::analytics"/>
+    </menu>
+</config>

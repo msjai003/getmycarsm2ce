@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Pwa
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <css src="Webkul_Pwa::css/pwa-style.css" rel="preload" as="style"/>
+    </head>
+    <body>
+        <referenceBlock name="container">
+            <block class="Webkul\Pwa\Block\PwaHome" name="pwa_pages_js" template="Webkul_Pwa::pwa_script.phtml"  ifconfig="pwa/general_settings/status" />
+        </referenceBlock>
+
+        <move element="pwa_pages_js" destination="header-wrapper" after="minicart"/>
+    	<referenceBlock name="head.additional">
+            <block class="Webkul\Pwa\Block\PwaHome" name="pwa.head.manifest" template="Webkul_Pwa::head.phtml" ifconfig="pwa/general_settings/status"></block>
+        </referenceBlock>
+
+    </body>
+</page>

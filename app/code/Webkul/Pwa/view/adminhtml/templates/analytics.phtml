@@ -1,0 +1,195 @@
+<?php
+ $viewModel = $block->getViewModel();
+ $totalDownloads = $viewModel->getTotalDownloads();
+ $totalRejects = $viewModel->getTotalRejected();
+?>
+
+<div class="admin__field admin__field-date" id="date-range" style="
+    display: inline-flex;
+">
+    <label for="from" class="admin__field-label">
+        <span><?= /* @noEscape */ __('From date') ?></span>
+    </label>
+    <div class="admin__field-control" style="margin-left:10px;">
+        <input class="admin__control-text required-entry"
+            type="text"
+            id="date-from"
+            name="from"/>
+    </div>
+
+    <label for="to" class="admin__field-label">
+        <span><?= /* @noEscape */ __('To date') ?></span>
+    </label>
+    <div class="admin__field-control" style="margin:0px 10px 0px 10px;">
+        <input class="admin__control-text required-entry"
+            type="text"
+            id="date-to"
+            name="to"/>
+    </div>
+    <button class="action-secondary" type="button" id="filter_apply">
+        <span><?= /* @noEscape */ __('Apply Filter') ?></span>
+    </button>
+    <button class="action-tertiary" type="button" id="filter_cancel">
+        <span><?= /* @noEscape */ __('Cancel') ?></span>
+    </button>
+</div>
+
+<div id="analytics_container" style="height:400px;"></div>
+
+<script defer>
+    require([
+        'jquery',
+        'ko',
+        'Webkul_Pwa/js/canvasjs.min',
+        'mage/mage',
+        'mage/calendar',
+        "mage/translate"
+    ], function($, ko, CanvasJS){
+        'use strict';
+
+        var dateRange = $('#date-range').dateRange({
+            buttonText: $.mage.__('Select Date'),
+            from: {
+                id: 'date-from'
+            },
+            to: {
+                id: 'date-to'
+            }
+        });
+        var totalRecords = ko.observableArray([]);
+        var totalDownloads = <?= /* @noEscape */ json_encode($totalDownloads) ?>;
+        var totalRejects = <?= /* @noEscape */ json_encode($totalRejects) ?>;
+        var downloadPoints = [];
+        var rejectPoints = [];
+        $.each(totalDownloads, function(index, value) {
+            downloadPoints.push({x: new Date(value.date), y: parseInt(value.total)});
+        });
+        $.each(totalRejects, function(index, value) {
+            rejectPoints.push({x: new Date(value.date), y: parseInt(value.total)});
+        });
+
+        var chart = new CanvasJS.Chart("analytics_container", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: $.mage.__("PWA Downloads"),
+                fontSize: 20,
+                padding: 10,
+                margin: 15,
+            },
+            axisX:{
+                valueFormatString: "DD MMM",
+                crosshair: {
+                    enabled: true,
+                    snapToDataPoint: true
+                },
+                interval: 1,
+                intervalType: "day"
+            },
+            axisY: {
+                title: $.mage.__("Number of Downloads"),
+                crosshair: {
+                    enabled: true
+                }
+            },
+            toolTip:{
+                shared:true
+            },
+            legend:{
+                cursor:"pointer",
+                verticalAlign: "bottom",
+                horizontalAlign: "left",
+                dockInsidePlotArea: true,
+                itemclick: toogleDataSeries
+            },
+            data: [{
+                type: "line",
+                showInLegend: true,
+                name: $.mage.__("Total Download"),
+                markerType: "square",
+                xValueFormatString: "DD MMM, YYYY",
+                dataPoints: downloadPoints
+            },
+            {
+                type: "line",
+                showInLegend: true,
+                name: $.mage.__("Total Rejected"),
+                lineDashType: "dash",
+                color: "#F08080",
+                dataPoints: rejectPoints
+            }]
+        });
+        chart.render();
+
+        function toogleDataSeries(e){
+            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else{
+                e.dataSeries.visible = true;
+            }
+            chart.render();
+        }
+
+        /**
+         * Apply filter
+         */
+        function applyFilter(e) {
+            var startDate = $('#date-from').val() ? new Date($('#date-from').val()) : '';
+            var endDate = $('#date-to').val() ? new Date($('#date-to').val()) : new Date();
+            var downloadPoints = [];
+            var rejectPoints = [];
+            if (startDate == '') {
+                return true;
+            }
+
+            var resultTotalDownloads = totalDownloads.filter(a => {
+                var date = new Date(a.date);
+                return (date >= startDate && date <= endDate);
+            });
+            var resultTotalReject = totalRejects.filter(a => {
+                var date = new Date(a.date);
+                return (date >= startDate && date <= endDate);
+            });
+            $.each(resultTotalDownloads, function(index, value) {
+                downloadPoints.push({x: new Date(value.date), y: parseInt(value.total)});
+            });
+            $.each(resultTotalReject, function(index, value) {
+                rejectPoints.push({x: new Date(value.date), y: parseInt(value.total)});
+            });
+
+            chart.options.data[0].dataPoints = downloadPoints;
+            chart.options.data[1].dataPoints = rejectPoints;
+            chart.render();
+        }
+
+        function cancelFilter(e) {
+            var startDate = $('#date-from').val('');
+            var endDate = $('#date-to').val('');
+            var downloadPoints = [];
+            var rejectPoints = [];
+
+            $.each(totalDownloads, function(index, value) {
+                downloadPoints.push({x: new Date(value.date), y: parseInt(value.total)});
+            });
+            $.each(totalRejects, function(index, value) {
+                rejectPoints.push({x: new Date(value.date), y: parseInt(value.total)});
+            });
+
+            chart.options.data[0].dataPoints = downloadPoints;
+            chart.options.data[1].dataPoints = rejectPoints;
+            chart.render();
+            $('#date-range').dateRange('destroy');
+            $('#date-range').dateRange({
+                buttonText: $.mage.__('Select Date'),
+                from: {
+                    id: 'date-from'
+                },
+                to: {
+                    id: 'date-to'
+                }
+            });
+        }
+        document.getElementById("filter_apply").addEventListener("click", applyFilter);
+        document.getElementById("filter_cancel").addEventListener("click", cancelFilter);
+    });
+</script>

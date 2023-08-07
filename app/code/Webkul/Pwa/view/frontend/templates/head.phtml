@@ -1,0 +1,59 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Pwa
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<meta name="theme-color" content="<?= $block->escapeHtml($block->getThemeColor()); ?>">
+<link href="<?= $block->escapeUrl($block->getUrl("pwa/manifest")); ?>" rel="manifest" />
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<!--  iPad and iPad mini with @2x display running iOS ≤ 6 -->
+<link rel="apple-touch-icon" sizes="144x144" href="<?= /* @noEscape */ $block->getIosIconImage(144, 144)?>">
+<!-- iPad and iPad mini with @2x display running iOS 7  -->
+<link rel="apple-touch-icon" sizes="152x152" href="<?= /* @noEscape */ $block->getIosIconImage(152, 152)?>">
+<!--  iPad and iPad mini with @2x display running iOS 8+ -->
+<link rel="apple-touch-icon" sizes="180x180" href="<?= /* @noEscape */ $block->getIosIconImage(180, 180)?>">
+
+<!-- iPhone Xs Max (1242px x 2688px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+href="<?= /* @noEscape */ $block->getIosSplashImage(1242, 2688)?> ">
+<!-- iPhone Xr (828px x 1792px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+href="<?= /* @noEscape */ $block->getIosSplashImage(828, 1792)?>">
+<!-- iPhone X, Xs (1125px x 2436px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+href="<?= /* @noEscape */  $block->getIosSplashImage(1125, 2436)?>">
+<!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)"
+href="<?= /* @noEscape */  $block->getIosSplashImage(1242, 2208)?>">
+<!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+href="<?= /* @noEscape */  $block->getIosSplashImage(750, 1334)?>">
+<!-- iPad Pro 12.9" (2048px x 2732px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+href="<?= /* @noEscape */  $block->getIosSplashImage(2048, 2732)?>">
+<!-- iPad Pro 11” (1668px x 2388px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+href="<?= /* @noEscape */  $block->getIosSplashImage(1668, 2388)?>">
+<!-- iPad Pro 10.5" (1668px x 2224px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+href="<?= /* @noEscape */  $block->getIosSplashImage(828, 2224)?>">
+<!-- iPad Mini, Air (1536px x 2048px) -->
+<link rel="apple-touch-startup-image"
+media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+href="<?= /* @noEscape */  $block->getIosSplashImage(1536, 2048)?>">

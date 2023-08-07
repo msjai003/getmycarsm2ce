@@ -1,0 +1,62 @@
+﻿Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 4.0.2 --------------------------------------
+
+	+ Admin can track number of pwa downloads.
+	+ Admin can track number of pdf rejected to download.
+	+ Canvasjs graph implemented to provide pwa analytics to admin.
+
+-------------------------------- Version 4.0.1 --------------------------------------
+
+	+ Workbox diffrent cach strategies implemented.
+	+ Workbox backgroudSync for search page implemented.
+	+ Workbox cache expiration plugin added.
+	+ Workbox-window for registering service worker.
+	+ Performance increased by caching assets in first page load.
+	+ Workbox-precaching for offline page and manifest.json
+
+-------------------------------- Version 4.0.0 --------------------------------------
+
+	+ Compatible with Magento version 2.4.*
+
+-------------------------------- Version 3.0.1 --------------------------------------
+	- fixed magento2 cloud file permission issues
+	- offline progressive caching fixed in safari
+	+ added safari splash screen image for all the device size
+	+ multi website support added
+	+ admin can upload short name, application name, icon according to website
+	+ admin can change display and orientation of pwa app from admin configuration
+
+-------------------------------- Version 3.0.0 --------------------------------------
+
+	- Fixed Bugs
+
+-------------------------------- Version 2.2.0 --------------------------------------
+
+	+ Changed Icon of Pwa Application
+	+ Added functionality to automatically show add to home screen popup
+
+-------------------------------- Version 2.1.0 --------------------------------------
+
+	+ Updated according to Magento 2.3.x version.
+	+ Added functionality to support popup on page add to home screen
+	- Fixed Bugs
+
+-------------------------------- Version 2.0.2 --------------------------------------
+
+	+ Added functionality to support popup on page add to home screen
+	- Fixed bugs
+
+-------------------------------- Version 2.0.1 --------------------------------------
+
+	+ Updated according to Magento 2.2.x version.
+
+-------------------------------- Version 2.0.0 --------------------------------------
+
+	+ Allowed to support Progressive Web Application for your website.
+	+ Enable and disable application from configuration setting.
+	+ Admin can upload Progressive Web Application icon.
+	+ Admin can set name and splash background color for Progressive Web Application.

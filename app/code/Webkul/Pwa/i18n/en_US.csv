@@ -1,0 +1,109 @@
+"Delete Image","Delete Image"
+Back,Back
+"Delete Notification Message","Delete Notification Message"
+"Are you sure you want to delete this notification message?","Are you sure you want to delete this notification message?"
+"Save Notification Message","Save Notification Message"
+Reset,Reset
+"Save and Continue Edit","Save and Continue Edit"
+"PWA Analytics","PWA Analytics"
+"You have deleted the notification message.","You have deleted the notification message."
+"Something went wrong while saving the notification message. %1","Something went wrong while saving the notification message. %1"
+"Requested notification message doesn't exist","Requested notification message doesn't exist"
+"Something went wrong while editing the notification message.","Something went wrong while editing the notification message."
+"Edit Item with id %1","Edit Item with id %1"
+"New Push Notification Message","New Push Notification Message"
+"Push Notification Message","Push Notification Message"
+"File can not be saved to the destination folder.","File can not be saved to the destination folder."
+"Manage Push Notification","Manage Push Notification"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"A total of %1 record(s) have been disabled.","A total of %1 record(s) have been disabled."
+"A total of %1 record(s) have been enabled.","A total of %1 record(s) have been enabled."
+"You saved the notification message.","You saved the notification message."
+"Please upload icon.","Please upload icon."
+"Notification sent.","Notification sent."
+"Notification did not send.","Notification did not send."
+"Go to the Site","Go to the Site"
+"Title field can not be blank.","Title field can not be blank."
+"Body field can not be blank.","Body field can not be blank."
+"Target url field can not be blank.","Target url field can not be blank."
+"Your search is ready!","Your search is ready!"
+--Select--,--Select--
+Top,Top
+Bottom,Bottom
+"Bottom Right","Bottom Right"
+"Top Right","Top Right"
+Enabled,Enabled
+Disabled,Disabled
+Fullscreen,Fullscreen
+Standalone,Standalone
+"Minimal UI","Minimal UI"
+Browser,Browser
+Any,Any
+Natural,Natural
+Landscape,Landscape
+Portrait,Portrait
+"IOS Splash Screen Image can not be empty.","IOS Splash Screen Image can not be empty."
+"Application Icon can not be empty.","Application Icon can not be empty."
+Edit,Edit
+Send,Send
+"From date","From date"
+"To date","To date"
+"Apply Filter","Apply Filter"
+Cancel,Cancel
+"You have successfully subscribed for push notifications!","You have successfully subscribed for push notifications!"
+service_workers_are_not_supported_in_this_browser,service_workers_are_not_supported_in_this_browser
+Upload,Upload
+"Click here or drag and drop to add files.","Click here or drag and drop to add files."
+"Select Date","Select Date"
+"PWA Downloads","PWA Downloads"
+"Number of Downloads","Number of Downloads"
+"Total Download","Total Download"
+"Total Rejected","Total Rejected"
+"Are you sure you want to do this?","Are you sure you want to do this?"
+Pwa,Pwa
+"Manage Pwa Notifications","Manage Pwa Notifications"
+"Pwa Analytics","Pwa Analytics"
+Webkul,Webkul
+"Progressive Web Application","Progressive Web Application"
+Settings,Settings
+Status,Status
+"Application Name <strong style=""color:red"">*</strong>","Application Name <strong style=""color:red"">*</strong>"
+"Application Short Name <strong style=""color:red"">*</strong>","Application Short Name <strong style=""color:red"">*</strong>"
+"Web API Key <strong style=""color:red"">*</strong>","Web API Key <strong style=""color:red"">*</strong>"
+"FCM Auth Domain <strong style=""color:red"">*</strong>","FCM Auth Domain <strong style=""color:red"">*</strong>"
+"FCM Database URL <strong style=""color:red"">*</strong>","FCM Database URL <strong style=""color:red"">*</strong>"
+"FCM Project Id <strong style=""color:red"">*</strong>","FCM Project Id <strong style=""color:red"">*</strong>"
+"FCM Storage Bucket <strong style=""color:red"">*</strong>","FCM Storage Bucket <strong style=""color:red"">*</strong>"
+"Messaging Sender Id <strong style=""color:red"">*</strong>","Messaging Sender Id <strong style=""color:red"">*</strong>"
+"FCM App Id <strong style=""color:red"">*</strong>","FCM App Id <strong style=""color:red"">*</strong>"
+"Server Key <strong style=""color:red"">*</strong>","Server Key <strong style=""color:red"">*</strong>"
+"Public Key <strong style=""color:red"">*</strong>","Public Key <strong style=""color:red"">*</strong>"
+"Measurement Id <strong style=""color:red"">*</strong>","Measurement Id <strong style=""color:red"">*</strong>"
+"Application Icon <strong style=""color:red"">*</strong>","Application Icon <strong style=""color:red"">*</strong>"
+"Allowed file types: png","Allowed file types: png"
+"Splash Backgroud Color <strong style=""color:red"">*</strong>","Splash Backgroud Color <strong style=""color:red"">*</strong>"
+"Theme Color <strong style=""color:red"">*</strong>","Theme Color <strong style=""color:red"">*</strong>"
+"Select Orientation","Select Orientation"
+"Select Display","Select Display"
+"IOS Splash Screen Image <strong style=""color:red"">*</strong>","IOS Splash Screen Image <strong style=""color:red"">*</strong>"
+"Allowed file types: png and size must be 2048x2732","Allowed file types: png and size must be 2048x2732"
+"Select CMS Page for Offline View","Select CMS Page for Offline View"
+"Offline page will show for some pages(Search, Checkout).","Offline page will show for some pages(Search, Checkout)."
+"Service Worker Version <strong style=""color:red"">*</strong>","Service Worker Version <strong style=""color:red"">*</strong>"
+"Change the version number when you want to refresh service worker cache","Change the version number when you want to refresh service worker cache"
+Title,Title
+Body,Body
+"Target URL","Target URL"
+Icon,Icon
+"Allowed file types: jpeg, gif, png.","Allowed file types: jpeg, gif, png."
+Delete,Delete
+"Are you sure you wan't to delete selected notification record?","Are you sure you wan't to delete selected notification record?"
+Enable,Enable
+"Are you sure you wan't to enable the selected notification?","Are you sure you wan't to enable the selected notification?"
+Disable,Disable
+"Are you sure you wan't to disable selected notification?","Are you sure you wan't to disable selected notification?"
+ID,ID
+Created,Created
+Modified,Modified
+Action,Action
+"Push Notification","Push Notification"

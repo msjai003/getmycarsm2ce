@@ -1,0 +1,59 @@
+.wk-prompt{
+    float: right;
+    margin-top: 15px;
+    padding-right: 5px;
+    color: #757575;
+}
+.icon-plus {
+    width: 47px;
+    height: 47px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+  }
+  .icon-plus.w25 {
+    width: 21px;
+    height: 21px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  .icon-plus.w25:after {
+    width: 14px;
+    height: 4px;
+    left: 4px;
+    top: 9px;
+  }
+  .icon-plus.w25:before {
+    width: 4px;
+    height: 14px;
+    left: 9px;
+    top: 4px;
+  }
+  .icon-plus.orange {
+    background: #FD7901;
+  }
+  .icon-plus.gray {
+    background: #757575;
+  }
+  .icon-plus:after, .icon-plus:before {
+    content: '';
+    position: absolute;
+    background: #FFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  .icon-plus:after {
+    width: 25px;
+    height: 6px;
+    left: 11px;
+    top: 20px;
+  }
+  .icon-plus:before {
+    width: 6px;
+    height: 25px;
+    left: 20px;
+    top: 11px;
+  }

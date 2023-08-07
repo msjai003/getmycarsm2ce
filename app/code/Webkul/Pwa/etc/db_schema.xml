@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="push_notification" resource="default" engine="innodb" comment="Push Notification Table">
+		<column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+		<column xsi:type="text" name="registration_id" nullable="true" comment="Registration ID"/>
+		<column xsi:type="text" name="end_point" nullable="true" comment="End Point"/>
+		<column xsi:type="timestamp" name="created_at" on_update="false" nullable="true" comment="Creation Time" default="CURRENT_TIMESTAMP"/>
+		<column xsi:type="timestamp" name="updated_at" on_update="true" nullable="true" comment="Update Time" default="CURRENT_TIMESTAMP"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+		<column name="entity_id"/>
+		</constraint>
+	</table>
+	<table name="push_notification_message" resource="default" engine="innodb" comment="Push Notification Messages Table">
+		<column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+		<column xsi:type="text" name="title" nullable="true" comment="Title"/>
+		<column xsi:type="text" name="body" nullable="true" comment="Body"/>
+		<column xsi:type="text" name="url" nullable="true" comment="Target Url"/>
+		<column xsi:type="text" name="icon" nullable="true" comment="Icon"/>
+		<column xsi:type="int" name="status" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="status"/>
+		<column xsi:type="timestamp" name="created_at" on_update="false" nullable="true" comment="Creation Time" default="CURRENT_TIMESTAMP"/>
+		<column xsi:type="timestamp" name="updated_at" on_update="true" nullable="true" comment="Update Time" default="CURRENT_TIMESTAMP"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id"/>
+		</constraint>
+		<index referenceId="PUSH_NOTIFICATION_MESSAGE_FULLTEXT_INDEX" indexType="fulltext">
+			<column name="title"/>
+			<column name="body"/>
+		</index>
+	</table>
+	<table comment="webkul_pwa_pwainstalled Table" engine="innodb" name="webkul_pwa_analytics" resource="default">
+		<column comment="Entity Id" identity="true" name="entity_id" nullable="false" padding="10" unsigned="true" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="entity_id"/>
+		</constraint>
+		<column name="created_on" nullable="true" xsi:type="datetime"/>
+		<column identity="false" name="total_download" nullable="true" xsi:type="int"/>
+		<column identity="false" name="total_reject" nullable="true" xsi:type="int"/>
+	</table>
+</schema>

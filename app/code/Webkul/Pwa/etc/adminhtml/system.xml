@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Pwa
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="webkul" translate="label" sortOrder="1">
+            <label>Webkul</label>
+        </tab>
+        <section id="pwa" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Progressive Web Application</label>
+            <!-- Assign section to tab -->
+            <tab>webkul</tab>
+            <resource>Webkul_Pwa::config_pwa</resource>
+            <!-- create group for fields in section -->
+            <group id="general_settings" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <field id="status" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Status</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="application_name" translate="label" sortOrder="2" type="text" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Application Name <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_short_name" translate="label" sortOrder="3" type="text" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Application Short Name <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_apiKey" translate="label" sortOrder="4" type="obscure" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Web API Key <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_authDomain" translate="label" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[FCM Auth Domain <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_databaseURL" translate="label" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[FCM Database URL <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_projectId" translate="label" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[FCM Project Id <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_storageBucket" translate="label" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[FCM Storage Bucket <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_sender_id" translate="label" sortOrder="4" type="obscure" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Messaging Sender Id <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_appId" translate="label" sortOrder="4" type="obscure" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[FCM App Id <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_server_key" translate="label" sortOrder="5" type="obscure" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Server Key <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_public_key" translate="label" sortOrder="5" type="obscure" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Public Key <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="measurement_id" translate="label" sortOrder="6" type="obscure" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Measurement Id <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="application_icon" translate="label comment" type="Webkul\Pwa\Block\Adminhtml\Data\Form\Element\Image" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Application Icon <strong style="color:red">*</strong>]]></label>
+                    <comment>Allowed file types: png</comment>
+                    <backend_model>Webkul\Pwa\Model\Config\Backend\PngImage</backend_model>
+                    <base_url type="media" scope_info="1">pwa/icon</base_url>
+                    <upload_dir config="system/filesystem/media" scope_info="1">pwa/icon</upload_dir>
+                    <validate>required-entry required-file</validate>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="splash_bg_color" translate="label" sortOrder="8" type="text" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Splash Backgroud Color <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <frontend_model>Webkul\Pwa\Block\Colorpicker</frontend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="theme_color" translate="label" sortOrder="9" type="text" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Theme Color <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <frontend_model>Webkul\Pwa\Block\Colorpicker</frontend_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="orientation" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <source_model>Webkul\Pwa\Model\System\Config\Source\Orientation</source_model>
+                    <label>Select Orientation</label>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="display" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <source_model>Webkul\Pwa\Model\System\Config\Source\Display</source_model>
+                    <label>Select Display</label>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+
+                <field id="ios_splash_screen" translate="label comment" type="Webkul\Pwa\Block\Adminhtml\Data\Form\Element\Image" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[IOS Splash Screen Image <strong style="color:red">*</strong>]]></label>
+                    <comment>Allowed file types: png and size must be 2048x2732</comment>
+                    <backend_model>Webkul\Pwa\Model\Config\Backend\PngImage</backend_model>
+                    <base_url type="media" scope_info="1">pwa/icon</base_url>
+                    <upload_dir config="system/filesystem/media" scope_info="1">pwa/icon</upload_dir>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="cms_offline_page" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Select CMS Page for Offline View</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <comment>Offline page will show for some pages(Search, Checkout).</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="version" translate="label comment" sortOrder="100" type="text" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Service Worker Version <strong style="color:red">*</strong>]]></label>
+                    <validate>required-entry</validate>
+                    <comment>Change the version number when you want to refresh service worker cache</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

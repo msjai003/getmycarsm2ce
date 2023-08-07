@@ -1,0 +1,40 @@
+{
+    "push_notification": {
+        "column": {
+            "entity_id": true,
+            "registration_id": true,
+            "end_point": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "push_notification_message": {
+        "column": {
+            "entity_id": true,
+            "title": true,
+            "body": true,
+            "url": true,
+            "icon": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "webkul_pwa_analytics": {
+        "column": {
+            "entity_id": true,
+            "created_on": true,
+            "total_download": true,
+            "total_reject": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

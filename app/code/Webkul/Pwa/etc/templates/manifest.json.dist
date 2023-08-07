@@ -1,0 +1,29 @@
+{
+    "name": "%name%",
+    "short_name": "%short_name%",
+    "start_url": "%start_url%",
+    "display": "%display%",
+    "gcm_sender_id": "%gcm_sender_id%",
+    "gcm_user_visible_only":"true",
+    "orientation": "%orientation%",
+    "background_color": "%background_color%",
+    "theme_color": "%theme_color%",
+    "icons": [
+        {
+            "src": "%icon144%",
+            "sizes": "144x144",
+            "type":"%type%"
+        },
+        {
+            "src": "%icon192%",
+            "sizes": "192x192",
+            "type":"%type%"
+        },
+        {
+            "src": "%icon512%",
+            "sizes": "512x512",
+            "type":"%type%",
+            "purpose": "any maskable"
+        }
+    ]
+}

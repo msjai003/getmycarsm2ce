@@ -1,0 +1,20 @@
+{
+    "name": "webkul/progressive-web-application",
+    "description": "Webkul Progressive Web Application Module",
+    "require": {
+        "magento/framework": "103.0.*"
+    },
+    "type": "magento2-module",
+    "version": "4.0.2",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Webkul\\Pwa\\": ""
+        }
+    }
+}
