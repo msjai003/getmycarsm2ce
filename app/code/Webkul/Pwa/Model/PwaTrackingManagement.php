@@ -11,6 +11,7 @@
 
 namespace Webkul\Pwa\Model;
 
+use AllowDynamicProperties;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Webkul\Pwa\Api\Data\TrackingDataInterface;
 use Webkul\Pwa\Model\ResourceModel\PushNotification\CollectionFactory;
@@ -18,7 +19,7 @@ use Webkul\Pwa\Model\ResourceModel\PushNotification\CollectionFactory;
 /**
  * PwaTrackingManagement Manage pwa tracking
  */
-class PwaTrackingManagement implements \Webkul\Pwa\Api\PwaTrackingManagementInterface
+#[AllowDynamicProperties] class PwaTrackingManagement implements \Webkul\Pwa\Api\PwaTrackingManagementInterface
 {
 
     /**

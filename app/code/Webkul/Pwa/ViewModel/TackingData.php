@@ -11,7 +11,8 @@
 
 namespace Webkul\Pwa\ViewModel;
 
-class TackingData implements \Magento\Framework\View\Element\Block\ArgumentInterface
+use AllowDynamicProperties;
+#[AllowDynamicProperties] class TackingData implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
     /**
      * @var array

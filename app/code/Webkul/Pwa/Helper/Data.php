@@ -11,12 +11,13 @@
 
 namespace Webkul\Pwa\Helper;
 
+use AllowDynamicProperties;
 use Magento\Framework\App\Filesystem\DirectoryList;
 
 /**
  * Pwa data helper.
  */
-class Data extends \Magento\Framework\App\Helper\AbstractHelper
+#[AllowDynamicProperties] class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
