@@ -11,6 +11,7 @@
 
 namespace Webkul\Pwa\Controller\Manifest;
 
+use AllowDynamicProperties;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
@@ -20,7 +21,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 /**
  * Manifest Index
  */
-class Index extends Action
+#[AllowDynamicProperties] class Index extends Action
 {
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
