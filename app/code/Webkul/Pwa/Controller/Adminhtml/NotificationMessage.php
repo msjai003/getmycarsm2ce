@@ -11,7 +11,6 @@
 
 namespace Webkul\Pwa\Controller\Adminhtml;
 
-use AllowDynamicProperties;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 
@@ -35,7 +34,7 @@ use Magento\Framework\HTTP\Client\Curl;
 /**
  * Webkul Pwa Admin NotificationMessage Controller
  */
-#[AllowDynamicProperties] abstract class NotificationMessage extends \Magento\Backend\App\Action
+abstract class NotificationMessage extends \Magento\Backend\App\Action
 {
     /**
      * @var \Magento\Framework\View\Result\PageFactory

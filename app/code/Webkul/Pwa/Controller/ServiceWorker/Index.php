@@ -11,7 +11,6 @@
 
 namespace Webkul\Pwa\Controller\ServiceWorker;
 
-use AllowDynamicProperties;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
@@ -21,7 +20,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 /**
  * Pwa Index Page
  */
-#[AllowDynamicProperties] class Index extends Action
+class Index extends Action
 {
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime

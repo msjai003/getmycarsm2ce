@@ -10,13 +10,12 @@
  */
 namespace Webkul\Pwa\Controller\Adminhtml\Analytics;
 
-use AllowDynamicProperties;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Controller\ResultFactory;
 
-#[AllowDynamicProperties] class Index extends Action
+class Index extends Action
 {
      /**
       * @var \Magento\Framework\View\Result\PageFactory
