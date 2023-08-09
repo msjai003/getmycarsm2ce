@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Webkul Software.
  *
@@ -12,55 +13,39 @@
 namespace Webkul\Pwa\Helper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Helper\Context;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\Encryption\EncryptorInterface;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Image\AdapterFactory;
+use Magento\Framework\Filesystem\Io\File;
+use Magento\Framework\App\Helper\AbstractHelper;
 
 /**
  * Pwa data helper.
  */
-class Data extends \Magento\Framework\App\Helper\AbstractHelper
+class Data extends AbstractHelper
 {
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $_storeManager;
-
-    /**
-     * @var \Magento\Framework\Encryption\EncryptorInterface
-     */
-    protected $_encryptor;
-
     /**
      * @var \Magento\Framework\Filesystem\Directory\WriteInterface
      */
     protected $_mediaDirectory;
 
-    /**
-     * @var \Magento\Framework\Image\Factory
-     */
-    protected $_imageFactory;
-
-    /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\Encryption\EncryptorInterface $encryptor
-     * @param \Magento\Framework\Filesystem $filesystem
-     * @param \Magento\Framework\Image\AdapterFactory $imageFactory
-     * @param \Magento\Framework\Filesystem\Io\File $filesystemFile
-     */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Encryption\EncryptorInterface $encryptor,
-        \Magento\Framework\Filesystem $filesystem,
-        \Magento\Framework\Image\AdapterFactory $imageFactory,
-        \Magento\Framework\Filesystem\Io\File $filesystemFile
+        private readonly Context $context,
+        private readonly StoreManagerInterface $_storeManager,
+        private readonly EncryptorInterface $_encryptor,
+        private readonly Filesystem $filesystem,
+        private readonly AdapterFactory $_imageFactory,
+        private readonly File $filesystemFile
     ) {
-        $this->_storeManager = $storeManager;
-        $this->_encryptor = $encryptor;
-        $this->_imageFactory = $imageFactory;
-        $this->filesystemFile = $filesystemFile;
-        parent::__construct($context);
+        //$this->_storeManager = $storeManager;
+        //$this->_encryptor = $encryptor;
+        //$this->_imageFactory = $imageFactory;
+        ///$this->filesystemFile = $filesystemFile;
+        parent::__construct($this->context);
 
-        $this->_mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
+        $this->_mediaDirectory = $this->filesystem->getDirectoryWrite(DirectoryList::MEDIA);
     }
 
     /**

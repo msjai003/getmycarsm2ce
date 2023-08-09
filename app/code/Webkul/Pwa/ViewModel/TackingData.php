@@ -10,6 +10,9 @@
  */
 
 namespace Webkul\Pwa\ViewModel;
+
+use Webkul\Pwa\Api\PwaTrackingManagementInterface;
+use Magento\Framework\App\RequestInterface;
 class TackingData implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
     /**
@@ -18,15 +21,13 @@ class TackingData implements \Magento\Framework\View\Element\Block\ArgumentInter
     protected $analyticsRecord = [];
 
     /**
-     * @param \Webkul\Pwa\Api\PwaTrackingManagementInterface $trackingManagement
-     * @param \Magento\Framework\App\RequestInterface $request
+     * @param PwaTrackingManagementInterface $trackingManagement
+     * @param RequestInterface $request
      */
     public function __construct(
-        \Webkul\Pwa\Api\PwaTrackingManagementInterface $trackingManagement,
-        \Magento\Framework\App\RequestInterface $request
+        private readonly PwaTrackingManagementInterface $trackingManagement,
+        private readonly RequestInterface $request
     ) {
-        $this->trackingManagement = $trackingManagement;
-        $this->request = $request;
     }
 
     /**

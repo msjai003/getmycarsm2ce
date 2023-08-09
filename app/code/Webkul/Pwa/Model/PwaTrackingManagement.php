@@ -14,6 +14,7 @@ namespace Webkul\Pwa\Model;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Webkul\Pwa\Api\Data\TrackingDataInterface;
 use Webkul\Pwa\Model\ResourceModel\PushNotification\CollectionFactory;
+use Psr\Log\LoggerInterface;
 
 /**
  * PwaTrackingManagement Manage pwa tracking
@@ -46,12 +47,11 @@ class PwaTrackingManagement implements \Webkul\Pwa\Api\PwaTrackingManagementInte
         \Webkul\Pwa\Model\ResourceModel\TrackingManagement $resourceModel,
         \Webkul\Pwa\Api\Data\TrackingDataInterfaceFactory $trackingDataFactory,
         \Magento\Framework\Stdlib\DateTime\DateTime $timezone,
-        \Psr\Log\LoggerInterface $logger
+        private readonly LoggerInterface $logger
     ) {
         $this->_resourceModel = $resourceModel;
         $this->trackingDataFactory = $trackingDataFactory;
         $this->_timezone = $timezone;
-        $this->logger = $logger;
     }
 
     /**

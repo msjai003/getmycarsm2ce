@@ -11,11 +11,18 @@
 
 namespace Webkul\Pwa\Controller\Adminhtml\NotificationMessage;
 
+use Magento\Framework\DataObject;
+
 /**
  * Validate Notification
  */
 class Validate extends \Webkul\Pwa\Controller\Adminhtml\NotificationMessage
 {
+    public function __construct(
+        private readonly DataObject $dataObject
+    )
+    {}
+
     /**
      * Push NotificationMessage validation
      *

@@ -28,7 +28,6 @@ use Magento\Framework\Filesystem;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\DataObject;
 use Magento\Framework\HTTP\Client\Curl;
 
 /**
@@ -127,7 +126,6 @@ abstract class NotificationMessage extends \Magento\Backend\App\Action
      * @param \Magento\Framework\Filesystem\Io\File $filesystemFile
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $date
      * @param Curl $curl
-     * @param DataObject $dataObject
      */
     public function __construct(
         Context $context,
@@ -144,8 +142,7 @@ abstract class NotificationMessage extends \Magento\Backend\App\Action
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\Filesystem\Io\File $filesystemFile,
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
-        Curl $curl,
-        DataObject $dataObject
+        Curl $curl
     ) {
         parent::__construct($context);
         $this->_resultPageFactory = $resultPageFactory;
@@ -161,7 +158,6 @@ abstract class NotificationMessage extends \Magento\Backend\App\Action
         $this->_coreRegistry = $coreRegistry;
         $this->_filesystemFile = $filesystemFile;
         $this->_date = $date;
-        $this->dataObject =$dataObject;
         $this->curl = $curl;
     }
 

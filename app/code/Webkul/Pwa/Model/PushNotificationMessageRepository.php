@@ -60,6 +60,10 @@ class PushNotificationMessageRepository implements \Webkul\Pwa\Api\PushNotificat
      */
     public function save(PushNotificationMessageInterface $pushNotificationMessage)
     {
+        echo '<pre>';
+        print_r($pushNotificationMessage);
+        exit;
+
         try {
             $this->_resourceModel->save($pushNotificationMessage);
         } catch (\Exception $e) {
