@@ -2,7 +2,7 @@
 
 Magento2 Progressive Web Application module installation is very easy, please follow the steps for installation-
 
-1. Unzip the respective extension zip and create Webkul(vendor) and Pwa(module) name folder inside your magento/app/code/ directory and then move all module's files into magento root directory Magento2/app/code/Webkul/Pwa/ folder.
+1.Unzip the respective extension zip and create Webkul(vendor) and Pwa(module) name folder inside your magento/app/code/ directory and then move all module's files into magento root directory Magento2/app/code/Webkul/Pwa/ folder.
 
 Run Following Command via terminal
 -----------------------------------

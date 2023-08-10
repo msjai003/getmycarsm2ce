@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 
@@ -28,6 +28,7 @@ use Magento\Framework\Filesystem;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\DataObject;
 use Magento\Framework\HTTP\Client\Curl;
 
 /**
@@ -111,6 +112,11 @@ abstract class NotificationMessage extends \Magento\Backend\App\Action
     protected $curl;
 
     /**
+     * @var \Magento\Framework\DataObject
+     */
+    protected $dataObject;
+
+    /**
      * @param Context $context
      * @param PageFactory $resultPageFactory
      * @param ForwardFactory $resultForwardFactory
@@ -126,6 +132,7 @@ abstract class NotificationMessage extends \Magento\Backend\App\Action
      * @param \Magento\Framework\Filesystem\Io\File $filesystemFile
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $date
      * @param Curl $curl
+     * @param DataObject $dataObject
      */
     public function __construct(
         Context $context,
@@ -142,7 +149,8 @@ abstract class NotificationMessage extends \Magento\Backend\App\Action
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\Filesystem\Io\File $filesystemFile,
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
-        Curl $curl
+        Curl $curl,
+        DataObject $dataObject
     ) {
         parent::__construct($context);
         $this->_resultPageFactory = $resultPageFactory;
@@ -158,6 +166,7 @@ abstract class NotificationMessage extends \Magento\Backend\App\Action
         $this->_coreRegistry = $coreRegistry;
         $this->_filesystemFile = $filesystemFile;
         $this->_date = $date;
+        $this->dataObject =$dataObject;
         $this->curl = $curl;
     }
 

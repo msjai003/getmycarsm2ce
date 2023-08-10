@@ -5,7 +5,7 @@
         "magento/framework": "103.0.*"
     },
     "type": "magento2-module",
-    "version": "4.0.2",
+    "version": "5.0.0",
     "license": [
         "proprietary"
     ],

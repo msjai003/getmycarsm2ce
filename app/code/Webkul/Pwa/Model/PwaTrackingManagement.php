@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 
@@ -14,7 +14,6 @@ namespace Webkul\Pwa\Model;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Webkul\Pwa\Api\Data\TrackingDataInterface;
 use Webkul\Pwa\Model\ResourceModel\PushNotification\CollectionFactory;
-use Psr\Log\LoggerInterface;
 
 /**
  * PwaTrackingManagement Manage pwa tracking
@@ -38,6 +37,11 @@ class PwaTrackingManagement implements \Webkul\Pwa\Api\PwaTrackingManagementInte
     protected $_timezone;
 
     /**
+     * @var \Psr\Log\LoggerInterface $logger
+     */
+    protected $logger;
+
+    /**
      * @param \Webkul\Pwa\Model\ResourceModel\TrackingManagement $resourceModel
      * @param \Webkul\Pwa\Api\Data\TrackingDataInterfaceFactory $trackingDataFactory
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $timezone
@@ -47,11 +51,12 @@ class PwaTrackingManagement implements \Webkul\Pwa\Api\PwaTrackingManagementInte
         \Webkul\Pwa\Model\ResourceModel\TrackingManagement $resourceModel,
         \Webkul\Pwa\Api\Data\TrackingDataInterfaceFactory $trackingDataFactory,
         \Magento\Framework\Stdlib\DateTime\DateTime $timezone,
-        private readonly LoggerInterface $logger
+        \Psr\Log\LoggerInterface $logger
     ) {
         $this->_resourceModel = $resourceModel;
         $this->trackingDataFactory = $trackingDataFactory;
         $this->_timezone = $timezone;
+        $this->logger = $logger;
     }
 
     /**

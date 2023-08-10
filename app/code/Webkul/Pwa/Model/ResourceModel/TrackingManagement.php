@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 
@@ -38,14 +38,13 @@ class TrackingManagement extends \Magento\Framework\Model\ResourceModel\Db\Abstr
      */
     public function getRecordByDate($date = null)
     {
-        $bind = [':created_on' => (string)$date];
         $select = $this->getConnection()
             ->select()
             ->from(
                 $this->getMainTable(),
                 ['*']
-            )->where('created_on=?', $date);
-        $result = $this->getConnection()->fetchRow($select, $bind);
+            )->where('created_on="'.$date.'"');
+        $result = $this->getConnection()->fetchRow($select);
 
         return $result;
     }

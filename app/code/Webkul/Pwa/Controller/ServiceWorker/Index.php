@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 
@@ -33,12 +33,26 @@ class Index extends Action
     protected $data;
 
     /**
+     * @var \Magento\Framework\Module\Dir\Reader
+     */
+    protected $_baseDirectory;
+
+    /**
+     * @var \Magento\Framework\Filesystem\Driver\File
+     */
+    protected $fileDriver;
+
+    /**
+     * @var \Magento\Framework\Controller\ResultFactory
+     */
+    protected $resultFactory;
+    /**
      * @param Context $context
      * @param \Webkul\Pwa\Helper\Data $data
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $date
      * @param ResultFactory $resultFactory
      * @param \Magento\Framework\Filesystem\Driver\File $fileDriver
-     * @param \Magento\Framework\Module\Dir\Reader $moduleReader
+     * @param \Magento\Framework\Module\Dir\Reader $_baseDirectory
      */
     public function __construct(
         Context $context,
@@ -46,9 +60,9 @@ class Index extends Action
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
         ResultFactory $resultFactory,
         \Magento\Framework\Filesystem\Driver\File $fileDriver,
-        \Magento\Framework\Module\Dir\Reader $moduleReader
+        \Magento\Framework\Module\Dir\Reader $_baseDirectory
     ) {
-        $this->_baseDirectory = $moduleReader;
+        $this->_baseDirectory = $_baseDirectory;
         $this->_date = $date;
         $this->data = $data;
         $this->fileDriver = $fileDriver;

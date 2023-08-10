@@ -4,25 +4,18 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 
 namespace Webkul\Pwa\Controller\Adminhtml\NotificationMessage;
-
-use Magento\Framework\DataObject;
 
 /**
  * Validate Notification
  */
 class Validate extends \Webkul\Pwa\Controller\Adminhtml\NotificationMessage
 {
-    public function __construct(
-        private readonly DataObject $dataObject
-    )
-    {}
-
     /**
      * Push NotificationMessage validation
      *

@@ -1,3 +1,15 @@
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Pwa
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+
 <?php
  $viewModel = $block->getViewModel();
  $totalDownloads = $viewModel->getTotalDownloads();
@@ -12,7 +24,7 @@
     </label>
     <div class="admin__field-control" style="margin-left:10px;">
         <input class="admin__control-text required-entry"
-            type="text"
+            type="date"
             id="date-from"
             name="from"/>
     </div>
@@ -22,7 +34,7 @@
     </label>
     <div class="admin__field-control" style="margin:0px 10px 0px 10px;">
         <input class="admin__control-text required-entry"
-            type="text"
+            type="date"
             id="date-to"
             name="to"/>
     </div>
@@ -47,18 +59,16 @@
     ], function($, ko, CanvasJS){
         'use strict';
 
-        var dateRange = $('#date-range').dateRange({
-            buttonText: $.mage.__('Select Date'),
-            from: {
-                id: 'date-from'
-            },
-            to: {
-                id: 'date-to'
-            }
-        });
+        
         var totalRecords = ko.observableArray([]);
         var totalDownloads = <?= /* @noEscape */ json_encode($totalDownloads) ?>;
         var totalRejects = <?= /* @noEscape */ json_encode($totalRejects) ?>;
+
+        var pwaDownloads = '<?=__("PWA Downloads")?>';
+        var noOfDownloads = '<?= __("Number of Downloads") ?>';
+        var totalDownloadsLabel = '<?= __("Total Download") ?>';
+        var totalRejected = '<?= __("Total Rejected") ?>';
+        
         var downloadPoints = [];
         var rejectPoints = [];
         $.each(totalDownloads, function(index, value) {
@@ -72,7 +82,7 @@
             animationEnabled: true,
             theme: "light2",
             title:{
-                text: $.mage.__("PWA Downloads"),
+                text: pwaDownloads,
                 fontSize: 20,
                 padding: 10,
                 margin: 15,
@@ -87,7 +97,7 @@
                 intervalType: "day"
             },
             axisY: {
-                title: $.mage.__("Number of Downloads"),
+                title: noOfDownloads,
                 crosshair: {
                     enabled: true
                 }
@@ -105,7 +115,7 @@
             data: [{
                 type: "line",
                 showInLegend: true,
-                name: $.mage.__("Total Download"),
+                name: totalDownloadsLabel,
                 markerType: "square",
                 xValueFormatString: "DD MMM, YYYY",
                 dataPoints: downloadPoints
@@ -113,7 +123,7 @@
             {
                 type: "line",
                 showInLegend: true,
-                name: $.mage.__("Total Rejected"),
+                name: totalRejected,
                 lineDashType: "dash",
                 color: "#F08080",
                 dataPoints: rejectPoints
@@ -141,7 +151,6 @@
             if (startDate == '') {
                 return true;
             }
-
             var resultTotalDownloads = totalDownloads.filter(a => {
                 var date = new Date(a.date);
                 return (date >= startDate && date <= endDate);

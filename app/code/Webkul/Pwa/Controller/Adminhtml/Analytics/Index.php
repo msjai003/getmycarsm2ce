@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 namespace Webkul\Pwa\Controller\Adminhtml\Analytics;
@@ -17,6 +17,11 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Index extends Action
 {
+     /**
+      * @var \Magento\Framework\View\Result\PageFactory
+      */
+    protected $resultPageFactory;
+
     /**
      * @var \Magento\Backend\Model\View\Result\Page
      */
@@ -28,10 +33,11 @@ class Index extends Action
      */
     public function __construct(
         Context $context,
-        private readonly PageFactory $_resultPageFactory
+        PageFactory $resultPageFactory
     ) {
 
         parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
     }
 
     /**

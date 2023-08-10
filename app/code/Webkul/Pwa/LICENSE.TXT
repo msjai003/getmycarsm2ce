@@ -134,7 +134,7 @@ At the address mentioned by the Licensee
 
 (e)By purchasing the Software, the Licensee acknowledge that it has read this Agreement, and that it agrees to the content of the Agreement, its terms and agree to use the Software in compliance with this Agreement.
 
-(f)The Licensor holds the sole copyright of the Software. The Software or any portion thereof is a copyrightable matter and is liable to be protected by the applicable laws. Copyright infringement in any manner can lead to prosecution according to the current law. The Licensor reserves the right to revoke the license of any user who is not holding any license or is holding an invalid license.
+(f)The Licensor holds the sole copyright of the Software. The Software or any portion thereof is a copyrightable matter and is liable to be protected by the applicable laws.  infringement in any manner can lead to prosecution according to the current law. The Licensor reserves the right to revoke the license of any user who is not holding any license or is holding an invalid license.
 
 (g)This Agreement gives the right to use only one copy of the Software on one domain solely for the own personal or business use of the Licensee, subject to all the terms and conditions of this Agreement. A separate License has to be purchased for each new Software installation. Any distribution of the Software without the written consent of the Licensor (including non-commercial distribution) is regarded as violation of this Agreement, and will entail immediate termination of the Agreement and may invite liability, both civil and criminal,  as per applicable laws.
 

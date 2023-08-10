@@ -5,8 +5,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
  -->
@@ -15,5 +15,63 @@
     	<add id="Webkul_Pwa::pwa" title="Pwa" translate="title" module="Webkul_Pwa" sortOrder="10" resource="Webkul_Pwa::pwa" dependsOnConfig="pwa/general_settings/status"/>
         <add id="Webkul_Pwa::notificationmessage" title="Manage Pwa Notifications" translate="title" module="Webkul_Pwa" sortOrder="1" parent="Webkul_Pwa::pwa" dependsOnModule="Webkul_Pwa" action="pwa/notificationmessage" resource="Webkul_Pwa::notificationmessage"/>
         <add id="Webkul_Pwa::analytics" title="Pwa Analytics" translate="title" module="Webkul_Pwa" sortOrder="20" parent="Webkul_Pwa::pwa" dependsOnModule="Webkul_Pwa" action="pwa/analytics" resource="Webkul_Pwa::analytics"/>
+
+        <add 
+            id="Webkul_Pwa::pwa_support" 
+            title="Support" translate="title" 
+            module="Webkul_Pwa" 
+            sortOrder="200" 
+            parent="Webkul_Pwa::pwa" 
+            resource="Webkul_Pwa::pwa_support"/>
+
+        <add 
+            id="Webkul_Pwa::pwa_userguide" 
+            title="User Guide" 
+            translate="title" 
+            module="Webkul_Pwa" 
+            sortOrder="100" 
+            parent="Webkul_Pwa::pwa_support" 
+            action="pwa/support/blog" 
+            resource="Webkul_Pwa::pwa_userguide"/>
+
+        <add 
+            id="Webkul_Pwa::pwa_extension" 
+            title="Store Extension" 
+            translate="title" 
+            module="Webkul_Pwa" 
+            sortOrder="200" 
+            parent="Webkul_Pwa::pwa_support" 
+            action="pwa/support/store" 
+            resource="Webkul_Pwa::pwa_extension"/>
+
+        <add 
+            id="Webkul_Pwa::pwa_uvdesk" 
+            title="Ticket/Customisations" 
+            translate="title" 
+            module="Webkul_Pwa" 
+            sortOrder="300" 
+            parent="Webkul_Pwa::pwa_support" 
+            action="pwa/support/uvdesk" 
+            resource="Webkul_Pwa::pwa_uvdesk"/>
+
+        <add 
+            id="Webkul_Pwa::pwa_services" 
+            title="Our Services" 
+            translate="title" 
+            module="Webkul_Pwa" 
+            sortOrder="300" 
+            parent="Webkul_Pwa::pwa_support" 
+            action="pwa/support/services" 
+            resource="Webkul_Pwa::pwa_services"/>
+
+        <add 
+            id="Webkul_Pwa::pwa_reviews" 
+            title="Reviews" 
+            translate="title" 
+            module="Webkul_Pwa" 
+            sortOrder="300" 
+            parent="Webkul_Pwa::pwa_support" 
+            action="pwa/support/storereview" 
+            resource="Webkul_Pwa::pwa_reviews"/>
     </menu>
 </config>

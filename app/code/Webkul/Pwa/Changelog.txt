@@ -3,10 +3,15 @@
 + Features
 - Bugs
 
+-------------------------------- Version 5.0.0 --------------------------------------
+
+	+ Compatible with Magento 2.4.6 version and PHP 8.2
+	+ Fixed issues in Magento 2.4.6
+
 -------------------------------- Version 4.0.2 --------------------------------------
 
 	+ Admin can track number of pwa downloads.
-	+ Admin can track number of pdf rejected to download.
+	+ Admin can track number of pwa rejected to download.
 	+ Canvasjs graph implemented to provide pwa analytics to admin.
 
 -------------------------------- Version 4.0.1 --------------------------------------

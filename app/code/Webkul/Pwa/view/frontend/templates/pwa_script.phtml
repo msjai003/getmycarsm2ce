@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 ?>
@@ -23,9 +23,9 @@ import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/5.1.2
     require([
         "jquery",
         'mage/storage',
-        '@firebase/app',
-        '@firebase/messaging',
-        '@firebase/analytics'
+        'Webkul_Pwa/js/firebase-app',
+        'Webkul_Pwa/js/firebase-messaging',
+        'Webkul_Pwa/js/firebase-analytics'
     ], function($, storage, firebase){
         'use strict';
         var firebaseConfig = {

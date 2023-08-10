@@ -5,8 +5,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
  -->
@@ -116,7 +116,7 @@
                     <item name="label" xsi:type="string" translate="true">Icon</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="formElement" xsi:type="string">fileUploader</item>
-                    <item name="notice" xsi:type="string" translate="true">Allowed file types: jpeg, gif, png.</item>
+                    <item name="notice" xsi:type="string" translate="true">Allowed file types: jpg, jpeg, gif, png.</item>
                     <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>
                     <item name="elementTmpl" xsi:type="string">Webkul_Pwa/form/element/uploader/uploader</item>
                     <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>

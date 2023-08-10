@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 
@@ -36,6 +36,16 @@ class Index extends Action
      * @var Webkul\Pwa\Helper\Data
      */
     protected $_helper;
+
+    /**
+     * @var \Magento\Framework\Filesystem\Driver\File
+     */
+    protected $fileDriver;
+
+    /**
+     * @var ResultFactory
+     */
+    protected $ResultFactory;
 
    /**
     * @param Context $context

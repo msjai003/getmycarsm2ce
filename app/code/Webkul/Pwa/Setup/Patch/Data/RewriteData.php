@@ -1,7 +1,12 @@
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Pwa
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
  */
 
 namespace Webkul\Pwa\Setup\Patch\Data;

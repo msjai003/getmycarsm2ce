@@ -22,8 +22,7 @@
         {
             "src": "%icon512%",
             "sizes": "512x512",
-            "type":"%type%",
-            "purpose": "any maskable"
+            "type":"%type%"
         }
     ]
 }

@@ -4,8 +4,8 @@
  *
  * @category  Webkul
  * @package   Webkul_Pwa
- * @author    Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @author    Webkul Software Private Limited
+ * @copyright  Webkul Software Private Limited (https://webkul.com)
  * @license   https://store.webkul.com/license.html
  */
 
@@ -60,10 +60,6 @@ class PushNotificationMessageRepository implements \Webkul\Pwa\Api\PushNotificat
      */
     public function save(PushNotificationMessageInterface $pushNotificationMessage)
     {
-        echo '<pre>';
-        print_r($pushNotificationMessage);
-        exit;
-
         try {
             $this->_resourceModel->save($pushNotificationMessage);
         } catch (\Exception $e) {
