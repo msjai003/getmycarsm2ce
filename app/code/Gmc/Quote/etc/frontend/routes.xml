@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Gmc_Quote
+ *
+ * PHP version 8.x
+ *
+ * @category  XML
+ * @package   Gmc\Quote
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+	<router id="standard">
+		<route frontName="gmcquote" id="gmcquote">
+			<module name="Gmc_Quote"/>
+		</route>
+	</router>
+</config>
