@@ -49,9 +49,9 @@ class Data extends AbstractHelper
     private $pricingHelper;
 
     /**
-     * @var ResourceConnection
+     * @var \Magento\Framework\DB\Adapter\AdapterInterface
      */
-    private $resource;
+    private $connection;
 
     /**
      * @var ProductRepositoryInterface
@@ -72,7 +72,7 @@ class Data extends AbstractHelper
     ) {
         $this->scopeConfig = $context->getScopeConfig();
         $this->pricingHelper = $pricingHelper;
-        $this->resource = $resource;
+        $this->connection = $resource->getConnection();
         $this->productRepository = $productRepository;
         parent::__construct($context);
     } //end __construct()
@@ -89,7 +89,7 @@ class Data extends AbstractHelper
             $product = $this->productRepository->getById($product);
         }
         $productPrice = $product->getPrice();
-        $availableContribution = $this->getAvailableContribution($product->getId());
+        $availableContribution = $this->getPriceContribution($product->getId());
         if (!empty($availableContribution) && ($availableContribution['partner_price'] <= 0)) {
             return [];
         }
@@ -117,18 +117,62 @@ class Data extends AbstractHelper
     } //end getFormattedPrice()
 
     /**
-     * Function to retrieve available price contribution by product ID
+     * Function to retrieve price contribution details by product ID
      *
+     * @param mixed $product
      * @return array
      */
-    private function getAvailableContribution($productId)
+    public function getPriceContribution($product)
     {
-        $connection = $this->resource->getConnection();
+        if (!$product instanceof ProductInterface) {
+            $product = $this->productRepository->getById($product);
+        }
+        $productId = $product->getId();
+        $connection = $this->connection;
         $table = $connection->getTableName('gmc_product_partner_price_range');
         $select = $connection->select();
         $select
-            ->from($table, ['product_id', 'partner_price'])
+            ->from($table, ['*'])
             ->where('product_id = ?', $productId);
-        return $connection->fetchRow($select);
-    } //end getAvailableContribution()
+        $result = $connection->fetchRow($select);
+        $price = $product->getFinalPrice();
+        if (empty($result)) {
+            return [
+                'allowed_contribution' => true,
+                'contribution_booked' => 0,
+                'price' => $price,
+                'max_contribution_price' => $price
+            ];
+        }
+        if ($result['max_contribution_price'] <= 0) {
+            return [
+                'allowed_contribution' => false,
+                'contribution_booked' => 100
+            ];
+        }
+        $result['allowed_contribution'] = true;
+        $result['min_price'] = $this->getFormattedPrice($result['min_contribution_price']);
+        $result['max_price'] = $this->getFormattedPrice($result['max_contribution_price']);
+        $contributionBooked = $this->getContributionBooked($productId);
+        $price = $product->getPrice();
+        $result['contribution_booked'] = floor(($contributionBooked / $price) * 100);
+        return $result;
+    } //end getPriceContribution()
+
+    /**
+     * Function to retrieve total contribution booked by product ID
+     *
+     * @return int
+     */
+    public function getContributionBooked($productId)
+    {
+        $connection = $this->connection;
+        $table = $connection->getTableName('gmc_partner_contribution');
+        $select = $connection->select();
+        $select
+            ->from($table, ['SUM(price_contributed)'])
+            ->where('product_id = ?', $productId)
+            ->group('product_id');
+        return (int) $connection->fetchOne($select);
+    } //end getContributionBooked()
 }//end class

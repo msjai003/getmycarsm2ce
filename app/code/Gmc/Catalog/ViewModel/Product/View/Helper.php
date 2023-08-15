@@ -54,9 +54,9 @@ class Helper extends DataObject implements ArgumentInterface
     /**
      * Function to retrieve
      */
-    public function getAllowedContributionRange()
+    public function getPriceContribution()
     {
         $product = $this->registry->registry('product');
-        return $this->dataHelper->getAllowedContributionRange($product);
-    } //end getAllowedContributionRange()
+        return $this->dataHelper->getPriceContribution($product);
+    } //end getPriceContribution()
 }

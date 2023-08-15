@@ -89,9 +89,8 @@ class AddProductToQuote
             $productId = $product->getId();
             $data['product'] = $productId;
             $data['qty'] = 1;
-            $priceContribution = (int) base64_decode($postData['price_contribution']);
-            $data['custom_price'] = $priceContribution;
-            $product->addCustomOption('price_contribution', $priceContribution);
+            $data['custom_price'] = $postData['price_contribution'];
+            $product->addCustomOption('price_contribution', $postData['price_contribution']);
             $dataObject->addData($data);
             $this->quote->addProduct($product, $dataObject);
             $this->cartRepository->save($this->quote);

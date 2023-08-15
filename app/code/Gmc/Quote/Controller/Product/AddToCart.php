@@ -21,6 +21,7 @@ use Magento\Framework\App\Request\Http as Request;
 use Magento\Framework\UrlInterface as UrlBuilder;
 use Gmc\Quote\Model\AddProductToQuoteFactory;
 use Gmc\Catalog\Helper\Data as Helper;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 
 /**
@@ -113,20 +114,36 @@ class AddToCart implements HttpPostActionInterface
             }
             $cartUrl = $this->url->getUrl('checkout/cart');
             $response = [
-                'success' => true,
+                'success' => false,
                 'redirect_url' => $cartUrl
             ];
-            $priceContribution = $postData['price_contribution'] ?? '';
-            $allowedContribution = $this->helper->getAllowedContributionRange($productId);
-            if (!$priceContribution || !array_key_exists($priceContribution, $allowedContribution)) {
+            $contributionPercentage = (int) $postData['contribution_percentage'] ?? 0;
+            if ($contributionPercentage <= 0) {
                 $msg = __('Invalid Price Contribution!');
-                $response['error'] = $msg;
-                $this->messageManager->addErrorMessage($msg);
-                return $resultJson->setData($response);
+                throw new LocalizedException($msg);
             }
+            $priceContributionDetails = $this->helper->getPriceContribution($productId);
+            if (!$priceContributionDetails['allowed_contribution']) {
+                $msg = __('Contribution Not Allowed!');
+                throw new LocalizedException($msg);
+            }
+
+            $price = (int) $priceContributionDetails['price'] ?? 0;
+            $priceContribution = floor(($price * ($contributionPercentage / 100)));
+            if ($priceContribution <= 0) {
+                $msg = __('Please adjust your contribution and try again!');
+                throw new LocalizedException($msg);
+            }
+            $maxContributionPrice = (int) $priceContributionDetails['max_contribution_price'] ?? 0;
+            if ($maxContributionPrice <= $priceContribution) {
+                $msg = __('Invalid Price Contribution!');
+                throw new LocalizedException($msg);
+            }
+
             /**
              * @var $addProductToQuote \Gmc\Quote\Model\AddProductToQuote
              */
+            $postData['price_contribution'] = $priceContribution;
             $addProductToQuote = $this->addProductToQuoteFactory->create();
             $result = $addProductToQuote->execute($postData);
             $response['success'] = $result['success'];
