@@ -20,7 +20,7 @@
         <column name="max_contribution_price" xsi:type="decimal"  nullable="false" scale="2" precision="12" comment="Max Contribution Price"/>
         <column name="price" xsi:type="decimal"  nullable="false" scale="2" precision="12" comment="MRP Price"/>
         <column name="partner_price" xsi:type="decimal"  nullable="false" scale="2" precision="12" comment="Partner (Special) Price"/>
-        <column xsi:type="int" name="status" padding="5" unsigned="false" default="0" comment="Status"/>
+        <column xsi:type="int" name="status" padding="5" unsigned="false" default="1" comment="Status"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Created At"/>
         <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
@@ -44,7 +44,7 @@
         <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" comment="Product ID"/>
         <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="Customer ID"/>
         <column xsi:type="decimal" name="price_contributed" nullable="false" scale="2" precision="12" comment="Price Contributed"/>
-        <column xsi:type="int" name="status" padding="5" unsigned="false" default="0" comment="Status"/>
+        <column xsi:type="int" name="status" padding="5" unsigned="false" default="1" comment="Status"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Created At"/>
         <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"

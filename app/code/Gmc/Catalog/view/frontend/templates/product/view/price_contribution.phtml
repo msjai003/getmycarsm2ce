@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * Gmc_Catalog
+ *
+ * PHP version 8.x
+ *
+ * @category  PHTML
+ * @package   Gmc\Catalog
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+
+/** @var $block \Magento\Catalog\Product\View */
+/** @var $viewModel \Gmc\Catalog\ViewModel\Product\View\Helper */
+
+$viewModel  = $block->getViewModel();
+$priceContribution = $viewModel->getPriceContribution();
+?>
+<div class="price-contribution-form">
+    <h3><?= 'Booked ' . $priceContribution['contribution_booked'] . '%' ?></h3>
+    <?php if ($priceContribution['allowed_contribution']) : ?>
+        <form action="<?php echo $block->getUrl('gmcquote/product/addtocart') ?>" data-mage-init='{"validation": {}}' method="post" id="price-contribution-form">
+            <div class="field price-contribution required">
+                <label for="nickname_field" class="label"><span>Enter your Contribution (percentage)</span></label>
+                <div class="control">
+                    <input type="text" name="contribution_percentage" id="contribution-percentage" class="input-text" data-validate="{'required':true, 'validate-digits':true, 'validate-digits-range':'1-100'}" aria-required="true">
+                </div>
+            </div>
+            <input type="hidden" name="product_id" value="<?php echo $block->getProduct()->getId(); ?>">
+            <div id="error-msg" class="message error" style="display: none;"></div>
+            <div class="actions">
+                <button type="submit" title="Add Your Contribution" class="action primary" id="price-contribution-button">
+                    <span>Book your Contribution</span>
+                </button>
+            </div>
+        </form>
+        <script type="text/javascript">
+            require([
+                'jquery',
+                'mage/mage'
+            ], function($) {
+                "use strict";
+                $(document).ready(function() {
+                    $('#price-contribution-form').on('submit', function(event) {
+                        event.preventDefault();
+                        var dataForm = $('#price-contribution-form');
+                        if (dataForm.valid()) {
+                            let priceContribution = $('#contribution-percentage').val();
+                            priceContribution = parseInt(priceContribution);
+                            if (!priceContribution) {
+                                return;
+                            }
+                            $.ajax({
+                                url: '<?= $block->getUrl('gmcquote/product/addtocart'); ?>',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: dataForm.serialize(),
+                                showLoader: true,
+                                beforeSend: function() {
+                                    $('body').trigger('processStart');
+                                },
+                                success: function(response) {
+                                    if (response.success === true) {
+                                        window.location.href = response.redirect_url;
+                                        return;
+                                    }
+                                    if (response.message) {
+                                        $('#error-msg').html(response.message).show();
+                                        $('body').trigger('processStop');
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    <?php endif; ?>
+</div>

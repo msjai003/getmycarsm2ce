@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Gmc_Catalog
+ *
+ * PHP version 8.x
+ *
+ * @category  XML
+ * @package   Gmc\Catalog
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Catalog product collection load after -->
+    <event name="catalog_product_collection_load_after">
+        <observer instance="Gmc\Catalog\Observer\ProductCollection\ContributionBooked"
+                  name="Gmc_Catalog::contributionBooked"/>
+    </event> 
+</config>
