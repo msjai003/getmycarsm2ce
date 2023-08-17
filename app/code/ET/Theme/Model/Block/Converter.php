@@ -43,7 +43,7 @@ class Converter
      * @var \Magento\Eav\Model\Config
      */
     protected $eavConfig;
-    
+
     /**
      * @param \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryFactory
      * @param Config $eavConfig

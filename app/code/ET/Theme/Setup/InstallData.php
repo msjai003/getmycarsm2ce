@@ -8,6 +8,8 @@ use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Setup\SampleData\Executor;
+
 
 /**
  * @codeCoverageIgnore
@@ -22,13 +24,18 @@ class InstallData implements InstallDataInterface {
     private $eavSetupFactory;
 
     /**
+     * @var Executor
+     */
+    private $executor;
+
+    /**
      * Init
      *
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(
         EavSetupFactory $eavSetupFactory,
-        Setup\SampleData\Executor $executor,
+        Executor $executor,
         Installer $installer
     ) {
         $this->eavSetupFactory = $eavSetupFactory;
@@ -42,7 +49,7 @@ class InstallData implements InstallDataInterface {
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
-        
+
         $eavSetup->addAttribute(
                 \Magento\Catalog\Model\Product::ENTITY, 'is_featured', [
             'group' => 'Product Details',
