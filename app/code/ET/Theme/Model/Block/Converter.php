@@ -1,11 +1,13 @@
-<?php  
+<?php
 
 namespace ET\Theme\Model\Block;
+
+use Magento\Eav\Model\Config;
 
 /**
  * Class Converter
  */
-class Converter  
+class Converter
 {
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory
@@ -38,15 +40,20 @@ class Converter
     protected $productCollectionFactory;
 
     /**
+     * @var \Magento\Eav\Model\Config
+     */
+    protected $eavConfig;
+    
+    /**
      * @param \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryFactory
-     * @param \Magento\Eav\Model\Config $eavConfig
+     * @param Config $eavConfig
      * @param \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $attributeCollectionFactory
      * @param \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
      */
     public function __construct(
         \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryFactory,
-        \Magento\Eav\Model\Config $eavConfig,
+        Config $eavConfig,
         \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $attributeCollectionFactory,
         \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory $attrOptionCollectionFactory,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
