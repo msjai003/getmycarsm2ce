@@ -17,8 +17,13 @@ $baseUrl = $baseHelper->getBaseUrl();
 $mediaUrl = $baseHelper->getMediaUrl();
 ?>
 <div class="footer-wrapper type1">
+
     <div class="footer-top">
-        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerTopStaticBlock)->toHtml(); ?>
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('sticky-footer')->toHtml(); ?>
+    </div>
+
+    <!--<div class="footer-top">
+        <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerTopStaticBlock)->toHtml(); */?>
     </div>
     <div class="footer-columns">
         <div class="page-main">
@@ -26,43 +31,43 @@ $mediaUrl = $baseHelper->getMediaUrl();
                 <div class="col-row">
                     <div class="item first col-large-3 col-medium-3 col-small-3 col-extrasmall-12">
                         <div class="item-inner">
-                            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnOneStaticBlock)->toHtml(); ?>
+                            <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnOneStaticBlock)->toHtml(); */?>
                         </div>
                     </div>
                     <div class="item col-large-3 col-medium-3 col-small-3 col-extrasmall-12">
                         <div class="item-inner">
-                            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnTwoStaticBlock)->toHtml(); ?>
+                            <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnTwoStaticBlock)->toHtml(); */?>
                         </div>
                     </div>
                     <div class="item col-large-3 col-medium-3 col-small-3 col-extrasmall-12">
                         <div class="item-inner">
-                            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnThreeStaticBlock)->toHtml(); ?>
+                            <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnThreeStaticBlock)->toHtml(); */?>
                         </div>
                     </div>
                     <div class="item last col-large-3 col-medium-3 col-small-3 col-extrasmall-12">
                         <div class="item-inner">
-                            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnFourStaticBlock)->toHtml(); ?>
+                            <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerColumnFourStaticBlock)->toHtml(); */?>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php if ($footerMiddleStaticBlock != '') { ?>
+            <?php /*if ($footerMiddleStaticBlock != '') { */?>
                 <div class="footer-text-content">
-                    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerMiddleStaticBlock)->toHtml(); ?>
+                    <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerMiddleStaticBlock)->toHtml(); */?>
                 </div>
-            <?php } ?>
+            <?php /*} */?>
         </div>
     </div>
     <div class="footer-bottom">
         <div class="page-main">
             <div class="content-main">
                 <div class="left">
-                    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($bottomLeftStaticBlock)->toHtml(); ?>
+                    <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($bottomLeftStaticBlock)->toHtml(); */?>
                 </div>
                 <div class="right">
-                    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($bottomRightStaticBlock)->toHtml(); ?>
+                    <?php /*echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($bottomRightStaticBlock)->toHtml(); */?>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
