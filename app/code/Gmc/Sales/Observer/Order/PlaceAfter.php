@@ -55,25 +55,29 @@ class PlaceAfter implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $this->logger->info('Event Triggered...');
         try {
             /**
              * @var $order \Magento\Sales\Api\Data\OrderInterface
              */
             $order = $observer->getEvent()->getOrder();
             $orderId = $order->getId();
-            $this->logger->info('Event Inner...', [$orderId]);
             $orderItems = $order->getAllItems();
             $itemsData   = [];
             foreach ($orderItems as $item) {
                 $productId = $item->getProductId();
                 $itemPrice = $item->getPrice();
                 $productPrice = $item->getProduct()->getPrice();
+                $estimatedSellingPrice = $item->getProduct()->getEstimatedSellingPrice();
+                $estimatedSellingPrice = ($estimatedSellingPrice > $productPrice) ? $estimatedSellingPrice : $productPrice;
+                $productOptions = $item->getProductOptions();
+                $percentageContributed = $productOptions['info_buyRequest']['contribution_percentage'] ?? 0;
                 $itemsData[$productId] = [
                     'item_price' => $itemPrice,
                     'product_price' => $productPrice,
                     'customer_id' => $order->getCustomerId(),
-                    'order_id' => $item->getOrderId()
+                    'order_id' => $item->getOrderId(),
+                    'percentage_contributed' => $percentageContributed,
+                    'estimated_selling_price' => $estimatedSellingPrice,
                 ];
             }
             if (empty($itemsData)) {
@@ -100,7 +104,7 @@ class PlaceAfter implements ObserverInterface
     {
         $connection = $this->resource->getConnection();
         $select = $connection->select();
-        $table = $connection->getTableName('gmc_product_partner_price_range');
+        $table = $connection->getTableName('gmc_product_partner_price');
         $select
             ->from($table, ['product_id', 'partner_price'])
             ->where('product_id IN (?)', array_keys($itemsData));
@@ -154,11 +158,17 @@ class PlaceAfter implements ObserverInterface
         $table = $connection->getTableName('gmc_partner_contribution');
         $insert = [];
         array_walk($itemsData, function ($itemData, $productId) use (&$insert) {
+            $estimatedSellingPrice = $itemData['estimated_selling_price'];
+            $percentageContributed = $itemData['percentage_contributed'];
+            $amountGained = ($estimatedSellingPrice * ($percentageContributed/100));
             $insert[$productId] = [
                 'order_id' => $itemData['order_id'],
                 'product_id' => $productId,
                 'customer_id' => $itemData['customer_id'],
-                'price_contributed' => $itemData['item_price']
+                'amount_contributed' => $itemData['item_price'],
+                'percentage_contributed' => $percentageContributed,
+                'amount_gained' => $amountGained,
+                'profit_gained' => ($amountGained - $itemData['item_price']),
             ];
         });
         $this->logger->info('Partner Price Contribution', $insert);

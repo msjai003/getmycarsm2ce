@@ -22,6 +22,7 @@ use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Store\Api\Data\StoreInterface;
 
 /**
  * Class Data
@@ -59,21 +60,29 @@ class Data extends AbstractHelper
     private $productRepository;
 
     /**
+     * @var StoreInterface
+     */
+    private $storeManager;    
+
+    /**
      * Data constructor.
      * @param Context $context Context
      * @param ResourceConnection $resource
      * @param ProductRepositoryInterface $productRepository
+     * @param StoreInterface $storeManager
      */
     public function __construct(
         Context $context,
         PricingHelper $pricingHelper,
         ResourceConnection $resource,
-        ProductRepositoryInterface $productRepository
+        ProductRepositoryInterface $productRepository,
+        StoreInterface $storeManager
     ) {
         $this->scopeConfig = $context->getScopeConfig();
         $this->pricingHelper = $pricingHelper;
         $this->connection = $resource->getConnection();
         $this->productRepository = $productRepository;
+        $this->storeManager = $storeManager;
         parent::__construct($context);
     } //end __construct()
 
@@ -108,6 +117,11 @@ class Data extends AbstractHelper
         return $priceContributionRange;
     } //end getAllowedContributionRange()
 
+    public function getCurrencySymbol()
+    {
+        return $this->storeManager->getCurrentCurrency()->getCurrencySymbol();
+    }
+
     /**
      * Function to retrieve formatted price
      */
@@ -129,7 +143,7 @@ class Data extends AbstractHelper
         }
         $productId = $product->getId();
         $connection = $this->connection;
-        $table = $connection->getTableName('gmc_product_partner_price_range');
+        $table = $connection->getTableName('gmc_product_partner_price');
         $select = $connection->select();
         $select
             ->from($table, ['*'])
@@ -155,7 +169,7 @@ class Data extends AbstractHelper
         $result['max_price'] = $this->getFormattedPrice($result['max_contribution_price']);
         $contributionBooked = $this->getContributionBooked($productId);
         $price = $product->getPrice();
-        $result['contribution_booked'] = floor(($contributionBooked / $price) * 100);
+        $result['contribution_booked'] = (int) (($contributionBooked / $price) * 100);
         return $result;
     } //end getPriceContribution()
 
@@ -170,7 +184,7 @@ class Data extends AbstractHelper
         $table = $connection->getTableName('gmc_partner_contribution');
         $select = $connection->select();
         $select
-            ->from($table, ['SUM(price_contributed)'])
+            ->from($table, ['SUM(amount_contributed)'])
             ->where('product_id = ?', $productId)
             ->group('product_id');
         return (int) $connection->fetchOne($select);
