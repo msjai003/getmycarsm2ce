@@ -34,8 +34,8 @@ $priceContribution = $viewModel->getPriceContribution();
             <input type="hidden" name="contribution_percentage" id="contribution-percentage" value="">
             <div id="error-msg" class="message error" style="display: none;"></div>
             <div class="contribution-slider-container fieldset">
-                <p><label for="" class="label">Price Contribution Slide (in percentage)</label></p>
-                <input type="range" min="1" max="100" value="0" class="slider" id="contribution-slider">
+                <p><label for="" class="label">Amount Contribution Slide (in percentage)</label></p>
+                <input type="range" min="0" max="100" value="0" class="slider" id="contribution-slider" data-validate="{'required':true, 'validate-digits':true, 'validate-digits-range':'1-100'}">
             </div>            
             <h3><p id="contribution-amount" style="display: none;"></p></h3>            
             <div class="actions">
@@ -52,18 +52,17 @@ $priceContribution = $viewModel->getPriceContribution();
                 "use strict";
                 $(document).ready(function() {
                     const contributionSlider = document.getElementById('contribution-slider');
-                    const contributionPercentage = document.getElementById('contribution-percentage');
                     contributionSlider.oninput = function() {
-                        contributionPercentage.value = this.value;
-                        updateFinalContributionAmount(this.value)
+                        contributionPercentageSelector.value = this.value;
+                        showContributionAmount(this.value)
                     }                    
                     $('#price-contribution-form').on('submit', function(event) {
                         event.preventDefault();
                         var dataForm = $('#price-contribution-form');
                         if (dataForm.valid()) {
-                            let priceContribution = $('#contribution-percentage').val();
+                            let priceContribution = contributionPercentageSelector.value;
                             priceContribution = parseInt(priceContribution);
-                            if (!priceContribution) {
+                            if (!Number.isInteger(priceContribution) || (priceContribution <= 0)) {
                                 return;
                             }
                             $.ajax({
@@ -90,26 +89,24 @@ $priceContribution = $viewModel->getPriceContribution();
                     });
                 });                
             });
-           
-            const contributionAmount = document.getElementById('contribution-amount');
-
             //contributionPercentage.addEventListener('input', updateFinalContributionAmount);
-
-            function updateFinalContributionAmount(value) {
-                contributionAmount.style.display = 'none';                
+            const contributionPercentageSelector = document.getElementById('contribution-percentage');            
+            const contributionAmountSelector = document.getElementById('contribution-amount');
+            function showContributionAmount(value) {
+                contributionAmountSelector.style.display = 'none';                
                 //const percentValue = parseInt(e.target.value);
                 const percentValue = parseInt(value);
                 if (!Number.isInteger(percentValue)) {
                     return;
                 }                
                 const maxContributionAmount = <?= $priceContribution['max_contribution_price']?>;
-                const finalAmount = parseInt((maxContributionAmount*(value/100)));
-                if (!Number.isInteger(finalAmount) || (finalAmount > maxContributionAmount)) {
+                const contributionAmount = parseInt((maxContributionAmount*(value/100)));
+                if (!Number.isInteger(contributionAmount) || (contributionAmount > maxContributionAmount)) {
                     return;
                 }
                 const currencySymbol = "<?= $viewModel->getCurrencySymbol()?>";
-                contributionAmount.textContent = 'Contribution Amount '+currencySymbol+finalAmount;
-                contributionAmount.style.display = 'block';
+                contributionAmountSelector.textContent = 'Contribution Amount ' + currencySymbol + contributionAmount;
+                contributionAmountSelector.style.display = 'block';
             }                       
         </script>
     <?php endif; ?>

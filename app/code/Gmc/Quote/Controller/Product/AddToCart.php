@@ -117,7 +117,7 @@ class AddToCart implements HttpPostActionInterface
                 'success' => false,
                 'redirect_url' => $cartUrl
             ];
-            $contributionPercentage = (float) $postData['contribution_percentage'] ?? 0;
+            $contributionPercentage = (int) $postData['contribution_percentage'] ?? 0;
             if ($contributionPercentage <= 0) {
                 $msg = __('Invalid Price Contribution!');
                 throw new LocalizedException($msg);
@@ -129,10 +129,9 @@ class AddToCart implements HttpPostActionInterface
             }
 
             $maxContributionPrice = (int) $priceContributionDetails['max_contribution_price'] ?? 0;
-            $priceContribution = (int) $maxContributionPrice * ($contributionPercentage / 100);
-            $priceContribution = round($priceContribution);
+            $priceContribution = intval($maxContributionPrice * ($contributionPercentage / 100));
             if ($priceContribution <= 0) {
-                $msg = __('Please adjust your contribution and try again!');
+                $msg = __('Please adjust your contribution amount and try again!');
                 throw new LocalizedException($msg);
             }
             if ($maxContributionPrice < $priceContribution) {
