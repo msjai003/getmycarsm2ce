@@ -90,7 +90,8 @@ class AddProductToQuote
             $data['product'] = $productId;
             $data['qty'] = 1;
             $data['custom_price'] = $postData['price_contribution'];
-            $product->addCustomOption('price_contribution', $postData['price_contribution']);
+            $data['contribution_percentage'] = $postData['contribution_percentage'];
+            $product->addCustomOption('contribution_percentage', $postData['contribution_percentage']);
             $dataObject->addData($data);
             $this->quote->addProduct($product, $dataObject);
             $this->cartRepository->save($this->quote);

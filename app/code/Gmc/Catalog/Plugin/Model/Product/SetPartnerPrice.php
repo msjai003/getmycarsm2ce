@@ -82,7 +82,7 @@ class SetPartnerPrice
     {
         $connection = $this->resource->getConnection();
         $select = $connection->select();
-        $table = $connection->getTableName('gmc_product_partner_price_range');
+        $table = $connection->getTableName('gmc_product_partner_price');
         $select
             ->from($table, ['partner_price'])
             ->where('product_id = ?', $productId);

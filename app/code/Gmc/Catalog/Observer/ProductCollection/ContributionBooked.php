@@ -102,7 +102,7 @@ class ContributionBooked implements ObserverInterface
         $table = $connection->getTableName('gmc_partner_contribution');
         $select = $connection->select();
         $select
-            ->from($table, ['product_id', 'SUM(price_contributed) AS contribution_booked'])
+            ->from($table, ['product_id', 'SUM(amount_contributed) AS contribution_booked'])
             ->where('product_id IN (?)', $productIds)
             ->group('product_id');
         return $connection->fetchAssoc($select);

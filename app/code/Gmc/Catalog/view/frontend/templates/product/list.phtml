@@ -75,7 +75,10 @@ $_helper = $block->getData('outputHelper');
                             $conributionBooked = $_product->getContributionBooked();
                             $conributionBooked = ($conributionBooked === null) ? 0 : $conributionBooked;
                             ?>
-                            <h3><?= 'Booked ' . $conributionBooked . '%'; ?></h3>
+                            <h3><?= 'Booked '.$conributionBooked.'%'?></h3> 
+                            <div class="contribution-booked-bar-container">
+                                <progress class="contribution-booked-bar" value="<?= $conributionBooked?>" max="100"></progress>
+                            </div>                            
                             <?= $block->getReviewsSummaryHtml($_product, $templateType) ?>
                             <?= /* @noEscape */ $block->getProductPrice($_product) ?>
                             <?= $block->getProductDetailsHtml($_product) ?>
