@@ -1,0 +1,49 @@
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Gmc\Catalog\Block\CategoryProducts
+ * @var $helper \Gmc\Catalog\Helper\Data
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<?php
+//$_productCollection = $block->getCategoryProducts();
+$categoryId = $block->getData('category_id');
+$products = $block->getCategoryProducts($categoryId);
+?>
+<div class="category-products-list">
+    <ul class="products-list">
+        <?php foreach ($products as $_product) : ?>
+            <?php $product = $block->getProductById($_product->getId()) ?>
+            <li class="product-item">
+                <div class="product-image">
+                    <img class="responsive-image" src="<?php echo $block->getImageUrl($product, 'thumbnail'); ?>" alt="<?php echo $product->getName(); ?>">
+                </div>
+                <div class="product-details">
+                    <h2 class="product-name"><?php echo $product->getName(); ?></h2>
+                    <?php
+                    $conributionBooked = $this->helper('Gmc\Catalog\Helper\Data')->getContributionBooked($product->getId());
+                    $conributionBooked = ($conributionBooked === null) ? 0 : $conributionBooked;
+                    ?>
+                    <h3><?= 'Booked '.$conributionBooked.'%'?></h3>
+                    <div class="contribution-booked-bar-container">
+                        <progress class="contribution-booked-bar" value="<?= $conributionBooked?>" max="100"></progress>
+                    </div>
+                    <span class="product-price">
+                        <?php echo $block->getFormattedPriceWithCurrency($product->getFinalPrice()); ?>
+                    </span>
+                    <div class="custom-attributes">
+                        <?php //$model = $product->getData('model'); ?>
+                        <p><?php //echo $model ?></p>
+                        <!-- Add more custom attributes as needed -->
+                    </div>
+                    <a href="<?php echo $product->getProductUrl(); ?>" class="product-details-link">
+                        <?= $escaper->escapeHtml(__('Book Now')) ?>
+                    </a>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
