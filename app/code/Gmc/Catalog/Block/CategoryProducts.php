@@ -42,11 +42,17 @@ class CategoryProducts extends Template
         // Create and return HTML for displaying products in the tab
         $html = '<div class="row">';
         foreach ($productCollection as $product) {
+            $contributionBooked = $product->getContributionBooked();
+            $contributionBooked = ($contributionBooked === null) ? 0 : $contributionBooked;
             $html .= '<div class="col-md-4 mb-4">';
             $html .= '<div class="card">';
             $html .= '<img src="' . $this->getImageUrl($product, 'thumbnail') . '" class="card-img-top" alt="' . $product->getName() . '">';
             $html .= '<div class="card-body">';
             $html .= '<h5 class="card-title">' . $product->getName() . '</h5>';
+            $html .= '<h3>Booked' . $contributionBooked . '%</h3>';
+            $html .= '<div class="contribution-booked-bar-container">
+                          <progress class="contribution-booked-bar" value="' . $contributionBooked .'" max="100"></progress>
+                       </div>';
             $html .= '<p class="card-text">' . $this->getFormattedPriceWithCurrency($product->getFinalPrice()) . '</p>';
             $html .= '<a href="' . $this->getProductUrl($product) . '" class="btn btn-primary">Book Now</a>';
             // Add more product information as needed

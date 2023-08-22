@@ -20,11 +20,6 @@ $products = $block->getCategoryProducts($categoryId);
             <?= $escaper->escapeHtml(__('Collections')) ?>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#tab2">
-            <?= $escaper->escapeHtml(__('Deals')) ?>
-        </a>
-    </li>
     <!-- Add more tabs as needed -->
 </ul>
 
@@ -32,8 +27,29 @@ $products = $block->getCategoryProducts($categoryId);
     <div id="tab1" class="tab-pane fade show active">
         <?php echo $block->getCategoryProducts($categoryId); ?>
     </div>
-    <div id="tab2" class="tab-pane fade">
-        <?php //echo $block->getCategoryProducts($categoryId); ?>
-    </div>
     <!-- Add more tab content divs as needed -->
 </div>
+
+
+<!--<div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+            <img src="images/products/11918255792-bfce447491b14bdca3d6118f257a9121-Exterior-7.webp" class="card-img-top" alt="Image 1">
+            <div class="card-body">
+                <h5 class="card-title">Feature 1</h5>
+                <p class="card-text">Description of feature 1.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+            <img src="images/products/11956456790-51482083754346ddbcfc39a0ea9712f7-Exterior-7.webp" class="card-img-top" alt="Image 2">
+            <div class="card-body">
+                <h5 class="card-title">Feature 2</h5>
+                <p class="card-text">Description of feature 2.</p>
+            </div>
+        </div>
+    </div>
+
+</div>-->
