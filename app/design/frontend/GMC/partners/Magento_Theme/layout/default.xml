@@ -7,12 +7,12 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="logo">
+        <!--<referenceBlock name="logo">
             <arguments>
                 <argument name="logo_width" xsi:type="number">170</argument>
                 <argument name="logo_height" xsi:type="number">80</argument>
             </arguments>
-        </referenceBlock>
+        </referenceBlock>-->
         <referenceContainer name="footer-container">
             <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content">
                 <block class="Magento\Theme\Block\Html\Footer" name="custom_footer" template="Magento_Theme::html/custom_footer.phtml" />
