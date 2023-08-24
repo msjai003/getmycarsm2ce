@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="home_settings" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Home Page Blocks</label>
+            <tab>gmc</tab>
+            <resource>Gmc_Catalog::config_home_settings</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Tabs</label>
+                <field id="tab_1" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tab 1</label>
+                    <comment>Enter the Category ID</comment>
+                </field>
+                <field id="tab_2" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tab 2</label>
+                    <comment>Enter the Category ID</comment>
+                </field>
+                <field id="tab_3" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tab 3</label>
+                    <comment>Enter the Category ID</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+
