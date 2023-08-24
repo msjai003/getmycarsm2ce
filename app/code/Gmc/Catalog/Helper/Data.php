@@ -34,6 +34,10 @@ class Data extends AbstractHelper
     // Constants
     const XML_PATH_PRICE_CONTRIBUTION_STEP = 'partner_settings/general/contribution_price_step';
 
+    const XML_HOME_PAGE_PRODUCTS_TAB_1 = 'home_settings/general/tab_1';
+
+    const XML_HOME_PAGE_PRODUCTS_TAB_2 = 'home_settings/general/tab_2';
+
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
@@ -62,7 +66,7 @@ class Data extends AbstractHelper
     /**
      * @var StoreInterface
      */
-    private $storeManager;    
+    private $storeManager;
 
     /**
      * Data constructor.
@@ -189,4 +193,14 @@ class Data extends AbstractHelper
             ->group('product_id');
         return (int) $connection->fetchOne($select);
     } //end getContributionBooked()
+
+    public function getTabOneId()
+    {
+        return (int) $this->scopeConfig->getValue(self::XML_HOME_PAGE_PRODUCTS_TAB_1);
+    }
+
+    public function getTabTwoId()
+    {
+        return (int) $this->scopeConfig->getValue(self::XML_HOME_PAGE_PRODUCTS_TAB_2);
+    }
 }//end class

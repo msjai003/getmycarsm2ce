@@ -5,6 +5,7 @@ namespace Gmc\Catalog\Block;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\UrlInterface;
+use Gmc\Catalog\Helper\Data;
 
 class CategoryProducts extends Template
 {
@@ -15,17 +16,21 @@ class CategoryProducts extends Template
     protected $priceCurrency;
     protected $urlInterface;
 
+    protected $helper;
+
     public function __construct(
         Template\Context $context,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
         PriceCurrencyInterface $priceCurrency,
         UrlInterface $urlInterface,
+        Data $helper,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->_categoryFactory = $categoryFactory;
         $this->priceCurrency = $priceCurrency;
         $this->urlInterface = $urlInterface;
+        $this->helper = $helper;
     }
 
     /**
@@ -39,28 +44,7 @@ class CategoryProducts extends Template
             ->addAttributeToSelect('*')
             ->addAttributeToFilter('status', \Magento\Catalog\Model\Product\Attribute\Source\Status::STATUS_ENABLED);
 
-        // Create and return HTML for displaying products in the tab
-        $html = '<div class="row">';
-        foreach ($productCollection as $product) {
-            $contributionBooked = $product->getContributionBooked();
-            $contributionBooked = ($contributionBooked === null) ? 0 : $contributionBooked;
-            $html .= '<div class="col-md-4 mb-4">';
-            $html .= '<div class="card">';
-            $html .= '<img src="' . $this->getImageUrl($product, 'thumbnail') . '" class="card-img-top" alt="' . $product->getName() . '">';
-            $html .= '<div class="card-body">';
-            $html .= '<h5 class="card-title">' . $product->getName() . '</h5>';
-            $html .= '<h3>Booked' . $contributionBooked . '%</h3>';
-            $html .= '<div class="contribution-booked-bar-container">
-                          <progress class="contribution-booked-bar" value="' . $contributionBooked .'" max="100"></progress>
-                       </div>';
-            $html .= '<p class="card-text">' . $this->getFormattedPriceWithCurrency($product->getFinalPrice()) . '</p>';
-            $html .= '<a href="' . $this->getProductUrl($product) . '" class="btn btn-primary">Book Now</a>';
-            // Add more product information as needed
-            $html .= '</div></div></div>';
-        }
-        $html .= '</div>';
-
-        return $html;
+        return $productCollection;
     }
 
     /**
@@ -92,5 +76,40 @@ class CategoryProducts extends Template
     public function getProductUrl($product)
     {
         return $this->urlInterface->getUrl('catalog/product/view', ['id' => $product->getId()]);
+    }
+
+    public function getTabOneId()
+    {
+        return $this->helper->getTabOneId();
+    }
+
+    public function getTabTwoId()
+    {
+        return $this->helper->getTabTwoId();
+    }
+
+    public function getListAttributesValue($product, $codes)
+    {
+        $arr = [];
+        foreach ($codes as $code) {
+            $attribute = $product->getResource()->getAttribute($code);
+            if ($attribute) {
+                $arr[] = [
+                    'label' => $attribute->getStoreLabel(),
+                    'value' => $attribute->getFrontend()->getValue($product)
+                ];
+            }
+        }
+        return $arr;
+    }
+
+    public function getAttributeValue($product, $code)
+    {
+        $val = '';
+        $attribute = $product->getResource()->getAttribute($code);
+        if ($attribute) {
+            $val = $attribute->getFrontend()->getValue($product);
+        }
+        return $val;
     }
 }

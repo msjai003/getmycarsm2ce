@@ -3,53 +3,75 @@
  * Product list template
  *
  * @var $block \Gmc\Catalog\Block\CategoryProducts
- * @var $helper \Gmc\Catalog\Helper\Data
  * @var \Magento\Framework\Escaper $escaper
  * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
 ?>
 <?php
-//$_productCollection = $block->getCategoryProducts();
-$categoryId = $block->getData('category_id');
-$products = $block->getCategoryProducts($categoryId);
+$tabOneId = $block->getTabOneId();
+$productsTabOne = $block->getCategoryProducts($tabOneId);
 ?>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" id="categoryTabs" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#tab1">
+        <a class="nav-link active" id="category-tab1" data-toggle="tab" href="#category1" role="tab"
+           aria-controls="category1" aria-selected="true">
             <?= $escaper->escapeHtml(__('Collections')) ?>
         </a>
     </li>
-    <!-- Add more tabs as needed -->
 </ul>
 
-<div class="tab-content">
-    <div id="tab1" class="tab-pane fade show active">
-        <?php echo $block->getCategoryProducts($categoryId); ?>
+<div class="tab-content" id="categoryTabsContent">
+    <div class="tab-pane fade show active" id="category1" role="tabpanel" aria-labelledby="category-tab1">
+        <div class="container">
+            <div class="row">
+                <?php foreach ($productsTabOne as $product): ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <a href="<?php echo $block->getProductUrl($product) ?>">
+                                <img src="<?php echo $block->getImageUrl($product, 'thumbnail') ?>" class="card-img-top"
+                                     alt="<?php echo $product->getName() ?>">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $product->getName() ?></h5>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <p class="card-text price-label regular">
+                                        <span class="label">Partner Price:</span>
+                                        <?php echo $block->getFormattedPriceWithCurrency($product->getPrice()); ?>
+                                    </p>
+                                    <p class="card-text price-label sale">
+                                        <span class="label">Estd Selling Price:</span>
+                                        <?php echo $block->getFormattedPriceWithCurrency($product->getEstimatedSellingPrice()); ?>
+                                    </p>
+                                </div>
+
+                                <?php
+                                $attrs = ['kilometers', 'fuel_type', 'owner', 'transmission', 'seater'];
+                                $customAttrs = $block->getListAttributesValue($product, $attrs);
+                                ?>
+                                <p class="card-text attributes">
+                                    <?php foreach ($customAttrs as $attr): ?>
+                                        <span class="attribute"><?php echo $attr['value'] ?></span>
+                                    <?php endforeach; ?>
+                                </p>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="units-left">
+                                        <?php
+                                        $unitsLeft = $block->getAttributeValue($product, 'ticket_size');
+                                        $unitsText = sprintf('Only %d tickets left', $unitsLeft);
+                                        echo $unitsText;
+                                        ?>
+                                    </div>
+                                    <a href="<?php echo $block->getProductUrl($product) ?>" class="btn btn-primary btn-lg">
+                                        <?= $escaper->escapeHtml(__('Book Now')) ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </div>
-    <!-- Add more tab content divs as needed -->
 </div>
-
-
-<!--<div class="row">
-    <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card">
-            <img src="images/products/11918255792-bfce447491b14bdca3d6118f257a9121-Exterior-7.webp" class="card-img-top" alt="Image 1">
-            <div class="card-body">
-                <h5 class="card-title">Feature 1</h5>
-                <p class="card-text">Description of feature 1.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card">
-            <img src="images/products/11956456790-51482083754346ddbcfc39a0ea9712f7-Exterior-7.webp" class="card-img-top" alt="Image 2">
-            <div class="card-body">
-                <h5 class="card-title">Feature 2</h5>
-                <p class="card-text">Description of feature 2.</p>
-            </div>
-        </div>
-    </div>
-
-</div>-->

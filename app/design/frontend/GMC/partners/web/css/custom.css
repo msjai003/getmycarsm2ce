@@ -1,15 +1,58 @@
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #f8f9fa;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
+/* Custom CSS for the product card */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.footer i {
-    font-size: 24px;
-    color: #6c757d;
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    margin-bottom: 0.5rem;
+}
+
+.price-label {
+    margin-bottom: 0.25rem;
+}
+
+.price-label .label {
+    font-weight: bold;
+}
+
+.price {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.attributes {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f2f2f2;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+
+.attribute {
+    background-color: #dcdcdc;
+    color: #333;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.units-left {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Align "Book Now" to the right */
+.btn-book-now {
+    margin-left: auto;
 }
