@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="sms_settings" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Sms Configuration</label>
+            <tab>gmc</tab>
+            <resource>Gmc_Sms::config_sms_settings</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="url" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base URL</label>
+                    <comment>Enter the API url</comment>
+                </field>
+                <field id="endpoint" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Endpoint</label>
+                    <comment>Enter the URL endpoint</comment>
+                </field>
+                <field id="api_key" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Key</label>
+                    <comment>Enter the API Key</comment>
+                </field>
+                <field id="sender_id" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender ID</label>
+                    <comment>Enter the Sender ID</comment>
+                </field>
+                <field id="register_msg" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Registration Message</label>
+                    <comment>Welcome message</comment>
+                </field>
+                <field id="otp_msg" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>OTP Message</label>
+                    <comment>Verification message</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+

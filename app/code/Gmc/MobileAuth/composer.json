@@ -1,0 +1,22 @@
+{
+  "name": "gmc/module-mobileauth",
+  "description": "A Dedicated module to manage customer auth by mobile number",
+  "version": "0.0.1",
+  "require": {
+    "php": "~8.1.0||~8.2.0",
+    "magento/framework": "103.0.*",
+    "magento/module-customer": "103.0.*"
+  },
+  "type": "magento2-module",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Gmc\\MobileAuth\\": ""
+    }
+  }
+}

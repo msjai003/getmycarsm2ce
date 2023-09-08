@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mobileauth_otp">
+        <column xsi:type="int" name="otp_id" padding="10" unsigned="true" nullable="false" identity="true" comment="OTP ID"/>
+        <column xsi:type="varchar" name="mobile" nullable="false" length="20" comment="Mobile Number"/>
+        <column xsi:type="varchar" name="otp_code" nullable="false" length="6" comment="OTP Code"/>
+        <column xsi:type="datetime" name="expires_at" nullable="false" comment="Expiration Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="otp_id"/>
+        </constraint>
+    </table>
+</schema>

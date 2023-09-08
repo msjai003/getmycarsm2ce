@@ -1,0 +1,100 @@
+<?php
+/**
+ * Registration by Mobile number
+ *
+ * @var $block \Gmc\MobileAuth\Block\Register
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<form id="custom-registration-form" method="post" action="<?php echo $block->getUrl('mobileauth/account/createaccount'); ?>">
+    <div id="step-1">
+        <input type="text" name="mobile_number" id="mobile_number" placeholder="Mobile Number">
+        <button type="button" onclick="generateOTP()">Generate OTP</button>
+    </div>
+    <div id="step-2" style="display: none;">
+        <div id="registration-result-message"></div>
+        <input type="text" name="otp" id="otp" placeholder="OTP Verification">
+        <input type="text" name="firstname" id="firstname" placeholder="First Name">
+        <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+        <button type="submit">Register</button>
+    </div>
+</form>
+
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="registrationModalLabel">Register</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Registration form will be displayed here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).ready(function () {
+            //$('#registrationModal').modal('show');
+            $('#custom-registration-form').submit(function (event) {
+                event.preventDefault();
+                // Use AJAX to submit the form data to the server
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'post',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.success) {
+                            // Registration successful, redirect to home page
+                            $('#registration-result-message').html('<p class="success-message">Registration successful!</p>');
+                            window.location.href = '/'; // Replace with your home page URL
+                        } else {
+                            // Handle registration error
+                            $('#registration-result-message').html('<p class="error-message">' + response.message + '</p>');
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+<script>
+    function generateOTP() {
+        var mobileNumber = document.getElementById('mobile_number').value;
+        jQuery.ajax({
+            url: '<?php echo $block->getUrl('mobileauth/account/generateotp'); ?>',
+            type: 'POST',
+            data: {mobile_number: mobileNumber},
+            dataType: 'json',
+            success: function (response) {
+                var jsonResponse = JSON.parse(response);
+                var status = jsonResponse.status;
+                alert(status);
+                if (status === 'success') {
+                    // OTP generation successful, show step 2 in the modal
+                    document.getElementById('step-1').style.display = 'none';
+                    document.getElementById('step-2').style.display = 'block';
+
+                    // Show the registration form in the modal
+                    //jQuery('#registrationModal').modal('show');
+                } else {
+                    // Handle error, e.g., display a message to the user
+                    alert('Error generating OTP: ' + response.message);
+                }
+            }
+        });
+    }
+</script>
+
