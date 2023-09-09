@@ -3,5 +3,6 @@
     <head>
         <css src="css/bootstrap.min.css" />
         <css src="css/custom.css" />
+        <css src="css/fontawesome.min.css" />
     </head>
 </page>

@@ -9,41 +9,49 @@
 ?>
 <form id="custom-registration-form" method="post" action="<?php echo $block->getUrl('mobileauth/account/createaccount'); ?>">
     <div id="step-1">
-        <input type="text" name="mobile_number" id="mobile_number" placeholder="Mobile Number">
-        <button type="button" onclick="generateOTP()">Generate OTP</button>
-    </div>
-    <div id="step-2" style="display: none;">
-        <div id="registration-result-message"></div>
-        <input type="text" name="otp" id="otp" placeholder="OTP Verification">
-        <input type="text" name="firstname" id="firstname" placeholder="First Name">
-        <input type="text" name="lastname" id="lastname" placeholder="Last Name">
-        <button type="submit">Register</button>
-    </div>
-</form>
-
-<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="registrationModalLabel">Register</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Registration form will be displayed here -->
-            </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" onclick="showLoginStep()">Login</button>
+            <button type="button" class="btn btn-primary" onclick="showRegisterStep()">Register</button>
         </div>
     </div>
-</div>
-
+    <div id="step-2" style="display: none;">
+        <div class="form-group">
+            <label for="mobile_number_login">Mobile Number (for login)</label>
+            <input type="text" class="form-control" name="mobile_number_login" id="mobile_number_login" placeholder="Mobile Number">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="loginUser()">Login</button>
+    </div>
+    <div id="step-3" style="display: none;">
+        <div class="form-group">
+            <div id="otp-result-message"></div>
+            <label for="mobile_number_register">Mobile Number (for registration)</label>
+            <input type="text" class="form-control" name="mobile_number_register" id="mobile_number_register" placeholder="Mobile Number">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="generateOTP()">Generate OTP</button>
+    </div>
+    <div id="step-4" style="display: none;">
+        <div id="registration-result-message"></div>
+        <div class="form-group">
+            <label for="otp">OTP Verification</label>
+            <input type="text" class="form-control" name="otp" id="otp" placeholder="OTP Verification">
+        </div>
+        <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last Name">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+</form>
 
 <script>
     require([
         'jquery'
     ], function ($) {
         $(document).ready(function () {
-            //$('#registrationModal').modal('show');
             $('#custom-registration-form').submit(function (event) {
                 event.preventDefault();
                 // Use AJAX to submit the form data to the server
@@ -67,12 +75,28 @@
             });
         });
     });
-</script>
 
+    function showLoginStep() {
+        document.getElementById('step-1').style.display = 'none';
+        document.getElementById('step-2').style.display = 'block';
+    }
+
+    function showRegisterStep() {
+        document.getElementById('step-1').style.display = 'none';
+        document.getElementById('step-3').style.display = 'block';
+    }
+
+    function loginUser() {
+        var mobileNumber = document.getElementById('mobile_number_login').value;
+        // Implement AJAX login logic using mobileNumber and set customer session
+        // ...
+    }
+
+</script>
 
 <script>
     function generateOTP() {
-        var mobileNumber = document.getElementById('mobile_number').value;
+        var mobileNumber = document.getElementById('mobile_number_register').value;
         jQuery.ajax({
             url: '<?php echo $block->getUrl('mobileauth/account/generateotp'); ?>',
             type: 'POST',
@@ -80,18 +104,17 @@
             dataType: 'json',
             success: function (response) {
                 var jsonResponse = JSON.parse(response);
+                //alert(jsonResponse);
                 var status = jsonResponse.status;
-                alert(status);
                 if (status === 'success') {
                     // OTP generation successful, show step 2 in the modal
-                    document.getElementById('step-1').style.display = 'none';
-                    document.getElementById('step-2').style.display = 'block';
-
+                    document.getElementById('step-3').style.display = 'none';
+                    document.getElementById('step-4').style.display = 'block';
                     // Show the registration form in the modal
                     //jQuery('#registrationModal').modal('show');
                 } else {
                     // Handle error, e.g., display a message to the user
-                    alert('Error generating OTP: ' + response.message);
+                    jQuery('#otp-result-message').html('<p class="error-message">' + jsonResponse.message + '</p>');
                 }
             }
         });

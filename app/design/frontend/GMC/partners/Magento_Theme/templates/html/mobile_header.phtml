@@ -1,0 +1,15 @@
+<?php
+/**
+ * Mobile Header Icons
+ *
+ * @var $block \Gmc\Theme\Block\MobileHeader
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<div class="mobile-header-icons">
+    <a href="<?php echo $block->getUrl(''); ?>"><i class="<?php echo $block->getHomeIcon(); ?>"></i></a>
+    <a href="<?php echo $block->getUrl('mobileauth/account/register'); ?>"><i class="<?php echo $block->getProfileIcon(); ?>"></i></a>
+    <a href="<?php echo $block->getUrl(''); ?>"><i class="<?php echo $block->getExploreIcon(); ?>"></i></a>
+    <a href="<?php echo $block->getUrl('checkout/cart'); ?>"><i class="<?php echo $block->getCartIcon(); ?>"></i></a>
+</div>

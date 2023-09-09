@@ -34,7 +34,7 @@ class Createaccount extends Action
 
         //Validate OTP
         $result = $this->validateOtp(
-            $postData['mobile_number'],
+            $postData['mobile_number_register'],
             $postData['otp']
         );
 
@@ -44,14 +44,14 @@ class Createaccount extends Action
         }
 
         $postData = $this->getRequest()->getPostValue();
-        $email = sprintf('%s@example.com', $postData['mobile_number']);
+        $email = sprintf('%s@example.com', $postData['mobile_number_register']);
         try {
 
             $customer = $this->customerInterfaceFactory->create();
             $customer->setFirstname($postData['firstname']);
             $customer->setLastname($postData['lastname']);
             $customer->setEmail($email);
-            $customer->setCustomAttribute('mobile_number', $postData['mobile_number']);
+            $customer->setCustomAttribute('mobile_number', $postData['mobile_number_register']);
             $customer->setGroupId(4);
 
             // Create a new customer account

@@ -7,8 +7,16 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <!--<referenceContainer name="footer">
-            <block class="Magento\Framework\View\Element\Template" name="mobile.sticky.icons" template="Magento_Theme::mobile_sticky_icons.phtml" />
-        </referenceContainer>-->
+        <!-- Remove Create an Account Link -->
+        <referenceBlock name="register-link" remove="true"/>
+        <!-- Remove Log In Link -->
+        <referenceBlock name="authorization-link" remove="true"/>
+        <!-- Remove Navigation Toggle -->
+        <referenceBlock name="navigation.sections" remove="true"/>
+        <referenceBlock name="store_switcher" remove="true" />
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceContainer name="footer-container">
+            <block class="Magento\Framework\View\Element\Template" name="mobile.sticky.footer" template="Magento_Theme::html/mobile_sticky_footer.phtml" />
+        </referenceContainer>
     </body>
 </page>

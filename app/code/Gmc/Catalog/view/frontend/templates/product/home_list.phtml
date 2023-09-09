@@ -63,9 +63,9 @@ $productsTabOne = $block->getCategoryProducts($tabOneId);
                                         echo $unitsText;
                                         ?>
                                     </div>
-                                    <a href="<?php echo $block->getProductUrl($product) ?>" class="btn btn-primary btn-lg">
-                                        <?= $escaper->escapeHtml(__('Book Now')) ?>
-                                    </a>
+                                    <a href="<?php echo $block->getProductUrl($product) ?><!--" class="btn btn-primary btn-lg">
+                                        <?php echo $escaper->escapeHtml(__('Book Now')) ?>
+                                   </a>
                                 </div>
                             </div>
                         </div>

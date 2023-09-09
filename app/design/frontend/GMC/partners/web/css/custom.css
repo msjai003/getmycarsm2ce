@@ -1,3 +1,43 @@
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    src: url('../fonts/fa-solid-900.woff2') format('woff2'),
+    url('../fonts/fa-solid-900.woff') format('woff'),
+    url('../fonts/fa-solid-900.ttf') format('truetype');
+}
+
+/* Hide Navigation Toggle in Mobile View */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: none !important; /* Use the actual class or selector for your navigation toggle */
+    }
+
+    .logo {
+        float: left;
+        margin: 0 0 10px 40px;
+        max-width: 50%;
+        position: relative;
+        z-index: 5;
+    }
+}
+
+.mobile-sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.footer-icon {
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+}
+
 /* Custom CSS for the product card */
 .card {
     border: none;

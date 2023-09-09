@@ -24,17 +24,13 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Store\Api\Data\StoreInterface;
 
-/**
- * Class Data
- *
- * Born\OrderQueries\Helper
- */
+
 class Data extends AbstractHelper
 {
     // Constants
     const XML_PATH_PRICE_CONTRIBUTION_STEP = 'partner_settings/general/contribution_price_step';
 
-    const XML_HOME_PAGE_PRODUCTS_TAB_1 = 'home_settings/general/tab_1';
+    const   XML_HOME_PAGE_PRODUCTS_TAB_1 = 'home_settings/general/tab_1';
 
     const XML_HOME_PAGE_PRODUCTS_TAB_2 = 'home_settings/general/tab_2';
 

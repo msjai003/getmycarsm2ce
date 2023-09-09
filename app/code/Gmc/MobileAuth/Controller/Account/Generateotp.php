@@ -70,8 +70,6 @@ class Generateotp extends Action
         $this->otpRepository = $otpRepository;
         $this->resultPageFactory = $resultPageFactory;
         $this->smsClient = $smsClient;
-
-
     }
 
     public function execute()
