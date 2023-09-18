@@ -143,32 +143,28 @@ class Data extends AbstractHelper
         }
         $productId = $product->getId();
         $connection = $this->connection;
-        $table = $connection->getTableName('gmc_product_partner_price');
+
+        $table = $connection->getTableName('gmc_partner_contribution');
         $select = $connection->select();
         $select
-            ->from($table, ['*'])
-            ->where('product_id = ?', $productId);
-        $result = $connection->fetchRow($select);
-        $price = $product->getFinalPrice();
-        if (empty($result)) {
+        ->from($table, ['SUM(ticket_size_qty) AS ticket_size_ordered'])
+        ->where('product_id = ?', $productId)
+        ->group('product_id');
+
+        $ticketSizeOrdered = (int) $connection->fetchOne($select);
+        $price = $product->getPrice();
+        $productTicketSize = $product->getTicketSize();
+        if (empty($ticketSizeOrdered)) {
             return [
-                'allowed_contribution' => true,
-                'contribution_booked' => 0,
-                'price' => $price,
-                'max_contribution_price' => $price
+                'contribution_booked' => 0
             ];
         }
-        if ($result['max_contribution_price'] <= 0) {
+        if ($ticketSizeOrdered >= $productTicketSize) {
             return [
-                'allowed_contribution' => false,
                 'contribution_booked' => 100
             ];
         }
-        $result['allowed_contribution'] = true;
-        $result['min_price'] = $this->getFormattedPrice($result['min_contribution_price']);
-        $result['max_price'] = $this->getFormattedPrice($result['max_contribution_price']);
         $contributionBooked = $this->getContributionBooked($productId);
-        $price = $product->getPrice();
         $result['contribution_booked'] = (int) (($contributionBooked / $price) * 100);
         return $result;
     } //end getPriceContribution()

@@ -20,6 +20,9 @@ use Magento\Quote\Model\Quote\Item;
 use Gmc\PartnerContribution\Model\Logger\Logger as LoggerInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DataObject;
+use Magento\Catalog\Model\Product;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class Quote
@@ -33,9 +36,9 @@ class Quote
     private $logger;
 
     /**
-     * @var ResourceConnection
+     * @var AdapterInterface
      */
-    private $resourceConnection;
+    private $connection;
 
     /**
      * Quote constructor.
@@ -48,8 +51,40 @@ class Quote
         ResourceConnection $resourceConnection
     ) {
         $this->logger = $logger;
-        $this->resourceConnection = $resourceConnection;
+        $this->connection = $resourceConnection->getConnection();
     } //end __construct
+
+    /**
+     * @param CoreQuote    $subject     CoreQuote
+     * @param Product      $product     Product
+     * @param null         $request     Request Params
+     * @param string       $processMode processModeObject
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function beforeAddProduct(
+        CoreQuote   $subject,
+        Product     $product,
+        $request = null
+    ) {
+        if (!$request instanceof DataObject) {
+            return;
+        }
+        $productTicketSize = (int) $product->getTicketSize();
+        if (!$productTicketSize) {
+            return;
+        }
+        $productId = $product->getId();
+        $select = $this->connection->select();
+        $select
+        ->from('gmc_partner_contribution', ['SUM(ticket_size_qty) AS ticket_size_ordered'])
+        ->where('product_id = ?', $productId)
+        ->group('product_id');
+
+        $ticketSizeOrdered = (int) $this->connection->fetchOne($select);
+        if ($ticketSizeOrdered >= $productTicketSize) {
+            throw new LocalizedException(__('Booking no longer available fro the product!'));
+        }
+    }//end beforeAddProduct()    
 
     /**
      * @param CoreQuote $subject CoreQuote
@@ -69,12 +104,12 @@ class Quote
             if (!$request instanceof DataObject) {
                 return $item;
             }
-            $options = $request->getData('options');
-            $priceContribution = $options['price_contribution'] ?? '';
-            if (!$priceContribution) {
+            $ticketSize = (int) $product->getTicketSize();
+            $ticketFee = (int) $product->getTicketFee();
+            if (!$ticketSize || !$ticketFee) {
                 return $item;
             }
-            $this->setItemCustomPrice($item, $priceContribution);
+            $this->setItemCustomPrice($item, $ticketFee);
         } catch (\Throwable $exception) {
             $this->logger->critical(
                 $exception->getMessage(),
@@ -89,17 +124,17 @@ class Quote
 
     /**
      * @param Item $item
-     * @param Float $priceContribution
+     * @param Float $customPrice
      * @return Item
      */
-    private function setItemCustomPrice(Item $item, $priceContribution)
+    private function setItemCustomPrice(Item $item, $customPrice)
     {
         $productType = $item->getProductType();
-        if ($productType != Type::TYPE_VIRTUAL) {
+        if ($productType != Type::TYPE_SIMPLE) {
             return;
         }
-        $item->setCustomPrice($priceContribution);
-        $item->setOriginalCustomPrice($priceContribution);
+        $item->setCustomPrice($customPrice);
+        $item->setOriginalCustomPrice($customPrice);
         $item->getProduct()->setIsSuperMode(true);
     } //end setItemCustomPrice()
 }//end class

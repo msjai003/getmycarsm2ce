@@ -44,7 +44,7 @@
         <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" comment="Product ID"/>
         <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="Customer ID"/>
         <column xsi:type="decimal" name="amount_contributed" nullable="false" scale="2" precision="12" comment="Amount Contributed"/>
-        <column xsi:type="decimal" name="percentage_contributed" nullable="false" scale="2" precision="12" comment="Percentage Contributed"/>                
+        <column xsi:type="int" name="ticket_size_qty" nullable="false" comment="Ticket Sze Qty"/>                
         <column xsi:type="decimal" name="amount_gained" nullable="true" scale="2" precision="12" comment="Amount Gained"/>
         <column xsi:type="decimal" name="profit_gained" nullable="true" scale="2" precision="12" comment="Profit Gained"/>        
         <column xsi:type="int" name="status" padding="5" unsigned="false" default="1" comment="Status"/>

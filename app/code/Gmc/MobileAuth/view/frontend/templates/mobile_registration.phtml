@@ -7,7 +7,7 @@
  * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
 ?>
-<form id="custom-registration-form" method="post" action="<?php echo $block->getUrl('mobileauth/account/createaccount'); ?>">
+<form id="custom-registration-form" method="post" action="<?php echo $block->getUrl('mobileauth/account/createaccount'); ?>" data-mage-init='{"validation": {}}'>
     <div id="step-1">
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-primary" onclick="showLoginStep()">Login</button>
@@ -17,7 +17,7 @@
     <div id="step-2" style="display: none;">
         <div class="form-group">
             <label for="mobile_number_login">Mobile Number (for login)</label>
-            <input type="text" class="form-control" name="mobile_number_login" id="mobile_number_login" placeholder="Mobile Number">
+            <input type="text" class="form-control" name="mobile_number_login" id="mobile_number_login" placeholder="Mobile Number" data-validate='{"required":true, "minlength":10, "maxlength":10, "validate-number":true}'>
         </div>
         <button type="button" class="btn btn-primary" onclick="loginUser()">Login</button>
     </div>
@@ -87,9 +87,26 @@
     }
 
     function loginUser() {
-        var mobileNumber = document.getElementById('mobile_number_login').value;
-        // Implement AJAX login logic using mobileNumber and set customer session
-        // ...
+        require(['jquery'], function($) {
+            if ($('#custom-registration-form').valid()) {
+                const formData = $('#custom-registration-form').serialize();
+                $.ajax({
+                    url: '<?php echo $this->getUrl('mobileauth/account/loginpost') ?>',
+                    type: 'post',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.success === true) {
+                            // Login successful, redirect to account page
+                            window.location.href = '<?php echo $this->getUrl('customer/account') ?>';
+                        } else {
+                            // Show error message
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+        });
     }
 
 </script>
