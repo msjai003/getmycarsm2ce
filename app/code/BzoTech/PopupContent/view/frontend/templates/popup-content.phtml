@@ -1,0 +1,87 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_PopupContent
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+
+$_config               = $this->helper('BzoTech\PopupContent\Helper\Data');
+$popupMaxWidth         = $_config->getPopupConfig('pc_general/popup_max_width');
+$popupDelay            = $_config->getPopupConfig('pc_general/popup_delay');
+$showAgain             = $_config->getPopupConfig('pc_general/show_again');
+$transparentBackground = $_config->getPopupConfig('pc_general/transparent_background');
+$contentData           = $_config->getPopupConfig('pc_content/content');
+if ($transparentBackground) {
+    $transparentClass = "bzo-transparent-bg";
+} else {
+    $transparentClass = "";
+}
+?>
+<div style="display: none;">
+    <div id="popup-content-modal" class="popup-content-container">
+        <div class="bzo-popup-content">
+            <?php echo $block->getContent($contentData); ?>
+        </div>
+        <?php if ($showAgain) { ?>
+            <div class="dont-show-again">
+                <input type="checkbox" id="dont-show-again" name="dont-show-again">
+                <label for="dont-show-again"><?php echo __("Don't show this popup again.") ?></label>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+<style>
+    <?php if($popupMaxWidth) {?>
+    .bzo-popup-content-modal .modal-inner-wrap {
+        max-width: <?php echo $popupMaxWidth.'px'; ?>;
+    }
+
+    <?php } ?>
+</style>
+
+<script>
+    require([
+            'jquery',
+            'mage/cookies',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function ($, modal) {
+            var autoOpen;
+            var cookiePopup = jQuery.cookie('content_popup');
+
+            if (cookiePopup == null || cookiePopup != 'dont-shown') {
+                autoOpen = true;
+            } else {
+                autoOpen = false;
+            }
+
+            setTimeout(function () {
+                var modalContent = $('#popup-content-modal').modal({
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: '',
+                    modalClass: 'bzo-popup-content-modal <?php echo $transparentClass ?>',
+                    autoOpen: autoOpen,
+                    buttons: []
+                });
+
+                modalContent.on('modalclosed', function () {
+                    <?php if ($showAgain) { ?>
+                    if ($('#dont-show-again').is(':checked')) {
+                        jQuery.cookie('content_popup', 'dont-shown');
+                    }
+                    <?php } else {?>
+                    jQuery.cookie('content_popup', 'dont-shown');
+                    <?php } ?>
+                });
+            }, <?php echo $popupDelay; ?>);
+        }
+    );
+</script>
+

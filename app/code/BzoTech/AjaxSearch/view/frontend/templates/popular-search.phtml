@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Search\Block\Term $block
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<?php if (count($block->getTerms()) > 0) { ?>
+    <div class="search-keyword-list">
+        <div class="title"><?php echo __('Trending Search') ?></div>
+
+        <ul class="search-terms-default">
+            <?php foreach ($block->getTerms() as $_term): ?>
+                <li class="item-term">
+                    <a href="<?= $block->escapeUrl($block->getSearchUrl($_term)) ?>">
+                        <?= $block->escapeHtml($_term->getQueryText()) ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php } else { ?>
+    <div class="message info empty">
+        <div><?= $escaper->escapeHtml(__('We can\'t find keyword in the selection.')) ?></div>
+    </div>
+<?php } ?>

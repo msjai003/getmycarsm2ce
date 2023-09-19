@@ -1,0 +1,132 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_PopupLogin
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+$_config   = $this->helper('BzoTech\PopupLogin\Helper\Data');
+$popupType = $_config->getPopupLoginConfig('general/popup_type');
+?>
+
+<script>
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal",
+        "domReady!"
+    ], function ($, modal) {
+        'use strict';
+
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            modalClass: 'custom-modal-popuplogin'
+        };
+
+        if ($('#bzo-popup-login-modal').length) {
+            var popup = modal(options, $('#bzo-popup-login-modal'));
+        }
+
+
+        /**
+         * Remove link and add Class
+         */
+        var currentUrl = $(location).attr('href');
+
+        $("a").each(function () {
+            var url = $(this).attr('href');
+
+            if (typeof (url) !== "undefined") {
+                if (url.toLowerCase().indexOf("customer/account/login") >= 0 && currentUrl.toLowerCase().indexOf("customer/account/login") == -1) {
+                    $(this).addClass('open-popup-login');
+                    $(this).attr('href', 'javascript:void(0)');
+                }
+
+                if (url.toLowerCase().indexOf("customer/account/create") >= 0 && currentUrl.toLowerCase().indexOf("customer/account/create") == -1) {
+                    $(this).addClass('open-popup-create');
+                    $(this).attr('href', 'javascript:void(0)');
+                }
+
+                if (url.toLowerCase().indexOf("customer/account/forgotpassword") >= 0 && currentUrl.toLowerCase().indexOf("customer/account/forgotpassword") == -1) {
+                    $(this).addClass('open-popup-forgot');
+                    $(this).attr('href', 'javascript:void(0)');
+                }
+            }
+        });
+
+        /**
+         * Popup Forgot
+         */
+        $(document).on('click', '.open-popup-forgot', function () {
+            if ($(this).closest('.bzo-popup-modal').length) {
+                $(".bzo-popup-modal").removeClass('active');
+                $("#bzo-login-forgot").addClass('active');
+            } else {
+                <?php if ($popupType === 'modal') { ?>
+                $("#bzo-popup-login-modal").modal("openModal");
+                <?php } else { ?>
+                $('body').addClass('bzo-popup-sidebar-active');
+                <?php } ?>
+
+                $(".bzo-popup-modal").removeClass('active');
+                $("#bzo-login-forgot").addClass('active');
+            }
+
+        });
+
+        /**
+         * Popup Login
+         */
+
+        $(document).on('click', '.open-popup-login', function () {
+            <?php if ($popupType === 'modal') { ?>
+            $("#bzo-popup-login-modal").modal("openModal");
+            <?php } else { ?>
+            $('body').addClass('bzo-popup-sidebar-active');
+            <?php } ?>
+
+            $(".bzo-popup-modal").removeClass('active');
+            $("#bzo-login-popup").addClass('active');
+        });
+
+        /**
+         * Popup Create
+         */
+
+        $(document).on('click', '.open-popup-create', function () {
+            <?php if ($popupType === 'modal') { ?>
+            $("#bzo-popup-login-modal").modal("openModal");
+            <?php } else { ?>
+            $('body').addClass('bzo-popup-sidebar-active');
+            <?php } ?>
+            $(".bzo-popup-modal").removeClass('active');
+            $("#bzo-login-create").addClass('active');
+        });
+
+        /**
+         * Trigger button
+         */
+
+        $(document).on('click', '.trigger-create', function () {
+            $(".bzo-popup-modal").removeClass('active');
+            $("#bzo-login-create").addClass('active');
+        });
+
+        $(document).on('click', '.trigger-login', function () {
+            $(".bzo-popup-modal").removeClass('active');
+            $("#bzo-login-popup").addClass('active');
+        });
+
+        /**
+         * Close Popup Sidebar
+         */
+
+        $(document).on('click', '.bzo-close-popuplogin, .bzo-overlay-popuplogin', function () {
+            $("body").removeClass('bzo-popup-sidebar-active');
+        });
+    });
+</script>

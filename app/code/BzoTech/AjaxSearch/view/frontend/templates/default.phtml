@@ -1,0 +1,20 @@
+<div class="default-search-content">
+    <div class="search-ajax-results">
+
+        <?= $block->getChildHtml('search_term_default') ?>
+
+        <div class="products-ajax-search">
+            <?= $block->getChildHtml('search_products_default') ?>
+        </div>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(".search-ajax-results a").each(function () {
+            $(this).attr("target", "_parent");
+        });
+    });
+</script>

@@ -1,0 +1,23 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxCart
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+
+$elementLink = $this->_getConfig('element_links');
+?>
+
+<?php if ($elementLink) { ?>
+    <script>
+        require([
+            'jquery',
+        ], function ($) {
+            $('<?php echo $elementLink; ?>').attr("target", "_parent");
+        });
+    </script>
+<?php } ?>

@@ -1,0 +1,36 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxCart
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+
+if (!(int)$this->_getConfig('isenabled', 1))
+    return;
+
+?>
+
+<script>
+    require([
+        'jquery',
+        'quickView',
+        'domReady!'
+    ], function ($, cartQuickView) {
+        var quickViewCf = {
+            isQuickView: <?php echo $this->_isQuickView() ? 'true' : 'false'; ?>,
+            isAjaxCart: <?php echo $this->_isAjaxCart() ? 'true' : 'false'; ?>,
+            product_container: '.product-items .product-item',
+            button_container: '.product-item-name',
+            label_button: '<?php echo $this->_getConfig('label_button'); ?>',
+            base_url: '<?php echo $this->getUrl();?>'
+        }
+        $(quickViewCf.product_container).cartQuickView(quickViewCf);
+        $(document).on("afterAjaxProductsLoaded", function (event) {
+            $(quickViewCf.product_container).cartQuickView(quickViewCf);
+        });
+    });
+</script>	

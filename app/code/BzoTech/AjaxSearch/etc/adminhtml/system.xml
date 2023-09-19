@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxSearch
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bzotech" translate="label" sortOrder="1" class="bzotech-config-system">
+            <label>BzoTech.com</label>
+        </tab>
+        <section id="ajaxsearch" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Ajax Search</label>
+            <tab>bzotech</tab>
+            <resource>BzoTech_AjaxSearch::config_ajaxsearch</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Ajax Search</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="enable_search_term" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Search Term</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="term_limit" translate="label" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Search Term Limit</label>
+                    <comment>Example: 15</comment>
+                    <validate>validate-greater-than-zero integer required-entry validate-number</validate>
+
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="enable_search_term">1</field>
+                    </depends>
+                </field>
+
+                <field id="trending_product_ids" translate="label" type="text" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Trending Product Ids</label>
+                    <comment>Example: 1,2,3</comment>
+                    <validate>required-entry</validate>
+
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="product_limit" translate="label" type="text" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Product Limit</label>
+                    <comment>Example: 5</comment>
+                    <validate>validate-greater-than-zero integer required-entry validate-number</validate>
+
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

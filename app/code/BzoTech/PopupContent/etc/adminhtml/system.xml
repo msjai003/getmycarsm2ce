@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_PopupContent
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bzotech" translate="label" sortOrder="1" class="bzotech-config-system">
+            <label>BzoTech</label>
+        </tab>
+        <section id="popupcontent" translate="label" type="text" sortOrder="550" showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Popup Content</label>
+            <tab>bzotech</tab>
+            <resource>BzoTech_PopupContent::popupcontent</resource>
+            <group id="pc_general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+
+                <field id="enable_popupcontent" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Popup Content</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="popup_max_width" translate="label" type="text" sortOrder="15" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Popup Width</label>
+                    <validate>integer required-entry validate-number</validate>
+                    <comment>Unit(px). Example: 1024</comment>
+                </field>
+
+                <field id="popup_delay" translate="label" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Time Delay</label>
+                    <validate>integer required-entry validate-number</validate>
+                    <comment>Unit(milliseconds). Example: 5000</comment>
+                </field>
+
+                <field id="shown_home_only" translate="label" type="select" sortOrder="25" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show only for Home page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If this option is: Yes, Popup will only show on the homepage (Default Popup will show on
+                        all pages)
+                    </comment>
+                </field>
+
+                <field id="show_again" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Popup again</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>When you chose this option. The popup will display again when switching to another page. In
+                        the popup, there will be another checkbox with the content: Do not show this popup again, when
+                        the user chooses, the popup will not show again.
+                    </comment>
+                </field>
+
+                <field id="transparent_background" translate="label" type="select" sortOrder="35" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Transparent Background</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="pc_content" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Popup Content</label>
+
+                <field id="content" translate="label comment" sortOrder="15" type="editor" showInStore="1"
+                       showInDefault="1">
+                    <label>Content</label>
+                    <frontend_model>BzoTech\PopupContent\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

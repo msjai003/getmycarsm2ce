@@ -1,0 +1,109 @@
+& when (@media-common = true) {
+    // Fix style with core theme luma
+
+    .bzotech-slider-grid {
+        .block-content {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .product-item {
+            width: 100% !important;
+            padding-bottom: 18px;
+
+            &:hover {
+                box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.3);
+                -webkit-box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.3);
+
+                .product-item-inner {
+                    display: block !important;
+                    border: 1px solid #bbbbbb !important;;
+                    border-top: none !important;;
+                    clip: unset !important;;
+                    height: unset !important;;
+                    margin: 10px 0 0 -1px !important;;
+                    overflow: unset !important;;
+                    padding: 0 9px 9px !important;;
+                    position: absolute !important;;
+                    width: unset !important;;
+                }
+            }
+
+            .product-item-inner,
+            .product-item-info {
+                box-shadow: none !important;
+            }
+        }
+
+        &.bzotech-widget-products .products.wrapper .product-item-info {
+            padding-bottom: 35px !important;
+        }
+    }
+
+    // Loading
+
+    .slider-loading {
+        height: 50px;
+        background: url("../images/loader-1.gif") no-repeat center center;
+        background-size: 30px;
+
+        span {
+            display: none;
+        }
+    }
+
+    .owl-loaded + .slider-loading {
+        display: none;
+    }
+
+    // Navigation
+
+    .bzotech-slider-product {
+        .owl-theme .owl-nav {
+            margin: 0;
+            position: absolute;
+            top: -49px;
+            right: 10px;
+        }
+
+        .owl-theme .owl-nav [class*=owl-] {
+            width: 40px;
+            height: 30px;
+            padding: 0;
+            color: #666;
+            line-height: 24px;
+            font-size: 32px;
+        }
+    }
+
+    /**
+     * Slider type list
+     */
+
+    .bzotech-slider-list {
+        .product-item:last-child .product-item-info {
+            margin-bottom: 0;
+        }
+
+        .product-item-info {
+            max-width: unset;
+            width: unset;
+            display: flex;
+            margin-bottom: 30px;
+
+            .product-item-image {
+                width: 130px;
+            }
+
+            .product-item-details {
+                padding-left: 20px;
+                width: 100%;
+            }
+
+            .product-item-name {
+                margin-top: 0;
+            }
+        }
+    }
+}
+

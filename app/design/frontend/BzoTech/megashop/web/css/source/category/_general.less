@@ -1,0 +1,217 @@
+/**
+ * Breadcrumbs
+ */
+
+    .breadcrumbs{
+        text-align: left;
+        padding: 20px 0;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #e5e5e5;
+        .items > li {
+                    .bzo-font(16px, 500);
+                    &.home {
+                        &:before {
+                            content: "";
+                            background: url('../images/home-icon.svg') no-repeat 0 0;
+                            width: 20px;
+                            height: 16px;
+                            display: inline-block;
+                            margin-right: 8px;
+                        }
+                    }
+                }
+        a, a:visited {
+            color: #A1A1A1;
+            text-decoration: none !important;
+        }
+        strong {
+            color: @text_color;
+        }
+        .item:not(:last-child):after {
+            font-size: 32px;
+            position: relative;
+            top: 5px;
+            color: #A1A1A1;
+        }
+    }
+
+.products {
+    margin: 0;
+}
+
+.page-products .columns {
+    z-index: unset !important;
+}
+
+.search.results {
+    dl {
+        margin-bottom: 30px;
+        .clearfix();
+
+        .title {
+            color: #222;
+        }
+
+        dd.item {
+            display: inline-block;
+            float: left;
+            margin-right: 10px;
+        }
+    }
+
+}
+
+.products-list .product-item .action.add {
+    display: none;
+}
+
+/**
+ * Toolbar filter
+ */
+
+.toolbar-filter {
+    display: none;
+    float: left;
+    margin-right: 10px;
+
+    .btn-filter {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ccc;
+        background: url("../images/icon-images.png") no-repeat -162px -276px;
+        .border-radius(5px);
+    }
+
+    .btn-filter span {
+        display: none;
+    }
+}
+
+/**
+ * Filter
+ */
+.block.filter {
+    .close-filter {
+        display: none;
+    }
+
+    .block-subtitle {
+        display: none;
+    }
+
+    .filter-actions {
+        a {
+            display: inline-block;
+            padding: 5px 20px;
+            .border-radius(3px);
+        }
+    }
+}
+
+.filter-current {
+    .filter-label {
+        color: #222;
+    }
+
+    .action.remove {
+        float: right;
+
+        &:before {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 26px;
+            line-height: 15px;
+            color: #303030;
+            content: '\e616';
+            font-family: 'icons-blank-theme';
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: 400;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+.filter-content .swatch-option.text {font-size: 16px;}
+@media (max-width: 1024px) {
+    .toolbar-amount {
+        display: none;
+    }
+
+    .toolbar-filter {
+        display: inline-block;
+    }
+
+    .sidebar .block.filter {
+        position: fixed;
+        top: 0;
+        left: -340px;
+        width: 320px;
+        bottom: 0;
+        overflow: auto;
+        padding: 40px 20px 30px !important;
+        background: #fff !important;
+        margin: 0 !important;
+        z-index: 850;
+        .box-shadow(0 0 15px rgba(0, 0, 0, 0.1));
+        .transition(.2s);
+
+        .filter-options-item {
+            padding: 0 !important;
+        }
+    }
+
+    .filter-overlay {
+        z-index: 800;
+    }
+
+    .show-filter {
+        overflow: hidden;
+
+        body {
+            overflow: hidden;
+        }
+
+        .filter-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .block.filter {
+            left: 0;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .modes {
+        display: none !important;
+    }
+
+    .sub-categories-container .sub-item {
+        width: 25%;
+    }
+
+    .page-layout-1column .block.filter .close-filter {
+        background: none !important;
+        right: 0 !important;
+        border-radius: 0 !important;
+        -webkit-border-radius: 0 !important;
+
+        &:before {
+            color: #222 !important;
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .sub-categories-container .sub-item {
+        width: 33.333333%;
+    }
+}

@@ -1,0 +1,45 @@
+/**
+ * CSS Core
+ */
+
+& when (@media-common = true) {
+    button.owl-dot:active {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+    .countdown-item {
+        margin-bottom: 8px;
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .deals-time {
+            float: left;
+            text-align: center;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            min-width: 45px;
+        }
+
+        .num-time {
+            background-color: #ddd;
+            padding: 5px;
+            border-bottom: 1px solid #fff;
+            font-weight: 700;
+            border-radius: 2px 2px 0 0;
+            -webkit-border-radius: 2px 2px 0 0;
+        }
+
+        .title-time {
+            background-color: #ddd;
+            padding: 3px 5px;
+            font-size: 13px;
+            border-radius: 0 0 2px 2px;
+            -webkit-border-radius: 0 0 2px 2px;
+        }
+    }
+}

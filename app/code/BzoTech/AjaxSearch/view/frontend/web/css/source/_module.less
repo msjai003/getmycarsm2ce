@@ -1,0 +1,247 @@
+& when (@media-common = true) {
+    .default-search-content {
+        max-height: 500px;
+        overflow-y: auto;
+        box-sizing: border-box;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #eee;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+    }
+
+    .search-ajax-results {
+        display: flex;
+
+        .products-ajax-search .search-title,
+        .search-keyword-list .title {
+            color: #999;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0 0 10px;
+        }
+
+        .search-terms-default,
+        .search-keyword .block {
+            width: 180px;
+            max-width: 180px;
+        }
+
+        .search-keyword-list {
+            border-right: 1px solid #ddd;
+            margin-right: 30px;
+        }
+
+        .products-ajax-search {
+            position: relative;
+            width: 100%;
+            padding-right: 25px;
+
+            .search-title {
+                margin-bottom: 20px;
+            }
+
+            .search-title .all-result-ajax {
+                float: right;
+            }
+        }
+
+        .search-terms-default {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .product-item:not(:last-child) {
+            margin-bottom: 20px;
+
+            .product-item-info {
+                padding: 0 0 20px;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        .product-item-info {
+            display: flex;
+            width: unset;
+            max-width: unset;
+
+            .product-image-container {
+                vertical-align: top;
+            }
+
+            .product-item-photo {
+                max-width: 90px;
+                width: 90px;
+            }
+
+            .product-item-details {
+                padding-left: 20px;
+            }
+        }
+    }
+
+    .block-search.ajax-search {
+        .bzotech-search-autocomplete {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: #fff;
+            min-width: 580px;
+            padding: 35px 0 35px 25px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 200;
+            box-sizing: border-box;
+        }
+
+        .product-item-info {
+            width: 100% !important;
+            display: flex;
+
+            .product-item-photo {
+                width: 90px;
+                max-width: 90px;
+            }
+
+            .product-item-details {
+                padding-left: 20px;
+            }
+        }
+    }
+
+    .search-ajax-active {
+        .block-search.ajax-search .bzotech-search-autocomplete {
+            display: block;
+        }
+
+        .block-search.ajax-search .field.search input {
+            position: static !important;
+        }
+    }
+
+    .loading-search {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3333;
+        background: rgba(255, 255, 255, 0.8);
+        display: none;
+    }
+
+    .block-search.ajax-search.loading {
+        .loading-search {
+            display: block;
+        }
+    }
+
+    .loader-ajax-search {
+        box-sizing: border-box;
+        border: 5px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 5px solid #3498db;
+        width: 38px;
+        height: 38px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -19px;
+        margin-left: -19px;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /**
+     * Default search
+     */
+
+    .default-search-content {
+        .default-keywords {
+            .title {
+                color: #222;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin: 0 0 10px;
+            }
+
+            .search-terms-default {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    .close-search-ajax {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 26px;
+        height: 26px;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB2AAAAdgB+lymcgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAISSURBVHic7ZtNSgNBEEaf8QZJSPCy/h3ElbgR9TASFF0HFLMS0eW4aAokmMzU9F9V6wdZzaS73gvTmS5ogEPgHNgAX8ANMKe9zIE7AuMbcEpg5wzotj4rYFmjykxZEpi2OY8h/PLbF1qSsAu+A14BPndcbEHCPvgO+AC43XODZwl98B1wDWFx6LvRm4Qh8Ct+LPYL4L7nC4/AUSmCiAxheeAXlhYkjIbXDGBVQjS8ZiBrEpLBawa0IiE5vGbg2hKywWsmqCUhO7xmotISisFrJiwloTi8ZuLcEqrBawrIJaE6vKaQ1BLMwGsKSiXBHLymsFgJZuE1BY6VYB5ekkOCG3hJSgnu4CUpJLiFl8RIcA8vGSOhGXiJRkJz8JIhYM8EuObgJUMkNAsvGSuhCXiJVkJT8JIF/c+7rAvF4CelJlLkoHYBOaJ9BGp3m5Nm7CLYhITYv0HXEobAP9G/MLqUoHm9tdBtTpox7/bNSIjZ2LiXkGJX51ZCyi2tOwk59vNuJORsZpiXUKKTY1ZCyTaWOQk1enhmJNRsYFaXYKF7W02CBXhNLUklWILX1JREgkV4TW1REizDS7JJ8AAvSS7BE7wkmQSP8JJoCZ7hJaMltAAvUUuY8XcPTc0Argbc6AleMkTCJYTDg63BS/okvAO87LjoHV6yT8Ia/g9PMyFIWBMOUl8A0ypl5s2UwLYhsJ4Ak2/8Xwb+pWPGqQAAAABJRU5ErkJggg==');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 12px;
+        opacity: .7;
+        z-index: 250;
+        transition: .2s;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        span {
+            display: none;
+            z-index: 200;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .search-ajax-results .search-keyword-list {
+        display: none;
+    }
+
+    .block-search.ajax-search .bzotech-search-autocomplete {
+        right: 0;
+        left: 0;
+        width: unset;
+        min-width: unset;
+        padding: 25px;
+    }
+
+    .search-ajax-results .products-ajax-search {
+        padding: 0;
+    }
+}

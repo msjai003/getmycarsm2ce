@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_PopupContent
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.bottom">
+            <block class="BzoTech\PopupContent\Block\Content" name="popup.content"
+                   ifconfig="popupcontent/pc_general/enable_popupcontent">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="helper"
+                              helper="BzoTech\PopupContent\Helper\Data::getTemplate">
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

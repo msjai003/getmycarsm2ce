@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="bzotech" translate="label" sortOrder="1">
+            <label>BzoTech</label>
+        </tab>
+        <section id="ajaxcart" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Ajax Cart</label>
+            <tab>bzotech</tab>
+            <resource>BzoTech_AjaxCart::config_ajaxcart</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General Settings</label>
+                <field id="isenabled" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled Extensions</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="select_type" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Select Type</label>
+                    <source_model>BzoTech\AjaxCart\Model\Config\Source\ListSource</source_model>
+                </field>
+
+                <field id="label_button" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Quick View Text</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="select_type" separator=",">both,quickview</field>
+                    </depends>
+                </field>
+                <field id="countdown_number" translate="label" type="text" sortOrder="5" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Countdown Number</label>
+                    <validate>required-entry integer</validate>
+                    <comment>For Comfirm Box. Time(seconds)</comment>
+                </field>
+
+                <field id="element_links" translate="label" type="textarea" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Element Links</label>
+                    <comment>Link to new page. Ex: .action.view, .action.add</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

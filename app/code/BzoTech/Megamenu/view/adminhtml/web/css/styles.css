@@ -1,0 +1,21 @@
+#row_megamenu_secondary_menu_menu_items td.value {
+    width: 100%;
+}
+
+#row_megamenu_secondary_menu_menu_items td.label {
+    display: none;
+}
+
+#row_megamenu_how_to_empty_field_hidden_cus {
+    display: none;
+}
+
+.section-config #row_megamenu_primary_secondary_menu_secondary_cfg .section-config,
+.section-config #row_megamenu_primary_secondary_menu_primary_cfg .section-config {
+    margin-left: 0;
+}
+
+.section-config #row_megamenu_primary_secondary_menu_secondary_cfg .section-config .entry-edit-head.admin__collapsible-block,
+.section-config #row_megamenu_primary_secondary_menu_primary_cfg .section-config .entry-edit-head.admin__collapsible-block {
+    padding-left: 20px;
+}

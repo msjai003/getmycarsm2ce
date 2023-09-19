@@ -1,0 +1,52 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_PopupLogin
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+$_config        = $this->helper('BzoTech\PopupLogin\Helper\Data');
+$currentPageUrl = $_config->getUrlPage();
+$logoConfig     = $_config->getPopupLoginConfig('general/popup_logo');
+?>
+
+<?php if (!$block->isLoggedIn()) { ?>
+    <?php if ($_config->getPopupLoginConfig('general/popup_type') === 'modal') { ?>
+        <div id="bzo-popup-login-modal" style="display:none;">
+    <?php } else { ?>
+        <div class="bzo-overlay-popuplogin"></div>
+        <div class="bzo-popup-login-sidebar">
+        <a class="bzo-close-popuplogin" href="javascript:void(0)"
+           title="<?php echo __('Close') ?>"><span><?php echo __('Close') ?></span></a>
+    <?php } ?>
+
+    <?php if ($logoConfig) { ?>
+        <div class="bzo-popup-logo">
+            <a href="<?= $this->getBaseUrl() ?>">
+                <img src="<?php echo $_config->getMediaUrl() . 'bzotech_popuplogin/' . $logoConfig ?>">
+            </a>
+        </div>
+    <?php } ?>
+
+    <?php if (!str_contains($currentPageUrl, 'customer/account/login')) { ?>
+        <div id="bzo-login-popup" class="bzo-popup-modal bzo-login-container">
+            <?= $block->getChildHtml('bzotech.popup.login') ?>
+        </div>
+    <?php } ?>
+
+    <?php if (!str_contains($currentPageUrl, 'customer/account/create')) { ?>
+        <div id="bzo-login-create" class="bzo-popup-modal bzo-register-container">
+            <?= $block->getChildHtml('bzotech.popup.register') ?>
+        </div>
+    <?php } ?>
+
+    <?php if (!str_contains($currentPageUrl, 'customer/account/forgotpassword')) { ?>
+        <div id="bzo-login-forgot" class="bzo-popup-modal bzo-forgot-container">
+            <?= $block->getChildHtml('bzotech.popup.forgotPassword') ?>
+        </div>
+    <?php } ?>
+    </div>
+<?php } ?>

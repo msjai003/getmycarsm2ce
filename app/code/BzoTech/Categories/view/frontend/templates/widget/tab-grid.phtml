@@ -1,0 +1,100 @@
+<?php
+$_config           = $this->helper('BzoTech\Categories\Helper\Data');
+$listCategories    = $this->getCategoryCollection();
+$enableParentImage = strtolower($block->getData('display_parent_image')) == 'true' ? true : false;
+$enableChildImage  = strtolower($block->getData('display_child_image')) == 'true' ? true : false;
+if ($enableParentImage) {
+    $hasParentImage = "has-parent-image";
+} else {
+    $hasParentImage = "has-no-parent-image";
+}
+?>
+
+<?php if (count($listCategories)) {
+    $tabPrefix = 'category-tab-' . rand(); ?>
+    <div class="block bzo-categories block-tab-categories <?php echo $hasParentImage ?>" id="<?php echo $tabPrefix ?>">
+        <div class="block-title">
+            <strong><?php echo $escaper->escapeHtml($block->getData('categories_title')) ?></strong>
+        </div>
+
+        <div class="block-content">
+            <div class="tabs-cate">
+                <div class="cat-select"></div>
+
+                <ul class="tabs-list-cate">
+                    <?php $tab = 0;
+                    foreach ($listCategories as $category) {
+                        $tab++; ?>
+                        <li class="tab-item <?php if ($tab == 1) {
+                            echo 'active';
+                        } ?>" data-tab-content="tabs-cate-content-<?php echo $tab ?>">
+                            <span><?php echo $category['name']; ?></span></li>
+                    <?php } ?>
+                </ul>
+            </div>
+
+            <div class="tabs-content-cate">
+                <?php $tabContent = 0;
+                foreach ($listCategories as $category) {
+                    $tabContent++; ?>
+                    <div class="tabs-cate-content tabs-cate-content-<?php echo $tabContent ?> <?php if ($tabContent == 1) {
+                        echo 'active';
+                    } ?>">
+
+                        <?php if ($category['short_description']) { ?>
+                            <div class="category-short-des">
+                                <?php echo $category['short_description']; ?>
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($enableParentImage) { ?>
+                            <div class="parent-image boz-cat-image">
+                                <a href="<?php echo $category['url']; ?>">
+                                    <img src="<?php echo $_config->getCategoryImage($category['id']); ?>"
+                                         alt="<?php echo $category['name'] ?>"/>
+                                </a>
+                            </div>
+                        <?php } ?>
+
+                        <div class="category-item">
+                            <?php $listChildCategories = $this->getCategoryChildrenCollection($category['id']); ?>
+
+                            <?php if (count($listChildCategories) && (int)$block->getData('sub_limit') > 0) { ?>
+                                <ul class="child-items">
+                                    <?php $effect = 0;
+                                    foreach ($listChildCategories as $child) {
+                                        $effect = $effect + 120; ?>
+                                        <li class="child-item">
+                                            <div class="child-inner"
+                                                 style="transition-delay: <?php echo $effect . 'ms' ?>; -webkit-transition-delay: <?php echo $effect . 'ms' ?>;">
+                                                <?php if ($enableChildImage) { ?>
+                                                    <div class="child-image boz-cat-image">
+                                                        <a href="<?php echo $child->getUrl() ?>">
+                                                            <img src="<?php echo $_config->getCategoryImage($child->getId()); ?>"
+                                                                 alt="<?php echo $child->getName() ?>"/>
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
+
+                                                <div class="child-name">
+                                                    <strong>
+                                                        <a href="<?php echo $child->getUrl() ?>"><?php echo $child->getName() ?></a>
+                                                    </strong>
+
+                                                    <?php if ($this->getData('display_product_count') === 'true') { ?>
+                                                        <span class="count">(<?php echo $child->getProductCollection()->Count() ?>)</span>
+                                                    <?php } ?>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            <?php } ?>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>

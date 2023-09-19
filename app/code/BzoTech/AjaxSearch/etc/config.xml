@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxSearch
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ajaxsearch>
+            <general>
+                <enable>1</enable>
+                <enable_search_term>1</enable_search_term>
+                <term_limit>15</term_limit>
+                <trending_product_ids>1,2,3,4,5</trending_product_ids>
+                <product_limit>5</product_limit>
+            </general>
+        </ajaxsearch>
+    </default>
+</config>

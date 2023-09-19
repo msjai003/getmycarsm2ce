@@ -1,0 +1,110 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog recent posts widget
+ *
+ * @var $block \Magefan\Blog\Block\Widget\Recent
+ */
+?>
+
+<?php
+$_postCollection = $block->getPostCollection();
+
+$_configThemeCore  = $this->helper('BzoTech\ThemeCore\Helper\Data');
+$mediaSrc          = $_configThemeCore->getMediaUrl();
+$enableLadyLoading = $_configThemeCore->getCoreConfig('advanced/lazyload_group/enable_ladyloading');
+if ($enableLadyLoading) {
+    $imgClass = 'lazyload';
+} else {
+    $imgClass = '';
+}
+?>
+<?php if ($_postCollection->count()) { ?>
+    <div class="block block-post">
+        <div class="block-title">
+            <strong><?= $block->escapeHtml($block->getTitle()) ?></strong>
+        </div>
+
+        <div class="block-content">
+            <div class="blog-list owl-carousel owl-theme">
+                <?php foreach ($_postCollection as $_post) { ?>
+                    <?php
+                    $_postUrl  = $block->escapeUrl($_post->getPostUrl());
+                    $_postName = $block->escapeHtml($_post->getTitle());
+                    ?>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="post-image">
+                                <?php $featuredImage = $_post->getFeaturedListImage() ?: $_post->getFeaturedImage(); ?>
+                                <?php if ($featuredImage) { ?>
+                                    <?php
+                                    $featuredImgAlt = $_post->getData('featured_list_img_alt') ?: $_post->getData('featured_img_alt');
+                                    if (!$featuredImgAlt) {
+                                        $featuredImgAlt = $_postName;
+                                    }
+                                    ?>
+                                    <a href="<?= /*@noEscape*/
+                                    $_postUrl ?>" title="<?= /*@noEscape*/
+                                    $_postName ?>">
+                                        <img class="<?php echo $imgClass; ?>"
+                                            <?php if ($enableLadyLoading) { ?>
+                                                src="<?php echo $mediaSrc . 'lazyloading/blank.png'; ?>"
+                                                data-src="<?= $block->escapeHtml($featuredImage) ?>"
+                                            <?php } else { ?>
+                                                src="<?= $block->escapeHtml($featuredImage) ?>"
+                                            <?php } ?>
+
+                                             alt="<?= $block->escapeHtml($featuredImgAlt) ?>"/>
+                                    </a>
+                                <?php } ?>
+
+
+                            </div>
+
+                            <div class="post-info">
+                                <div class="info-inner">
+                                    <?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
+                                        <div class="categories">
+                                            <?php $n = 0;
+                                            foreach ($_post->getParentCategories() as $ct) {
+                                                $n++;
+                                                if($n == 2) break;
+                                                ?>
+                                                <span><?php echo __('In') ?></span>
+                                                <a title="<?= $block->escapeHtml($ct->getTitle()) ?>"
+                                                   href="<?= $block->escapeUrl($ct->getCategoryUrl()) ?>">
+                                                    <?= $block->escapeHtml($ct->getTitle()) ?>
+                                                </a>
+                                                <?php if ($n != $_categoriesCount) { ?> <?php } ?>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div class="post-title">
+                                        <a class="post-item-link" href="<?= /*@noEscape*/
+                                        $_postUrl ?>">
+                                            <?= /*@noEscape*/
+                                            $_postName ?>
+                                        </a>
+                                    </div>
+
+                                    <div class="read-more">
+                                        <a href="<?= /*@noEscape*/
+                                        $_postUrl ?>"><?php echo __('Read more') ?></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>

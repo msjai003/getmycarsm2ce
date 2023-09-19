@@ -1,0 +1,20 @@
+<div class="footer-style-1">
+    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-1-content')->toHtml(); ?>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-logo-links">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+                </div>
+                <div class="col-lg-6 col-copyright">
+                    <?php if ($_configCore->getCoreConfig('advanced/copyright_group/custom_copyright')) { ?>
+                        <address><?php echo $_configCore->getCoreConfig('advanced/copyright_group/copyright_content') ?></address>
+                    <?php } else { ?>
+                        <address><?php echo $this->getChildHtml("copyright"); ?></address>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

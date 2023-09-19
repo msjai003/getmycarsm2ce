@@ -1,0 +1,87 @@
+body{
+background-color: #<?php echo $backgroundColor; ?>;
+<?php if ($useBackgroundImage && $bodyBackgroundImage) { ?>
+    background-image:url('<?php echo $mediaUrl . 'pattern/' . $bodyBackgroundImage; ?>');
+    background-repeat: <?php echo $backgroundRepeat; ?>;
+    background-position: <?php echo $backgroundPosition; ?>;
+<?php } ?>
+color: #<?php echo $textColor; ?>;
+<?php if ($bodyFont != 'google_font') { ?>
+    font-family: '<?php echo $bodyFont; ?>';
+<?php } else { ?>
+    font-weight: <?php echo $bodyGoogleFontWeight; ?>;
+    <?php echo $bodyGoogleFontFamily; ?>
+<?php } ?>
+font-size: <?php echo $bodyFontSize; ?>;
+}
+
+/**
+* Link, link hover
+*/
+
+a,
+.link-color{
+color: #<?php echo $linkColor; ?>;
+}
+
+a:hover,
+.link-color:hover{
+color: #<?php echo $linkHoverColor; ?>;
+}
+
+.back2top{
+background-color: #<?php echo $themeColor; ?>;
+color: #<?php echo $textOnThemeColor; ?>;
+}
+
+.back2top:hover{
+background-color: #<?php echo $themeColorDarken; ?>;
+}
+
+.cms-index-index{
+background-color: #<?php echo $homeBackgroundColor; ?>;
+}
+.swatch-option.image:not(.disabled):hover,
+.swatch-option.color:not(.disabled):hover,
+.swatch-option.selected{
+outline: 1px solid #<?php echo $themeColor; ?>;
+}
+
+/**
+* Elements google font
+*/
+
+<?php if ($enableElementGoogleFont && $elementGoogleFontTarget && $elementGoogleFontFamily && $elementGoogleFontWeight) { ?>
+    <?php echo $elementGoogleFontTarget; ?>{
+    font-weight: <?php echo $elementGoogleFontWeight; ?>;
+    <?php echo $elementGoogleFontFamily; ?>
+    }
+<?php } ?>
+
+/**
+* Show add to cart, compare, wishlist product
+*/
+
+<?php if ($showAddtoCart == 0) { ?>
+    .product-item .actions-primary .tocart{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    }
+<?php } ?>
+
+<?php if ($showAddtoCompare == 0) { ?>
+    .product-item .tocompare{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    }
+<?php } ?>
+
+<?php if ($showAddtoWishlist == 0) { ?>
+    .product-item .towishlist{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    }
+<?php } ?>

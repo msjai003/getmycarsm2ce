@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bzotech" translate="label" sortOrder="1" class="bzotech-config-system">
+            <label>BzoTech.com</label>
+        </tab>
+        <section id="megamenu" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Megamenu</label>
+            <tab>bzotech</tab>
+            <resource>BzoTech_Megamenu::config_megamenu</resource>
+
+            <group id="primary_secondary_menu" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Primary / Secondary Configuration</label>
+
+                <field id="megamenu_type" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Megamenu Type</label>
+                    <source_model>BzoTech\Megamenu\Model\Config\Source\Type</source_model>
+                </field>
+
+                <group id="primary_cfg" translate="label" type="text" sortOrder="15" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Primary Menu</label>
+
+                    <field id="vertical_title" translate="label" type="text" sortOrder="20" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Title</label>
+                        <comment>
+                            <![CDATA[
+                            Ex: All Categories. <b>Megamenu Type:</b> Vertical
+                            ]]>
+                        </comment>
+                    </field>
+
+                    <field id="vertical_limit" translate="label" type="text" sortOrder="30" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Limit</label>
+                        <validate>validate-greater-than-zero integer required-entry validate-number</validate>
+                        <comment>
+                            <![CDATA[
+                            Ex: 10. <b>Megamenu Type:</b> Vertical
+                            ]]>
+                        </comment>
+                    </field>
+
+                    <field id="text_style" translate="label" type="select" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Item Text Style</label>
+                        <source_model>BzoTech\Megamenu\Model\Config\Source\Style</source_model>
+                        <comment>
+                            <![CDATA[
+                            Only works on level 0. <b>Megamenu Type:</b> Vertical, Horizontal
+                            ]]>
+                        </comment>
+                    </field>
+
+                    <field id="text_weight" translate="label" type="select" sortOrder="50" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Item Text Weight</label>
+                        <source_model>BzoTech\Megamenu\Model\Config\Source\Weight</source_model>
+                        <comment>
+                            <![CDATA[
+                            Only works on level 0. <b>Megamenu Type:</b> Vertical, Horizontal
+                            ]]>
+                        </comment>
+                    </field>
+
+                    <field id="item_center" translate="label" type="select" sortOrder="60" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Item Center</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>
+                            <![CDATA[
+                            Only works on level 0. <b>Megamenu Type:</b> Horizontal
+                            ]]>
+                        </comment>
+                    </field>
+                </group>
+
+                <group id="secondary_cfg" translate="label" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Secondary Menu</label>
+
+                    <field id="text_weight_secondary" translate="label" type="select" sortOrder="60" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Item Text Weight</label>
+                        <source_model>BzoTech\Megamenu\Model\Config\Source\Weight</source_model>
+                        <comment>Only works on level 0.</comment>
+                    </field>
+
+                    <field id="item_center_secondary" translate="label" type="select" sortOrder="65" showInDefault="1"
+                           showInWebsite="1" showInStore="1">
+                        <label>Item Center</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Only works on level 0.</comment>
+                    </field>
+                </group>
+
+            </group>
+
+            <group id="secondary_menu" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Secondary Menu Items</label>
+
+                <field id="menu_items" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Items</label>
+                    <frontend_model>BzoTech\Megamenu\Block\Adminhtml\Form\Field\Items</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>
+                        <![CDATA[
+                            <div style="padding: 20px; color: #383d41; background: #eee; margin-bottom: 10px;">
+                                <p style="border-bottom: 1px solid #888; padding-bottom: 5px; margin-bottom: 10px;"><strong>Url:</strong></p>
+                                <ul style="font-size: 12px; list-style: none; margin: 0; padding: 0;">
+                                    <li><b>/</b>: Link to home page</li>
+                                    <li><b>path-url.html</b>: Link to: yourdomain.com/path-url.html</li>
+                                    <li><b>route</b>: Link to: yourdomain.com/route</li>
+                                    <li><b>http(s)://other-domain.com</b>: Link to: http(s)://other-domain.com</li>
+                                </ul>
+                            </div>
+
+                             <div style="padding: 20px; color: #383d41; background: #eee; margin-bottom: 10px;">
+                                <p style="border-bottom: 1px solid #888; padding-bottom: 5px; margin-bottom: 10px;"><strong>Dropdown Width:</strong></p>
+                                <div style="font-size: 12px;">
+                                    Unit: <b>px</b>, <b>%</b>. Ex: 970px, 100%<br>
+                                    If you choose <b>Dropdown Align</b>: Align Item. The recommended unit is <b>px</b><br>
+                                    If you choose <b>Dropdown Align</b>: Align Container Left, Align Container Right. Unit is <b>px</b> or <b>%</b>
+                                </div>
+                            </div>
+                        ]]>
+                    </comment>
+                </field>
+            </group>
+
+            <group id="how_to" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>How to?</label>
+
+                <comment>
+                    <![CDATA[
+                         <div style="padding: 20px; color: #383d41; background: #eee; margin-bottom: 10px;">
+                            <p style="border-bottom: 1px solid #888; padding-bottom: 5px; margin-bottom: 10px;"><strong>Disable, remove module</strong> <span style="float: right; font-size: 12px;">BzoTech_Megamenu v1.0.0</span></p>
+                            <div style="font-size: 12px;">
+                                <b>Disable module</b><br>
+                                Goto magento_root directory and use the following command:<br>
+                                php bin/magento module:disable BzoTech_Megamenu<br>
+                                php bin/magento setup:upgrade<br>
+                                php bin/magento setup:di:compile<br>
+                                php bin/magento setup:static-content:deploy -f
+
+                                <br><br>
+
+                                <b>Remove module</b><br>
+                                Goto magento_root directory and use the following command:<br>
+                                rm -rf app/code/BzoTech/Megamenu<br>
+                                php bin/magento setup:upgrade<br>
+                                php bin/magento setup:di:compile<br>
+                                php bin/magento setup:static-content:deploy -f
+                            </div>
+                        </div>
+                    ]]>
+                </comment>
+
+                <field id="empty_field_hidden_cus" translate="label" type="text" sortOrder="5" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Empty</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+use Magento\CatalogSearch\Block\Result;
+
+/** These changes need to valid applying filters and configuration before search process is started. */
+
+/** @var $block  Result */
+$productList = $block->getProductListHtml();
+?>
+
+<div class="default-search-content">
+    <div class="search-ajax-results">
+        <?= /* @noEscape */
+        $productList ?>
+    </div>
+</div>
+

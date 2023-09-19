@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bzotech" translate="label" sortOrder="1" class="bzotech-config-system">
+            <label>BzoTech.com</label>
+        </tab>
+        <section id="buy" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Buy</label>
+            <tab>bzotech</tab>
+            <resource>BzoTech_Buy::config_buy</resource>
+
+            <group id="buy_cfg" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+
+                <field id="buy_enable" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Buy Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="buy_link" translate="label" type="text" sortOrder="15" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Link Buy</label>
+                    <depends>
+                        <field id="buy_enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="support_enable" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Support Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="support_link" translate="label" type="text" sortOrder="25" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Link Support</label>
+                    <depends>
+                        <field id="support_enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="livechat_enable" translate="label" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Livechat</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="livechat_code" translate="label" type="textarea" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Livechat Code</label>
+                    <depends>
+                        <field id="livechat_enable">1</field>
+                    </depends>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

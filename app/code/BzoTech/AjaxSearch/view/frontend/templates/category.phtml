@@ -1,0 +1,18 @@
+<?php
+$helperSearch  = $this->helper('Magento\Search\Helper\Data');
+$searchKeyword = $helperSearch->getEscapedQueryText();
+$categories    = $block->getCategories($searchKeyword);
+?>
+
+<?php if (count($categories)) { ?>
+    <dl class="block">
+        <dt class="title"><?php echo __("Related Categories") ?></dt>
+        <?php foreach ($categories as $category) { ?>
+            <dd class="item">
+                <a href="<?php echo $category->getUrl() ?>"><?php echo $category->getName(); ?></a>
+            </dd>
+        <?php } ?>
+    </dl>
+<?php } ?>
+
+

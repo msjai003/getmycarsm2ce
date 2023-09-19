@@ -1,0 +1,23 @@
+<?php
+$_config  = $this->helper('BzoTech\Buy\Helper\Data');
+$mediaUrl = $_config->getMediaUrl();
+//$imageIcon = $mediaUrl . $_config->getBuyConfig('buy_cfg/buy_market');
+?>
+
+<div class="bzotech-buy">
+    <div class="buy-btn buy-button">
+        <a href="<?php echo $_config->getBuyConfig('buy_cfg/buy_link') ?>" target="_blank">
+            <span>
+                <span><?php echo __('Buy Now') ?></span>
+            </span>
+        </a>
+    </div>
+
+    <div class="buy-btn support-button">
+        <a href="<?php echo $_config->getBuyConfig('buy_cfg/support_link') ?>" target="_blank">
+            <span>
+                <span><?php echo __('Support') ?></span>
+            </span>
+        </a>
+    </div>
+</div>

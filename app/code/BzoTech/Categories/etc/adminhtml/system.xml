@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bzotech" translate="label" sortOrder="1" class="bzotech-config-system">
+            <label>BzoTech.com</label>
+        </tab>
+        <section id="categories" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Categories</label>
+            <tab>bzotech</tab>
+            <resource>BzoTech_Categories::config_categories</resource>
+
+            <group id="all_categories" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+
+                <field id="sub_limit" translate="label" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>SubCategories Limit</label>
+                    <comment>Example: 5</comment>
+                    <validate>integer required-entry validate-number</validate>
+                </field>
+
+                <field id="display_parent_image" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Parent Image</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="display_product_count" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Product Count</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="category_page" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Category Product Listing</label>
+
+                <field id="display_subcats" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Subcategories on category page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Display Subcategories on category page.</comment>
+                </field>
+
+                <field id="cat_display_child_image" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Child Image</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="cat_display_product_count" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Product Count</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

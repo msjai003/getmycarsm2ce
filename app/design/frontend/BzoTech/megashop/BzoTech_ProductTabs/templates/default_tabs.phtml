@@ -1,0 +1,42 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_ProductTabs
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+
+$list = $this->getData('list');
+$config       = $this->getData('config');
+?>
+<div class="list-tabs">
+    <div class="tabs-drop-mobile"></div>
+    <div class="list-product-tabs">
+        <?php
+        foreach ($list as $tab) {
+            ?>
+            <div class="item-tab <?php echo isset($tab['sel']) ? '  active loaded' : ''; ?>  "
+                data-tabid="<?php echo $tab['id_tab']; ?>" data-catids="<?php echo $tab['cat_children'] ?>">
+                <img class="cat-thumb" src="<?php echo $tab['cat_image']; ?>" alt="<?php echo $tab['name_tab']; ?>"/>
+				<span
+                        class="item-tab-label">
+						<?php echo $tab['name_tab']; ?>
+				</span>
+            </div>
+            <?php
+        } ?>
+        <?php if(isset($config['link_all'])) { ?>
+            <div class="item-tab all-cat">
+                <a href='<?php echo $config['link_all']; ?>' onclick="location.href='<?php echo $config['link_all']; ?>';">
+                    <span
+                            class="item-tab-label">
+                            <?php echo __('All Categories'); ?>
+                    </span>
+                </a>
+            </div>
+        <?php } ?>
+    </div>
+</div>

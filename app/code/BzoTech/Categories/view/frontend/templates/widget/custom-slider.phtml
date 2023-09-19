@@ -1,0 +1,109 @@
+<?php
+$_config        = $this->helper('BzoTech\Categories\Helper\Data');
+$listCategories = $this->getCategoryCollection();
+?>
+
+<?php if (count($listCategories)) {
+    $sliderPrefix = 'category-slider-' . rand();
+    ?>
+    <div class="block bzo-categories block-slider-categories block-slider-categories-custom" id="<?php echo $sliderPrefix; ?>">
+        <div class="block-title">
+            <strong><?php echo $escaper->escapeHtml($block->getData('categories_title')) ?></strong>
+        </div>
+
+        <div class="block-content">
+            <div class="owl-carousel owl-theme">
+                <?php foreach ($listCategories as $category) { ?>
+                    <div class="item category-item">
+                        <div class="item-inner">
+                            <?php if ($this->getData('display_parent_image') === 'true') { ?>
+                                <div class="parent-image boz-cat-image">
+                                    <a href="<?php echo $category['url']; ?>">
+                                        <img src="<?php echo $_config->getCategoryImage($category['id']); ?>"
+                                             alt="<?php echo $category['name'] ?>"/>
+                                    </a>
+                                </div>
+                            <?php } ?>
+
+                            <div class="parent-name">
+                                <strong><a href="<?php echo $category['url']; ?>"><?php echo $category['name']; ?></a></strong>
+                            </div>
+
+                            <?php if ($category['short_description']) { ?>
+                                <div class="category-short-des">
+                                    <?php echo $category['short_description']; ?>
+                                </div>
+                            <?php } ?>
+
+                            <?php $listChildCategories = $this->getCategoryChildrenCollection($category['id']); ?>
+
+                            <?php if (count($listChildCategories) && (int)$block->getData('sub_limit') > 0) { ?>
+                                <div class="child-categories-container">
+                                    <ul class="child-category-items">
+                                        <?php foreach ($listChildCategories as $child) { ?>
+                                            <li class="child-item">
+                                                <strong class="child-name">
+                                                    <a href="<?php echo $child->getUrl() ?>"><?php echo $child->getName() ?></a>
+                                                </strong>
+
+                                                <?php if ($this->getData('display_product_count') === 'true') { ?>
+                                                    <span class="count">(<?php echo $child->getProductCollection()->Count() ?>)</span>
+                                                <?php } ?>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+
+        <script>
+            require([
+                'jquery',
+                'bzo_owlCarousel',
+                'domReady!'
+            ], function ($) {
+                'use strict';
+                $('#<?php echo $sliderPrefix;?> .owl-carousel').owlCarousel({
+                    autoplay: <?php echo $block->getData('autoplay')?>,
+                    loop: <?php echo $block->getData('loop')?>,
+                    nav: <?php echo $block->getData('nav')?>,
+                    navElement: 'div',
+                    dots: <?php echo $block->getData('dots')?>,
+                    margin: <?php echo $block->getData('margin')?>,
+                    mouseDrag: <?php echo $block->getData('mouse_drag')?>,
+                    touchDrag: <?php echo $block->getData('touch_drag')?>,
+                    responsive: {
+                        0: {
+                            items: <?php echo $block->getData('screen_0')?>,
+                        },
+                        481: {
+                            items: <?php echo $block->getData('screen_1')?>,
+                        },
+                        768: {
+                            items: <?php echo $block->getData('screen_2')?>,
+                        },
+                        992: {
+                            items: <?php echo $block->getData('screen_3')?>,
+                        },
+                        1200: {
+                            items: <?php echo $block->getData('screen_4')?>,
+                        },
+                        1441: {
+                            items: <?php echo $block->getData('screen_5')?>,
+                        },
+                        1681: {
+                            items: <?php echo $block->getData('screen_6')?>,
+                        },
+                        1921: {
+                            items: <?php echo $block->getData('screen_7')?>,
+                        }
+                    }
+                })
+            });
+        </script>
+    </div>
+<?php } ?>

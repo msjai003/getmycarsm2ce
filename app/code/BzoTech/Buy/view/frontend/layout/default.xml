@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.top">
+            <block class="Magento\Framework\View\Element\Template" name="bzotech.buy"
+                   template="BzoTech_Buy::buy.phtml" ifconfig="buy/buy_cfg/buy_enable"/>
+        </referenceContainer>
+
+        <referenceContainer name="page.bottom">
+            <block class="Magento\Framework\View\Element\Template" name="bzotech.livechat"
+                   template="BzoTech_Buy::livechat.phtml" ifconfig="buy/buy_cfg/livechat_enable"/>
+        </referenceContainer>
+    </body>
+</page>

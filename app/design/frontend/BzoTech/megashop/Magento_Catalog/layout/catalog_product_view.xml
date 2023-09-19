@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.main">
+            <block class="BzoTech\Megashop\Block\Categories" name="product.categories"
+                   template="BzoTech_Megashop::product-categories.phtml"/>
+
+            <block class="Magento\Catalog\Block\Product\View" name="social.share"
+                   template="BzoTech_Megashop::social-share.phtml"
+                   after="-"/>
+        </referenceBlock>
+        
+        <referenceContainer name="content">
+            <container name="detail.top" htmlTag="div" htmlClass="detail-top-container" before="-">
+                <container name="detail.box.image" htmlTag="div" htmlClass="detail-image-container" before="-"/>
+                <container name="detail.box.info" htmlTag="div" htmlClass="detail-info-container"
+                           after="detail.box.image">
+
+                    <container name="detail.info.sidebar" htmlTag="div" htmlClass="detail-info-sidebar" after="-"/>
+                </container>
+            </container>
+        </referenceContainer>
+
+        <!-- <referenceBlock name="product.info.sku">
+             <block class="Magento\Cms\Block\Block" name="detail.shipping">
+                 <arguments>
+                     <argument name="block_id" xsi:type="string">detail-shipping</argument>
+                 </arguments>
+             </block>
+         </referenceBlock>-->
+
+        <referenceBlock name="product.info.main">
+            
+                <!-- <block class="Magento\Catalog\Block\Product\View\Additional" name="product.info.additional.top"/> -->
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.countdown" template="Magento_Catalog::product/list/countdown.phtml" after="product.attributes" before="product.info.stock.sku"/>
+
+            <container name="bottom.product.info" htmlTag="div" htmlClass="bottom-product-info" after="-"/>
+
+            <container name="detail.shipping.container" htmlTag="div" htmlClass="detail-shipping-container">
+                <block class="Magento\Cms\Block\Block" name="detail.shipping">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">detail-shipping</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceBlock>
+
+        <referenceContainer name="sidebar.additional">
+            <block class="Magento\Cms\Block\Block" name="detail.sidebar">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">detail-sidebar</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="page.bottom.container">
+            <container name="bottom.container.detail" htmlTag="div" htmlClass="container"/>
+        </referenceContainer>
+
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+
+        <move element="product.info.stock.sku" destination="product.info.main" after="product.price.final"/>
+        <move element="product.info.overview" destination="product.info.main" after="-"/>
+
+        <move element="bottom.product.info" destination="product.info.main" after="-"/>
+
+        <move element="product.info" destination="bottom.product.info" before="-"/>
+        <move element="product.categories" destination="product.info.main" before="product.info.overview"/>
+        <move element="product.info.sku" destination="product.info.main" after="product.info.stock.sku"/>
+        <move element="social.share" destination="bottom.product.info"/>
+
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <move element="catalog.product.related" destination="bottom.container.detail" before="-"/>
+        <move element="product.info.upsell" destination="bottom.container.detail" after="atalog.product.related"/>
+        <move element="product.info.addto" destination="product.info.media" before="-"/>
+        <move element="product.info.media" destination="detail.box.image" before="-"/>
+        <move element="product.info.main" destination="detail.box.info" before="-"/>
+
+        <move element="product.attributes" destination="product.info.main" after="product.info.price"/>
+        <move element="product.info.options.wrapper" destination="product.info.main" before="product.attributes"/>
+        <move element="detail.shipping.container" destination="product.info.main" after="product.info.overview"/>
+    </body>
+</page>

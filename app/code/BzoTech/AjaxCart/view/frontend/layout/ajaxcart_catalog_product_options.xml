@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxCart
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company 
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="ajaxcart_catalog_product_view"/>
+    <body>
+        <referenceContainer name="page.messages" remove="true"/>
+
+        <referenceContainer name="content">
+            <container name="page.messages.ajaxcart" htmlTag="div" htmlClass="page messages" before="-">
+                <block class="Magento\Framework\View\Element\Template" name="ajax.message.placeholder.ajax"
+                       template="Magento_Theme::html/messages.phtml"/>
+                <block class="Magento\Framework\View\Element\Messages" name="messages.ajax" as="messages.ajax"
+                       template="Magento_Theme::messages.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

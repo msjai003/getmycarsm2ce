@@ -1,0 +1,51 @@
+<?php
+$categories = $block->getCategoryCollection();
+$_config    = $this->helper('BzoTech\Categories\Helper\Data');
+?>
+
+<div class="block block-all-categories">
+    <div class="categories-listing grid-categories">
+        <?php $i = 0;
+        foreach ($categories as $category) {
+            $i++; ?>
+            <?php if ($i > 1) { ?>
+                <div class="category-item">
+                    <div class="item-inner">
+                        <?php if ($_config->getCategoriesConfig('all_categories/display_parent_image')) { ?>
+                            <div class="parent-image boz-cat-image">
+                                <a href="<?php echo $category->getUrl(); ?>">
+                                    <img src="<?php echo $_config->getCategoryImage($category->getId()); ?>"
+                                         alt="<?php echo $category->getName() ?>"/>
+                                </a>
+                            </div>
+                        <?php } ?>
+
+                        <div class="parent-name">
+                            <strong><a href="<?php echo $category->getUrl(); ?>"><?php echo $category->getName(); ?></a></strong>
+                        </div>
+
+                        <?php $listChildCategories = $this->getCategoryChildrenCollection($category->getId()); ?>
+
+                        <?php if (count($listChildCategories)) { ?>
+                            <div class="child-categories-container">
+                                <ul class="child-category-items">
+                                    <?php foreach ($listChildCategories as $child) { ?>
+                                        <li class="child-item">
+                                            <strong class="child-name">
+                                                <a href="<?php echo $child->getUrl() ?>"><?php echo $child->getName() ?></a>
+                                            </strong>
+
+                                            <?php if ($_config->getCategoriesConfig('all_categories/display_product_count')) { ?>
+                                                <span class="count">(<?php echo $child->getProductCollection()->Count() ?>)</span>
+                                            <?php } ?>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
+        <?php } ?>
+    </div>
+</div>

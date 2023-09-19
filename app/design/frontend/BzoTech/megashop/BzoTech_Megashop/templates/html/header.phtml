@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+
+$_config     = $this->helper('BzoTech\Megashop\Helper\Data');
+$_configCore = $this->helper('BzoTech\ThemeCore\Helper\Data');
+$headerStyle = $_config->getThemeConfig('theme_layout/layout_header/header_style');
+$mediaSrc    = $_config->getMediaUrl();
+$breakPoint  = $_configCore->getCoreConfig('general/mobile_layout/mobile_break_point');
+?>
+<header class="page-header">
+    <div class="page-header-content">
+        <?php include($block->getTemplateFile("BzoTech_Megashop::html/header/" . $headerStyle . ".phtml")); ?>
+    </div>
+    <?php include($block->getTemplateFile("BzoTech_Megashop::html/header-mobile.phtml")); ?>
+</header>

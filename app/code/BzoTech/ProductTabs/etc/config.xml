@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <producttabs>
+            <general>
+                <isactive>1</isactive>
+                <title>Product Tabs Title</title>
+                <type_show>slider</type_show>
+                <type_listing>all</type_listing>
+                <under_price>100</under_price>
+                <display_countdown>0</display_countdown>
+            </general>
+
+            <source_options>
+                <type_filter></type_filter>
+                <field_tabs></field_tabs>
+                <category_tabs></category_tabs>
+                <category_select></category_select>
+                <order_by>entity_id</order_by>
+                <order_dir>DESC</order_dir>
+                <limitation>8</limitation>
+            </source_options>
+
+            <tab_slider>
+                <margin>30</margin>
+                <autoplay>0</autoplay>
+                <loop>0</loop>
+                <nav>1</nav>
+                <dots>0</dots>
+                <mousedrag>1</mousedrag>
+                <touchdrag>1</touchdrag>
+                <screen_0>2</screen_0>
+                <screen_1>2</screen_1>
+                <screen_2>3</screen_2>
+                <screen_3>4</screen_3>
+                <screen_4>4</screen_4>
+                <screen_5>4</screen_5>
+                <screen_6>4</screen_6>
+                <screen_7>4</screen_7>
+            </tab_slider>
+        </producttabs>
+    </default>
+</config>

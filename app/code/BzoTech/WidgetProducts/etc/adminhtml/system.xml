@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bzotech" translate="label" sortOrder="1" class="bzotech-config-system">
+            <label>BzoTech</label>
+        </tab>
+        <section id="widgetproducts" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>WidgetProducts</label>
+            <tab>bzotech</tab>
+            <resource>BzoTech_WidgetProducts::config_widgetproducts</resource>
+
+            <group id="widgetproducts" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+
+                <comment>
+                    <![CDATA[
+                         <div style="padding: 20px; color: #383d41; background: #eee; margin-bottom: 10px;">
+                            <p style="border-bottom: 1px solid #888; padding-bottom: 5px; margin-bottom: 10px;"><strong>Disable, remove module</strong> <span style="float: right; font-size: 12px;">BzoTech_Megamenu v1.0.0</span></p>
+                            <div style="font-size: 12px;">
+                                <b>Disable module</b><br>
+                                Goto magento_root directory and use the following command:<br>
+                                php bin/magento module:disable BzoTech_WidgetProducts<br>
+                                php bin/magento setup:upgrade<br>
+                                php bin/magento setup:static-content:deploy -f<br>
+                                php bin/magento setup:di:compile
+
+                                <br><br>
+
+                                <b>Remove module</b><br>
+                                Goto magento_root directory and use the following command:<br>
+                                rm -rf app/code/BzoTech/WidgetProducts<br>
+                                php bin/magento setup:upgrade<br>
+                                php bin/magento setup:static-content:deploy -f<br>
+                                php bin/magento setup:di:compile
+                            </div>
+                        </div>
+                    ]]>
+                </comment>
+            </group>
+        </section>
+    </system>
+</config>

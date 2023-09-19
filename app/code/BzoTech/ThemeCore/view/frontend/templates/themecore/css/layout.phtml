@@ -1,0 +1,241 @@
+/**
+* Set max-width layout
+*/
+
+@media (min-width: 1024px) {
+body .container,
+body .page-main{
+max-width: <?php echo $maxWidth; ?>;
+}
+}
+
+/**
+* Listing Layout
+*/
+
+@media (min-width: 1921px) {
+<?php
+$one_column_1921       = $_config->getCoreConfig('product_listing/category_one_column/one_column_1921', $storeView);
+$one_column_1921_width = 100 / $one_column_1921 . '%';
+?>
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_1921_width; ?>;
+}
+
+<?php
+$two_column_1921       = $_config->getCoreConfig('product_listing/category_two_column/two_column_1921', $storeView);
+$two_column_1921_width = 100 / $two_column_1921 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_1921_width; ?>;
+}
+
+<?php
+$three_column_1921       = $_config->getCoreConfig('product_listing/category_three_column/three_column_1921', $storeView);
+$three_column_1921_width = 100 / $three_column_1921 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_1921_width; ?>;
+}
+
+}
+
+
+@media (min-width: 1681px) and (max-width: 1920px) {
+<?php
+$one_column_1681_1920       = $_config->getCoreConfig('product_listing/category_one_column/one_column_1681_1920', $storeView);
+$one_column_1681_1920_width = 100 / $one_column_1681_1920 . '%';
+?>
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_1681_1920_width; ?>;
+}
+
+<?php
+$two_column_1681_1920       = $_config->getCoreConfig('product_listing/category_two_column/two_column_1681_1920', $storeView);
+$two_column_1681_1920_width = 100 / $two_column_1681_1920 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_1681_1920_width; ?>;
+}
+
+<?php
+$three_column_1681_1920       = $_config->getCoreConfig('product_listing/category_three_column/three_column_1681_1920', $storeView);
+$three_column_1681_1920_width = 100 / $three_column_1681_1920 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_1681_1920_width; ?>;
+}
+
+}
+
+@media (min-width: 1441px) and (max-width: 1680px) {
+<?php
+$one_column_1441_1680       = $_config->getCoreConfig('product_listing/category_one_column/one_column_1441_1680', $storeView);
+$one_column_1441_1680_width = 100 / $one_column_1441_1680 . '%';
+?>
+
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_1441_1680_width; ?>;
+}
+
+<?php
+$two_column_1441_1680       = $_config->getCoreConfig('product_listing/category_two_column/two_column_1441_1680', $storeView);
+$two_column_1441_1680_width = 100 / $two_column_1441_1680 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_1441_1680_width; ?>;
+}
+
+<?php
+$three_column_1441_1680       = $_config->getCoreConfig('product_listing/category_three_column/three_column_1441_1680', $storeView);
+$three_column_1441_1680_width = 100 / $three_column_1441_1680 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_1441_1680_width; ?>;
+}
+
+}
+
+@media (min-width: 1200px) and (max-width: 1440px) {
+<?php
+$one_column_1200_1440       = $_config->getCoreConfig('product_listing/category_one_column/one_column_1200_1440', $storeView);
+$one_column_1200_1440_width = 100 / $one_column_1200_1440 . '%';
+?>
+
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_1200_1440_width; ?>;
+}
+
+<?php
+$two_column_1200_1440       = $_config->getCoreConfig('product_listing/category_two_column/two_column_1200_1440', $storeView);
+$two_column_1200_1440_width = 100 / $two_column_1200_1440 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_1200_1440_width; ?>;
+}
+
+<?php
+$three_column_1200_1440       = $_config->getCoreConfig('product_listing/category_three_column/three_column_1200_1440', $storeView);
+$three_column_1200_1440_width = 100 / $three_column_1200_1440 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_1200_1440_width; ?>;
+}
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+<?php
+$one_column_992_1199       = $_config->getCoreConfig('product_listing/category_one_column/one_column_992_1199', $storeView);
+$one_column_992_1199_width = 100 / $one_column_992_1199 . '%';
+?>
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_992_1199_width; ?>;
+}
+
+<?php
+$two_column_992_1199       = $_config->getCoreConfig('product_listing/category_two_column/two_column_992_1199', $storeView);
+$two_column_992_1199_width = 100 / $two_column_992_1199 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_992_1199_width; ?>;
+}
+
+<?php
+$three_column_992_1199       = $_config->getCoreConfig('product_listing/category_three_column/three_column_992_1199', $storeView);
+$three_column_992_1199_width = 100 / $three_column_992_1199 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_992_1199_width; ?>;
+}
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+<?php
+$one_column_768_991       = $_config->getCoreConfig('product_listing/category_one_column/one_column_768_991', $storeView);
+$one_column_768_991_width = 100 / $one_column_768_991 . '%';
+?>
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_768_991_width; ?>;
+}
+
+<?php
+$two_column_768_991       = $_config->getCoreConfig('product_listing/category_two_column/two_column_768_991', $storeView);
+$two_column_768_991_width = 100 / $two_column_768_991 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_768_991_width; ?>;
+}
+
+<?php
+$three_column_768_991       = $_config->getCoreConfig('product_listing/category_three_column/three_column_768_991', $storeView);
+$three_column_768_991_width = 100 / $three_column_768_991 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_768_991_width; ?>;
+}
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+<?php
+$one_column_481_767       = $_config->getCoreConfig('product_listing/category_one_column/one_column_481_767', $storeView);
+$one_column_481_767_width = 100 / $one_column_481_767 . '%';
+?>
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_481_767_width; ?>;
+}
+
+<?php
+$two_column_481_767       = $_config->getCoreConfig('product_listing/category_two_column/two_column_481_767', $storeView);
+$two_column_481_767_width = 100 / $two_column_481_767 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_481_767_width; ?>;
+}
+
+<?php
+$three_column_481_767       = $_config->getCoreConfig('product_listing/category_three_column/three_column_481_767', $storeView);
+$three_column_481_767_width = 100 / $three_column_481_767 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_481_767_width; ?>;
+}
+
+}
+
+@media (max-width: 480px) {
+<?php
+$one_column_0_480       = $_config->getCoreConfig('product_listing/category_one_column/one_column_0_480', $storeView);
+$one_column_0_480_width = 100 / $one_column_0_480 . '%';
+?>
+.page-layout-1column .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $one_column_0_480_width; ?>;
+}
+
+<?php
+$two_column_0_480       = $_config->getCoreConfig('product_listing/category_two_column/two_column_0_480', $storeView);
+$two_column_0_480_width = 100 / $two_column_0_480 . '%';
+?>
+.page-layout-2columns-left .products.wrapper.products-grid .product-items .product-item,
+.page-layout-2columns-right .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $two_column_0_480_width; ?>;
+}
+
+<?php
+$three_column_0_480       = $_config->getCoreConfig('product_listing/category_three_column/three_column_0_480', $storeView);
+$three_column_0_480_width = 100 / $three_column_0_480 . '%';
+?>
+.page-layout-3columns .products.wrapper.products-grid .product-items .product-item{
+width: <?php echo $three_column_0_480_width; ?>;
+}
+
+}

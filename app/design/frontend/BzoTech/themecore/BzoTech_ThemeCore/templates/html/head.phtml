@@ -1,0 +1,49 @@
+<?php
+$_config                 = $this->helper('BzoTech\ThemeCore\Helper\Data');
+$store_id                = $_config->getStoreId();
+$_css_load_file          = $this->helper('BzoTech\ThemeCore\Helper\Cssconfig');
+$bodyFont                = $_config->getCoreConfig('general/bodyfont_group/body_font');
+$enableElementGoogleFont = $_config->getCoreConfig('general/element_googlefont_group/use_element_googlefont');
+$enableStoreCode         = $_config->getStoreConfig('web/url/use_store');
+$baseURL                 = $_config->getStoreConfig('web/unsecure/base_url');
+?>
+<?php if ($bodyFont == 'google_font') {
+    echo $_config->getCoreConfig('general/bodyfont_group/body_googlefont_link');
+} ?>
+
+<?php if ($enableElementGoogleFont) {
+    echo $_config->getCoreConfig('general/element_googlefont_group/element_googlefont_link');
+} ?>
+
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_css_load_file->getSettingsFile() ?>"/>
+
+<?php if ($enableStoreCode) { ?>
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'domReady!'
+        ], function ($) {
+            var linkStore = $('a[data-bzo-store]');
+            var dataLink;
+            var dataPath = "";
+            var hrefLink = "";
+
+            $(linkStore).each(function () {
+                dataLink = $(this).attr('data-bzo-link');
+                dataStore = $(this).attr('data-bzo-store');
+
+                if (typeof dataLink !== "undefined") {
+                    dataPath = dataLink;
+                }
+
+                if (dataStore) {
+                    hrefLink = "<?php echo $baseURL;?>" + dataStore + "/" + dataPath
+                } else {
+
+                }
+
+                $(this).attr('href', "<?php echo $baseURL;?>" + $(this).attr('data-bzo-store') + "/" + dataPath);
+            });
+        });
+    </script>
+<?php } ?>

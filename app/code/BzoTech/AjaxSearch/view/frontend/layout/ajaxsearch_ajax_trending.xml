@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxSearch
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+        <block class="Magento\Framework\View\Element\Template" name="ajax.default.search"
+               template="BzoTech_AjaxSearch::default.phtml">
+            <block class="BzoTech\AjaxSearch\Block\Search\Term" name="search_term_default"
+                   template="BzoTech_AjaxSearch::popular-search.phtml" ifconfig="ajaxsearch/general/enable_search_term">
+                <block class="Magento\Framework\Pricing\Render" name="product.price.render.default">
+                    <arguments>
+                        <argument name="price_render_handle" xsi:type="string">catalog_product_prices</argument>
+                        <argument name="use_link_for_as_low_as" xsi:type="boolean">true</argument>
+                        <!-- set "override" configuration settings here -->
+                    </arguments>
+                </block>
+            </block>
+
+            <block class="BzoTech\AjaxSearch\Block\Search\Products" name="search_products_default"
+                   template="BzoTech_AjaxSearch::popular-product.phtml"/>
+        </block>
+
+    </container>
+</layout>

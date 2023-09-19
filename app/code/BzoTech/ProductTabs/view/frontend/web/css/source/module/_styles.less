@@ -1,0 +1,102 @@
+& when (@media-common = true) {
+    .bzo-product-tabs {
+        .block-title {
+            font-size: 133.333%;
+            margin-bottom: 20px;
+        }
+
+        .owl-theme .owl-nav {
+            margin: 0;
+            position: absolute;
+            top: -67px;
+            right: -5px;
+        }
+
+        .owl-theme .owl-nav [class*=owl-] {
+            width: 40px;
+            height: 32px;
+            padding: 0;
+            color: #666;
+            line-height: 24px;
+            font-size: 32px;
+        }
+    }
+
+    .bzo-product-tabs {
+        .products-grid .product-item-info {
+            border: 1px solid transparent;
+            margin: 0 !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            max-width: unset !important;
+            width: unset !important;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+
+            &:hover {
+                border-color: #ddd;
+            }
+
+            .product-item-details {
+                padding: 0 20px 20px;
+            }
+        }
+
+        .products-grid .product-item-inner {
+            position: static !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none;
+            width: auto !important;
+            height: auto !important;
+            border: none !important;
+        }
+
+        .products-grid .product-item-actions {
+            margin: 0 !important;
+        }
+    }
+
+    /**
+     * Loadmore
+     */
+
+    .bzo-product-tabs.loadmore {
+        .product-items {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -15px !important;
+            margin-right: -15px !important;
+        }
+
+        .product-item {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .bzo-product-tabs.loadmore {
+        .product-item {
+            width: 25% !important;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .bzo-product-tabs.slider {
+        .list-tabs {
+            margin-right: 100px;
+        }
+
+        .owl-theme .owl-nav {
+            top: -77px;
+        }
+
+        .owl-theme .owl-nav [class*=owl-] {
+            height: 42px;
+            line-height: 34px;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+/**
+ * Login page
+ */
+
+.login-container {
+    .fieldset:after {
+        display: none;
+    }
+
+    .block .block-title {
+        color: #222;
+    }
+
+    .block-customer-login,
+    .block-new-customer {
+        min-height: 504px;
+        border: 1px solid #ddd;
+        padding: 30px;
+        background-color: #fafafa;
+        .border-radius(6px);
+    }
+}
+
+/**
+ * Create account
+ */
+ .form-create-account {
+    .actions-toolbar > .primary {
+        float: right;
+        .action {
+            background: @theme_color;
+        }
+    }
+ }
+.customer-account-create {
+    .form-create-account {
+        min-width: unset !important;
+        width: unset !important;
+
+        .fieldset.create.info,
+        .fieldset.create.account {
+            border: 1px solid #ddd;
+            padding: 30px;
+            background: #fafafa;
+            width: 48.8%;
+            min-height: 481px;
+            .border-radius(6px);
+
+            .legend {
+                font-size: 1.8rem;
+                font-weight: 500;
+                color: #222;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+            }
+        }
+
+        .fieldset.create.info {
+            float: right;
+        }
+
+        .fieldset.create.account {
+            float: left;
+        }
+
+    }
+}
+
+@media (max-width: 767px) {
+    .login-container .block-customer-login,
+    .login-container .block-new-customer {
+        float: none !important;
+        width: 100% !important;
+        min-height: unset;
+        margin-bottom: 30px;
+    }
+
+    .customer-account-create .form-create-account .fieldset.create.info,
+    .customer-account-create .form-create-account .fieldset.create.account {
+        float: none !important;
+        width: 100% !important;
+        min-height: unset;
+    }
+}

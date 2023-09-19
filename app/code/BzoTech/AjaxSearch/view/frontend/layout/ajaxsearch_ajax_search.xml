@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxSearch
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+
+        <block class="BzoTech\AjaxSearch\Block\Search\Result" name="search.result"
+               template="BzoTech_AjaxSearch::result.phtml">
+            <block class="BzoTech\AjaxSearch\Block\Product\ListProduct" name="search_result_list"
+                   template="BzoTech_AjaxSearch::product/list.phtml">
+
+                <block class="Magento\Framework\Pricing\Render" name="product.price.render.default">
+                    <arguments>
+                        <argument name="price_render_handle" xsi:type="string">catalog_product_prices</argument>
+                        <argument name="use_link_for_as_low_as" xsi:type="boolean">true</argument>
+                        <!-- set "override" configuration settings here -->
+                    </arguments>
+                </block>
+
+                <block class="Magento\Framework\View\Element\RendererList"
+                       name="category.product.type.details.renderers" as="details.renderers">
+                    <block class="Magento\Framework\View\Element\Template"
+                           name="category.product.type.details.renderers.default" as="default"/>
+                </block>
+
+                <container name="term-search" label="Additional Info">
+                    <block class="Magento\AdvancedSearch\Block\Suggestions"
+                           name="search_suggestions_ajax" ifconfig="ajaxsearch/general/enable_search_term"/>
+                    <block class="Magento\AdvancedSearch\Block\Recommendations"
+                           name="search_recommendations_ajax" ifconfig="ajaxsearch/general/enable_search_term"/>
+
+                    <block class="BzoTech\AjaxSearch\Block\Category" name="categories.ajax"
+                           template="BzoTech_AjaxSearch::category.phtml"/>
+                </container>
+            </block>
+        </block>
+    </container>
+</layout>

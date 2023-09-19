@@ -1,0 +1,75 @@
+.custom-modal-popuplogin {
+    .modal-header {
+        border: none;
+    }
+
+    .actions-toolbar .secondary {
+        float: none;
+    }
+
+    .bzo-popup-modal .actions-toolbar .primary button {
+        text-transform: uppercase;
+    }
+}
+
+/**
+ * BzoTech_AttributesSearch
+ */
+.bzo-as-attr-inner {
+    .number {
+        display: none !important;
+    }
+
+    .chosen-container + .number {
+        display: block !important;
+    }
+}
+
+.bzo-as-form-wrap {
+    position: relative;
+
+    .bzo-as-attr {
+        width: 25%;
+    }
+
+    .chosen-container-single .chosen-single {
+        border: 1px solid #ccc;
+        .box-shadow-none();
+    }
+
+    .chosen-container .chosen-drop {
+        border-color: #ccc;
+    }
+
+    .chosen-container-single .chosen-single div b {
+        background: none !important;
+
+        &:before {
+            position: absolute;
+            top: 17px;
+            right: 16px;
+            width: 9px;
+            height: 9px;
+            .caret-line-down(#444);
+        }
+    }
+
+    .chosen-container-single .chosen-single div {
+        width: 42px;
+    }
+
+    .chosen-container-single:not(.chosen-disabled) .chosen-single,
+    .chosen-container-single.chosen-container-active .chosen-single {
+        font-weight: 700;
+        color: #000;
+    }
+
+    .chosen-container .chosen-results li {
+        padding: 8px 6px;
+    }
+
+    .chosen-container .chosen-results li.highlighted {
+        background: #eee !important;
+        color: #222;
+    }
+}

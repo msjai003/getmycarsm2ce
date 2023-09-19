@@ -1,0 +1,70 @@
+<?php
+$mediaSrc = $_configCore->getMediaUrl();
+?>
+<div class="header-desktop">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hd-top-support">
+                            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header-contact-tracking')->toHtml(); ?>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="top-links">
+                            <?php echo $this->getChildHtml("currency"); ?>
+                            <?php echo $this->getChildHtml("store_language"); ?>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <div class="header-center">
+            <div class="container">
+                <div class="header-center-wrapper">
+                    <div class="logo-container col-lg-3">   
+                        <?php echo $this->getChildHtml("logo"); ?>       
+                    </div>
+                    <div class="search-header col-lg-6">
+                        <div id="search-desktop" data-element-mobile="search-mobile">
+                            <div data-mobile-content="content-mobile" class="content-mobile">
+                                <?php echo $this->getChildHtml("topSearch"); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-content col-lg-3">
+                        <div class="support-contact">   
+                            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header-contact')->toHtml(); ?> 
+                        </div>
+                        <div id="cart-desktop" class="hd-cart" data-element-mobile="cart-mobile">
+                            <div data-mobile-content="content-mobile" class="content-mobile">
+                                <?php echo $this->getChildHtml("minicart"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div id="menu-desktop" class="header-megamenu" data-element-mobile="menu-mobile">
+                    <div data-mobile-content="content-mobile" class="content-mobile">
+                        <?php echo $this->getChildHtml("catalog.topnav"); ?>
+                    </div>
+                </div>
+                <div class="bottom-links">
+                    <?php echo $this->getChildHtml("compare_header"); ?>
+                    <?php echo $this->getChildHtml("wishlist_header"); ?>
+                    <div class="header-links">
+                        <div id="desktop-customer-links" class="cus-links">
+                            <?php echo $this->getChildHtml("header.links"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+

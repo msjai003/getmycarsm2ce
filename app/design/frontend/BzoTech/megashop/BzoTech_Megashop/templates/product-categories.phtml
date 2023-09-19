@@ -1,0 +1,20 @@
+<?php
+$product     = $block->getCurrentProduct();
+$categoryIds = $product->getCategoryIds();
+$categories  = $block->getCategoryCollection($isActive = true, $level = 2, $sortBy = false, $pageSize = 4)
+    ->addAttributeToFilter('entity_id', $categoryIds);
+?>
+
+<?php if (count($categories)) { ?>
+    <div class="product-cats-list">
+        <div class="cats-title"><?php echo __('Categories:') ?></div>
+
+        <div class="cats-list">
+            <ul>
+                <?php foreach ($categories as $category) { ?>
+                    <li><a href="<?php echo $category->getUrl() ?>"><?php echo $category->getName() ?></a></li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+<?php } ?>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Search\Block\Term $block
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<?php if (count($block->getTerms()) > 0): ?>
+    <div class="block block-term">
+        <div class="block-title">
+            <strong><?php echo __('Popular Search')?></strong>
+        </div>
+
+        <div class="block-content">
+            <ul class="search-terms">
+                <?php foreach ($block->getTerms() as $_term): ?>
+                    <li class="item-term">
+                        <a href="<?= $block->escapeUrl($block->getSearchUrl($_term)) ?>">
+                            <?= $block->escapeHtml($_term->getQueryText()) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxLayeredNavigation
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="BzoTech\AjaxLayeredNavigation\Block\AjaxLayeredNavigation"
+                   name="ajax.layered.navigation.loader"
+                   template="BzoTech_AjaxLayeredNavigation::loader.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

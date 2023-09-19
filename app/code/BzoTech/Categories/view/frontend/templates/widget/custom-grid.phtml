@@ -1,0 +1,63 @@
+<?php
+$_config        = $this->helper('BzoTech\Categories\Helper\Data');
+$listCategories = $this->getCategoryCollection();
+?>
+
+<?php if (count($listCategories)) { ?>
+    <div class="block bzo-categories block-grid-categories block-grid-categories-custom">
+        <div class="block-title">
+            <strong><?php echo $escaper->escapeHtml($block->getData('categories_title')) ?></strong>
+        </div>
+
+        <div class="block-content">
+            <div class="categories-listing grid-categories">
+                <?php foreach ($listCategories as $category) { ?>
+                    <div class="category-item">
+                        <div class="item-inner">
+                            <?php if ($this->getData('display_parent_image') === 'true') { ?>
+                                <div class="parent-image boz-cat-image">
+                                    <a href="<?php echo $category['url']; ?>">
+                                        <img src="<?php echo $_config->getCategoryImage($category['id']); ?>"
+                                             alt="<?php echo $category['name'] ?>"/>
+                                    </a>
+                                </div>
+                            <?php } ?>
+
+                            <div class="category-info">
+                                <div class="parent-name">
+                                    <strong><a href="<?php echo $category['url']; ?>"><?php echo $category['name']; ?></a></strong>
+                                </div>
+
+                                <?php if ($category['short_description']) { ?>
+                                    <div class="category-short-des">
+                                        <?php echo $category['short_description']; ?>
+                                    </div>
+                                <?php } ?>
+
+                                <?php $listChildCategories = $this->getCategoryChildrenCollection($category['id']); ?>
+
+                                <?php if (count($listChildCategories) && (int)$block->getData('sub_limit') > 0) { ?>
+                                    <div class="child-categories-container">
+                                        <ul class="child-category-items">
+                                            <?php foreach ($listChildCategories as $child) { ?>
+                                                <li class="child-item">
+                                                    <strong class="child-name">
+                                                        <a href="<?php echo $child->getUrl() ?>"><?php echo $child->getName() ?></a>
+                                                    </strong>
+
+                                                    <?php if ($this->getData('display_product_count') === 'true') { ?>
+                                                        <span class="count">(<?php echo $child->getProductCollection()->Count() ?>)</span>
+                                                    <?php } ?>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>

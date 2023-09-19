@@ -1,0 +1,99 @@
+<?php
+$_config           = $this->helper('BzoTech\Categories\Helper\Data');
+$listCategories    = $this->getCategoryCollection();
+$_configThemeCore  = $this->helper('BzoTech\ThemeCore\Helper\Data');
+$mediaSrc          = $_configThemeCore->getMediaUrl();
+$enableLadyLoading = $_configThemeCore->getCoreConfig('advanced/lazyload_group/enable_ladyloading');
+if ($enableLadyLoading) {
+    $imgClass = 'lazyload';
+} else {
+    $imgClass = '';
+}
+?>
+
+<?php if (count($listCategories)) { ?>
+    <div class="block bzo-categories block-grid-categories">
+        <div class="block-title">
+            <strong><?php echo $escaper->escapeHtml($block->getData('categories_title')) ?></strong>
+        </div>
+
+        <div class="block-content">
+            <div class="categories-listing grid-categories">
+                <?php 
+                $i=0; $cls="";
+                foreach ($listCategories as $category) { 
+                    $i++;
+                        if($i==floor(count($listCategories)/2)) $cls="open";
+                        else $cls="";
+                ?>
+                    <div class="category-item <?php echo $cls; ?>">
+                        <div class="item-inner">
+                            <?php if ($this->getData('display_parent_image') === 'true') { ?>
+                                <div class="parent-image boz-cat-image">
+                                    <a href="<?php echo $category['url']; ?>">
+                                        <img class="<?php echo $imgClass; ?>"
+                                            <?php if ($enableLadyLoading) { ?>
+                                                src="<?php echo $mediaSrc . 'lazyloading/blank.png'; ?>"
+                                                data-src="<?php echo $_config->getCategoryImage($category['id']); ?>"
+                                            <?php } else { ?>
+                                                src="<?php echo $_config->getCategoryImage($category['id']); ?>"
+                                            <?php } ?>
+                                             alt="<?php echo $category['name'] ?>"/>
+                                    </a>
+                                </div>
+                            <?php } ?>
+
+                            <div class="category-info">
+                                <?php if ($category['short_description']) { ?>
+                                    <div class="category-short-des">
+                                        <?php echo $category['short_description']; ?>
+                                    </div>
+                                <?php } ?>
+                                <div class="parent-name">
+                                    <strong><a href="<?php echo $category['url']; ?>"><?php echo $category['name']; ?></a></strong>
+                                </div>
+                                <div class="view-all">
+                                    <a href="<?php echo $category['url']; ?>"><?php echo __('View all'); ?></a>
+                                </div>
+
+                                <?php $listChildCategories = $this->getCategoryChildrenCollection($category['id']); ?>
+
+                                <?php if (count($listChildCategories) && (int)$block->getData('sub_limit') > 0) { ?>
+                                    <div class="child-categories-container">
+                                        <ul class="child-category-items">
+                                            <?php foreach ($listChildCategories as $child) { ?>
+                                                <li class="child-item">
+                                                    <strong class="child-name">
+                                                        <a href="<?php echo $child->getUrl() ?>"><?php echo $child->getName() ?></a>
+                                                    </strong>
+
+                                                    <?php if ($this->getData('display_product_count') === 'true') { ?>
+                                                        <span class="count">(<?php echo $child->getProductCollection()->Count() ?>)</span>
+                                                    <?php } ?>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<script>
+            require([
+                'jquery',
+                'domReady!'
+            ], function ($) {
+                'use strict';
+               $('.block-grid-categories .category-item').hover(function(){
+                    $('.block-grid-categories .category-item').each(function() {
+			            $(this).removeClass("open");
+		            });
+                    $(this).addClass("open");
+                });
+            });
+</script>

@@ -1,0 +1,40 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxCart
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+
+$_config            = $this->helper('BzoTech\Megashop\Helper\Data');
+$quickViewContainer = '.product-item-name';
+$productStyle       = $_config->getThemeConfig('theme_layout/layout_product/product_style');
+
+if ($productStyle == 'product-1' || $productStyle == 'product-2' || $productStyle == 'product-3' || $productStyle == 'product-4') {
+    $quickViewContainer = '.actions-secondary';
+}
+?>
+
+<script>
+    require([
+        'jquery',
+        'quickView',
+        'domReady!'
+    ], function ($, cartQuickView) {
+        var quickViewCf = {
+            isQuickView: <?php echo $this->_isQuickView() ? 'true' : 'false'; ?>,
+            isAjaxCart: <?php echo $this->_isAjaxCart() ? 'true' : 'false'; ?>,
+            product_container: '.product-items .product-item',
+            button_container: '<?php echo $quickViewContainer; ?>',
+            label_button: '<?php echo $this->_getConfig('label_button'); ?>',
+            base_url: '<?php echo $this->getUrl();?>'
+        }
+        $(quickViewCf.product_container).cartQuickView(quickViewCf);
+        $(document).on("afterAjaxProductsLoaded", function (event) {
+            $(quickViewCf.product_container).cartQuickView(quickViewCf);
+        });
+    });
+</script>	

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="head.additional">
+            <block class="BzoTech\ThemeCore\Block\Template" name="config.theme.setting"
+                   template="BzoTech_ThemeCore::html/head.phtml" after="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="page.top">
+            <block class="Magento\Framework\View\Element\Template" name="page.loading" as="page.loading"
+                   template="BzoTech_ThemeCore::html/page-loading.phtml"
+                   ifconfig="themecore/advanced/lazyload_group/enable_page_ladyloading"/>
+        </referenceContainer>
+
+        <referenceContainer name="page.bottom">
+            <block class="Magento\Framework\View\Element\Template" name="backtotop"
+                   template="BzoTech_ThemeCore::html/backtotop.phtml"
+                   ifconfig="themecore/advanced/backtotop_group/show_backtotop"/>
+        </referenceContainer>
+
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="custom.js"
+                   template="BzoTech_ThemeCore::html/custom-js.phtml"
+                   ifconfig="themecore/advanced/developer_group/enable_custom_js" after="-"/>
+        </referenceContainer>
+    </body>
+</page>

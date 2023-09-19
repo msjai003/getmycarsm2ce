@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_PopupContent
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="bzo_popup_newsletter" class="BzoTech\PopupContent\Block\Widget\SubscribeWidget">
+        <label translate="true">BzoTech - Widget Newsletter</label>
+        <description translate="true">BzoTech - Widget Newsletter</description>
+    </widget>
+</widgets>

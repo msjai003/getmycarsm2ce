@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+
+    <!-- Grid -->
+
+    <widget id="bzotech_grid_widgetproducts" class="BzoTech\WidgetProducts\Block\Widget\WidgetProducts"
+            is_email_compatible="true"
+            placeholder_image="Magento_Catalog::images/product_widget_new.png">
+        <label translate="true">BZOTech - WidgetProducts Grid</label>
+        <description translate="true">List of WidgetProducts</description>
+        <parameters>
+            <parameter name="widget_style" xsi:type="select" visible="true">
+                <label translate="true">Style</label>
+                <options>
+                    <option name="widget_style" value="grid"
+                            selected="true">
+                        <label translate="true">Grid</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="widget_grid_title" xsi:type="text" required="true" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+
+            <parameter name="product_source" xsi:type="select" visible="true">
+                <label translate="true">Type Filter</label>
+                <options>
+                    <option name="product_source_lastest_products" value="lastest_products"
+                            selected="true">
+                        <label translate="true">New Products</label>
+                    </option>
+                    <option name="product_source_best_sellers" value="best_sellers">
+                        <label translate="true">Best Sellers</label>
+                    </option>
+                    <option name="product_source_special_products" value="special_products">
+                        <label translate="true">Special Products</label>
+                    </option>
+                    <option name="product_source_featured_products" value="featured_products">
+                        <label translate="true">Featured Products</label>
+                    </option>
+                    <option name="product_source_countdown_products" value="countdown_products">
+                        <label translate="true">Countdown Products</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="date_to" xsi:type="text" visible="true">
+                <label translate="true">Date to</label>
+                <depends>
+                    <parameter name="product_source" value="countdown_products" />
+                </depends>
+            </parameter>
+
+            <parameter name="select_category" xsi:type="text" visible="true">
+                <label translate="true">Category IDs</label>
+                <value>2</value>
+            </parameter>
+
+            <parameter name="product_order_by" xsi:type="select" visible="true">
+                <label translate="true">Product Order By</label>
+                <options>
+                    <option name="product_order_by_desc" value="DESC"
+                            selected="true">
+                        <label translate="true">DESC</label>
+                    </option>
+                    <option name="product_order_by_asc" value="ASC">
+                        <label translate="true">ASC</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="countdown_timer" xsi:type="select" visible="true">
+                <label translate="true">Countdown Timer</label>
+                <options>
+                    <option name="countdown_timer_yes" value="1"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="countdown_timer_no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="product_limitation" xsi:type="text" required="true" visible="true">
+                <label translate="true">Products Limit</label>
+                <value>5</value>
+            </parameter>
+
+            <parameter name="custom_template" xsi:type="text" visible="true">
+                <label translate="true">Custom Template</label>
+                <description translate="true">
+                    <![CDATA[Ex: widget/grid-custom.phtml. Note: This field is recommended for developers only]]>
+                </description>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <!-- Slider -->
+
+    <widget id="bzotech_slider_widgetproducts" class="BzoTech\WidgetProducts\Block\Widget\Slider"
+            is_email_compatible="true"
+            placeholder_image="Magento_Catalog::images/product_widget_new.png">
+        <label translate="true">BZOTech - WidgetProducts Slider Grid</label>
+        <description translate="true">List of WidgetProducts</description>
+        <parameters>
+            <parameter name="widget_style" xsi:type="select" visible="true">
+                <label translate="true">Style</label>
+                <options>
+                    <option name="widget_style" value="slider"
+                            selected="true">
+                        <label translate="true">Slider</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="widget_grid_title" xsi:type="text" required="true" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+
+            <parameter name="product_source" xsi:type="select" visible="true">
+                <label translate="true">Type Filter</label>
+                <options>
+                    <option name="product_source_lastest_products" value="lastest_products"
+                            selected="true">
+                        <label translate="true">New Products</label>
+                    </option>
+                    <option name="product_source_best_sellers" value="best_sellers">
+                        <label translate="true">Best Sellers</label>
+                    </option>
+                    <option name="product_source_special_products" value="special_products">
+                        <label translate="true">Special Products</label>
+                    </option>
+                    <option name="product_source_featured_products" value="featured_products">
+                        <label translate="true">Featured Products</label>
+                    </option>
+                    <option name="product_source_countdown_products" value="countdown_products">
+                        <label translate="true">Countdown Products</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="date_to" xsi:type="text" visible="true">
+                <label translate="true">Date to</label>
+                <depends>
+                    <parameter name="product_source" value="countdown_products" />
+                </depends>
+            </parameter>
+
+            <parameter name="select_category" xsi:type="text" visible="true">
+                <label translate="true">Category IDs</label>
+                <value>2</value>
+            </parameter>
+
+            <parameter name="product_order_by" xsi:type="select" visible="true">
+                <label translate="true">Product Order By</label>
+                <options>
+                    <option name="product_order_by_desc" value="DESC"
+                            selected="true">
+                        <label translate="true">DESC</label>
+                    </option>
+                    <option name="product_order_by_asc" value="ASC">
+                        <label translate="true">ASC</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="countdown_timer" xsi:type="select" visible="true">
+                <label translate="true">Countdown Timer</label>
+                <options>
+                    <option name="countdown_timer_yes" value="1"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="countdown_timer_no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="product_limitation" xsi:type="text" required="true" visible="true">
+                <label translate="true">Products Limit</label>
+                <value>5</value>
+            </parameter>
+
+            <parameter name="custom_template" xsi:type="text" visible="true">
+                <label translate="true">Custom Template</label>
+                <description translate="true">
+                    <![CDATA[Ex: widget/slider-grid-custom.phtml. Note: This field is recommended for developers only]]>
+                </description>
+            </parameter>
+
+            <parameter name="margin" xsi:type="text" required="true" visible="true">
+                <label translate="true">Margin</label>
+                <value>30</value>
+            </parameter>
+
+            <parameter name="autoplay" xsi:type="select" visible="true">
+                <label translate="true">Auto Play</label>
+                <options>
+                    <option name="autoplay_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="autoplay_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="loop" xsi:type="select" visible="true">
+                <label translate="true">Loop</label>
+                <options>
+                    <option name="loop_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="loop_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="nav" xsi:type="select" visible="true">
+                <label translate="true">Navigation</label>
+                <options>
+                    <option name="nav_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="nav_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="dots" xsi:type="select" visible="true">
+                <label translate="true">Dots</label>
+                <options>
+                    <option name="dots_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="dots_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="mouse_drag" xsi:type="select" visible="true">
+                <label translate="true">Mouse Drag</label>
+                <options>
+                    <option name="mouse_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="mouse_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="touch_drag" xsi:type="select" visible="true">
+                <label translate="true">Touch Drag</label>
+                <options>
+                    <option name="touch_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="touch_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_0" xsi:type="select" visible="true">
+                <label translate="true">Number columns on max screen 480px</label>
+                <options>
+                    <option name="screen_0_1" value="1" selected="true">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_0_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_0_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_0_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_0_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_0_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_0_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_0_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_1" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 481px -> 767px</label>
+                <options>
+                    <option name="screen_1_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_1_2" value="2" selected="true">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_1_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_1_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_1_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_1_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_1_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_1_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_2" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 768px -> 991px</label>
+                <options>
+                    <option name="screen_2_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_2_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_2_3" value="3" selected="true">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_2_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_2_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_2_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_2_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_2_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_3" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 992px -> 1199px</label>
+                <options>
+                    <option name="screen_3_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_3_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_3_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_3_4" value="4" selected="true">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_3_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_3_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_3_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_3_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_4" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 1200px -> 1440px</label>
+                <options>
+                    <option name="screen_4_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_4_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_4_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_4_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_4_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_4_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_4_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_4_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_5" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 1441px -> 1680px</label>
+                <options>
+                    <option name="screen_5_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_5_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_5_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_5_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_5_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_5_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_5_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_5_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_6" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 1681px -> 1920px</label>
+                <options>
+                    <option name="screen_6_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_6_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_6_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_6_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_6_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_6_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_6_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_6_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_7" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen is greater than 1921px</label>
+                <options>
+                    <option name="screen_7_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_7_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_7_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_7_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_7_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_7_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_7_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_7_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <!-- Slide type list -->
+
+    <widget id="bzotech_slider_list_widgetproducts" class="BzoTech\WidgetProducts\Block\Widget\SliderList"
+            is_email_compatible="true"
+            placeholder_image="Magento_Catalog::images/product_widget_new.png">
+        <label translate="true">BZOTech - WidgetProducts Slider List</label>
+        <description translate="true">List of WidgetProducts</description>
+        <parameters>
+            <parameter name="widget_style" xsi:type="select" visible="true">
+                <label translate="true">Style</label>
+                <options>
+                    <option name="widget_style" value="slider_list"
+                            selected="true">
+                        <label translate="true">Slider List</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="widget_grid_title" xsi:type="text" required="true" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+
+            <parameter name="product_source" xsi:type="select" visible="true">
+                <label translate="true">Type Filter</label>
+                <options>
+                    <option name="product_source_lastest_products" value="lastest_products"
+                            selected="true">
+                        <label translate="true">New Products</label>
+                    </option>
+                    <option name="product_source_best_sellers" value="best_sellers">
+                        <label translate="true">Best Sellers</label>
+                    </option>
+                    <option name="product_source_special_products" value="special_products">
+                        <label translate="true">Special Products</label>
+                    </option>
+                    <option name="product_source_featured_products" value="featured_products">
+                        <label translate="true">Featured Products</label>
+                    </option>
+                    <option name="product_source_countdown_products" value="countdown_products">
+                        <label translate="true">Countdown Products</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="date_to" xsi:type="text" visible="true">
+                <label translate="true">Date to</label>
+                <depends>
+                    <parameter name="product_source" value="countdown_products" />
+                </depends>
+            </parameter>
+
+            <parameter name="select_category" xsi:type="text" visible="true">
+                <label translate="true">Category IDs</label>
+                <value>2</value>
+            </parameter>
+
+            <parameter name="product_order_by" xsi:type="select" visible="true">
+                <label translate="true">Product Order By</label>
+                <options>
+                    <option name="product_order_by_desc" value="DESC"
+                            selected="true">
+                        <label translate="true">DESC</label>
+                    </option>
+                    <option name="product_order_by_asc" value="ASC">
+                        <label translate="true">ASC</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="countdown_timer" xsi:type="select" visible="true">
+                <label translate="true">Countdown Timer</label>
+                <options>
+                    <option name="countdown_timer_yes" value="1"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="countdown_timer_no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="product_limitation" xsi:type="text" required="true" visible="true">
+                <label translate="true">Products Limit</label>
+                <value>5</value>
+            </parameter>
+
+            <parameter name="product_row" xsi:type="text" required="true" visible="true">
+                <label translate="true">Products Row</label>
+                <value>3</value>
+            </parameter>
+
+            <parameter name="custom_template" xsi:type="text" visible="true">
+                <label translate="true">Custom Template</label>
+                <description translate="true">
+                    <![CDATA[Ex: widget/slider-list-custom.phtml. Note: This field is recommended for developers only]]>
+                </description>
+            </parameter>
+
+            <parameter name="margin" xsi:type="text" required="true" visible="true">
+                <label translate="true">Margin</label>
+                <value>30</value>
+            </parameter>
+
+            <parameter name="autoplay" xsi:type="select" visible="true">
+                <label translate="true">Auto Play</label>
+                <options>
+                    <option name="autoplay_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="autoplay_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="loop" xsi:type="select" visible="true">
+                <label translate="true">Loop</label>
+                <options>
+                    <option name="loop_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="loop_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="nav" xsi:type="select" visible="true">
+                <label translate="true">Navigation</label>
+                <options>
+                    <option name="nav_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="nav_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="dots" xsi:type="select" visible="true">
+                <label translate="true">Dots</label>
+                <options>
+                    <option name="dots_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="dots_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="mouse_drag" xsi:type="select" visible="true">
+                <label translate="true">Mouse Drag</label>
+                <options>
+                    <option name="mouse_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="mouse_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="touch_drag" xsi:type="select" visible="true">
+                <label translate="true">Touch Drag</label>
+                <options>
+                    <option name="touch_true" value="true"
+                            selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="touch_false" value="false">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_0" xsi:type="select" visible="true">
+                <label translate="true">Number columns on max screen 480px</label>
+                <options>
+                    <option name="screen_0_1" value="1" selected="true">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_0_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_0_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_0_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_0_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_0_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_0_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_0_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_1" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 481px -> 767px</label>
+                <options>
+                    <option name="screen_1_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_1_2" value="2" selected="true">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_1_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_1_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_1_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_1_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_1_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_1_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_2" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 768px -> 991px</label>
+                <options>
+                    <option name="screen_2_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_2_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_2_3" value="3" selected="true">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_2_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_2_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_2_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_2_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_2_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_3" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 992px -> 1199px</label>
+                <options>
+                    <option name="screen_3_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_3_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_3_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_3_4" value="4" selected="true">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_3_5" value="5">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_3_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_3_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_3_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_4" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 1200px -> 1440px</label>
+                <options>
+                    <option name="screen_4_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_4_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_4_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_4_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_4_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_4_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_4_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_4_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_5" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 1441px -> 1680px</label>
+                <options>
+                    <option name="screen_5_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_5_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_5_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_5_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_5_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_5_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_5_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_5_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_6" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen 1681px -> 1920px</label>
+                <options>
+                    <option name="screen_6_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_6_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_6_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_6_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_6_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_6_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_6_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_6_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="screen_7" xsi:type="select" visible="true">
+                <label translate="true">Number columns on screen is greater than 1921px</label>
+                <options>
+                    <option name="screen_7_1" value="1">
+                        <label translate="true">1 Column</label>
+                    </option>
+                    <option name="screen_7_2" value="2">
+                        <label translate="true">2 Columns</label>
+                    </option>
+                    <option name="screen_7_3" value="3">
+                        <label translate="true">3 Columns</label>
+                    </option>
+                    <option name="screen_7_4" value="4">
+                        <label translate="true">4 Columns</label>
+                    </option>
+                    <option name="screen_7_5" value="5" selected="true">
+                        <label translate="true">5 Columns</label>
+                    </option>
+                    <option name="screen_7_6" value="6">
+                        <label translate="true">6 Columns</label>
+                    </option>
+                    <option name="screen_7_7" value="7">
+                        <label translate="true">7 Columns</label>
+                    </option>
+                    <option name="screen_7_8" value="8">
+                        <label translate="true">8 Columns</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
+

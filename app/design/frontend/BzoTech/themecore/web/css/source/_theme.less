@@ -1,0 +1,157 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//  Theme file should contain declarations (overrides) ONLY OF EXISTING variables
+//  Otherwise this theme won't be available for parent nesting
+//  All new variables should be placed in local theme lib or local theme files
+
+// Layout
+
+@layout__max-width: 100%;
+@layout-indent__width: 0;
+
+@font-family-name__base: '';
+@font-family__base: '';
+@form-element-input__font-size: false;
+@line-height__base: 1.666666667;
+
+//button
+@button__font-family: inherit;
+@button__color: #fff;
+@button__background: #2d3054;
+@button__border: none;
+@button__hover__color: #fff;
+@button__hover__background: darken(@button__background, 7%);
+@button__hover__border: none;
+
+@button-primary__background: @button__background;
+@button-primary__hover__background: @button__hover__background;
+@button__font-weight: @font-weight__regular;
+@button__padding: 14px 30px;
+@button__border-radius: 23px;
+@button-primary__border: none;
+@button-primary__hover__border: none;
+
+// Input text
+@form-element-input__font-family: inherit;
+@form-element-input__color: #666;
+@form-element-input__height: 40px;
+@form-element-input-placeholder__color: #999;
+@form-element-input__border-radius: 2px;
+@form-element-input__border: 1px solid #ddd;
+
+@form-field-label__font-weight: 400;
+
+// Form
+@form-field-type-revert: false;
+@form-field-type-label-inline__width: false;
+@select__padding: 6px 20px 6px 6px;
+
+@form-fieldset__margin: 0 0 30px;
+@form-element-input__focus__border: 1px solid #66afe9;
+
+@link__hover__text-decoration: none;
+@link__active__text-decoration: none;
+@focus__box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+@link__active__color: '';
+@link__visited__color: '';
+
+@modal-slide-mobile__background-color: #fff;
+
+.opacity(@opacity) {
+    opacity: @opacity;
+}
+
+.border-radius(@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+.transform-rotate(@rotate) {
+    -webkit-transform: rotate(@rotate);
+    -ms-transform: rotate(@rotate); // IE9 only
+    -o-transform: rotate(@rotate);
+    transform: rotate(@rotate);
+}
+
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -ms-transform: @transform; // IE9 only
+    -o-transform: @transform;
+    transform: @transform;
+}
+
+.transition(@transform) {
+    transition: @transform;
+    -moz-transition: @transform;
+    -webkit-transition: @transform;
+    -o-transition: @transform;
+}
+
+.box-shadow(@boxshadow) {
+    box-shadow: @boxshadow;
+    -moz-box-shadow: @boxshadow;
+    -webkit-box-shadow: @boxshadow;
+    -o-box-shadow: @boxshadow;
+}
+
+.box-shadow-none() {
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+}
+
+.placeholder(@placeholder) {
+    &::-webkit-input-placeholder {
+        color: @placeholder;
+    }
+    &:-moz-placeholder {
+        color: @placeholder;
+    }
+    &::-moz-placeholder {
+        color: @placeholder;
+    }
+    &:-ms-input-placeholder {
+        color: @placeholder;
+    }
+}
+
+.caret-line-down(@color) {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-left: 1px solid @color;
+    border-top: 1px solid @color;
+    .transform(rotate(-135deg))
+}
+
+.caret-down() {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAG7AAABuwE67OPiAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAE5QTFRF////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAnpMQAAABl0Uk5TAAEMFBgkMjqEiJaXmJmam5ydp7bX2+Ly/hiMp+IAAADdSURBVFjD7c3JFsIgDIXhxM7zPPD+L2prVUqllMSNnsNdhcX/AeDm5vYrw+jGTW8RAoSDmBJk/ZxMYgihFcsahoDNWrYwCp6w9WKEWLCEZy9i8PrtqkkC1lvVewA+Q3j3/vqiC2pPF469FCorAatjTxN0PUXQ9/bCWS+F0ihgedbbCabeRjD318JVL4VCK2Bx1ZsFm94k2PXngm0vhVwRMLft9QKl1wm0/lOg9lLIHgJm1F4VOP1e4PVSSFNeLwVurwqcfi/weilw+5fA7xehm+fui35ZEICbm9t/7A6WoS0LOnWPDgAAAABJRU5ErkJggg==');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 9px;
+}
+
+.remove-ul-ol-style() {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}

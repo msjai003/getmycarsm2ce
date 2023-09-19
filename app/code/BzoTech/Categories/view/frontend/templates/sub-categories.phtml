@@ -1,0 +1,34 @@
+<?php
+$_category           = $block->getCurrentCategory();
+$_config             = $this->helper('BzoTech\Categories\Helper\Data');
+$listChildCategories = $this->getSubCategoryCollection($_category->getId());
+?>
+<?php if (count($listChildCategories)) { ?>
+    <div class="sub-categories-container">
+        <ul class="sub-items">
+            <?php foreach ($listChildCategories as $child) {
+                $countItem = $child->getProductCollection()->Count() ?>
+                <li class="sub-item">
+                    <div class="item-inner">
+                        <?php if ($_config->getCategoriesConfig('category_page/cat_display_child_image')) { ?>
+                            <div class="child-image boz-cat-image">
+                                <a href="<?php echo $child->getUrl() ?>">
+                                    <img src="<?php echo $_config->getCategoryImage($child->getId()); ?>"
+                                         alt="<?php echo $child->getName() ?>"/>
+                                </a>
+                            </div>
+                        <?php } ?>
+
+                        <strong class="child-name">
+                            <a href="<?php echo $child->getUrl() ?>"><?php echo $child->getName() ?></a>
+                        </strong>
+
+                        <?php if ($_config->getCategoriesConfig('category_page/cat_display_product_count')) { ?>
+                            <span class="count">(<?php echo $countItem ?>)</span>
+                        <?php } ?>
+                    </div>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+<?php } ?>

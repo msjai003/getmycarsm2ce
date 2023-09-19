@@ -1,0 +1,64 @@
+<?php
+$mediaSrc   = $_configCore->getMediaUrl();
+$logoMobile = $_configCore->getCoreConfig('general/mobile_layout/logo_mobile');
+?>
+
+<div id="bzo-header-mobile" class="header-mobile"
+     data-breakpoint="1024">
+    <div class="mobile-top">
+        <div class="mobile-top-content clearfix">
+            <div id="mobile-nav" class="mobile-nav">
+                <a href="javascript:void(0);"
+                   title="<?php echo __('Navigation') ?>"><span><?php echo __('Navigation') ?></span></a>
+            </div>
+
+            <div class="mobile-logo">
+                <a href="<?php echo $this->getUrl('') ?>">
+                    <img src="<?php echo $mediaSrc . 'logomobile/' . $logoMobile; ?>"
+                         alt="<?php /* @escapeNotVerified */
+                         echo $block->getLogoAlt() ?>"
+                         width="<?php echo $_configCore->getCoreConfig('general/mobile_layout/logomobile_width'); ?>"
+                         height="<?php echo $_configCore->getCoreConfig('general/mobile_layout/logomobile_height'); ?>"/>
+                </a>
+            </div>
+
+            <div class="mobile-cart">
+                <div id="cart-mobile" data-element-desktop="cart-desktop"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-bottom">
+        <div class="mobile-bottom-content">
+            <div id="search-mobile" data-element-desktop="search-desktop"></div>
+        </div>
+    </div>
+
+
+    <div class="navigation-mobile">
+        <div class="navigation-content">
+            <div class="mobile-customer">
+                <div class="customer-avata">
+
+                </div>
+
+                <div class="customer-info">
+                    <div class="mobile-welcome">
+                        <?php if ($this->isLoggedIn()) { ?>
+                            <div class="greet welcome">
+                                <span><?php echo __('Your dashboard') ?></span>
+                            </div>
+                        <?php } else { ?>
+                            <span><?php echo __('Welcome!') ?></span>
+                        <?php } ?>
+
+                    </div>
+
+                    <div id="mobile-customer-links" class="customer-links"></div>
+                </div>
+            </div>
+
+            <div id="menu-mobile" data-element-desktop="menu-desktop"></div>
+        </div>
+    </div>
+</div>

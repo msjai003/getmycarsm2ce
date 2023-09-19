@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menuHtml    = $block->getHtml('level-top', 'submenu', $columnsLimit);
+$_config      = $this->helper('BzoTech\Megamenu\Helper\Data');
+$type         = $_config->getMenuConfig('primary_secondary_menu/megamenu_type');
+$itemCenter   = $_config->getMenuConfig('primary_secondary_menu/primary_cfg/item_center');
+if ($itemCenter && $type == "horizontal") {
+    $menuCenterClass = 'menu-center';
+} else {
+    $menuCenterClass = '';
+}
+$itemStyleClass = $_config->getMenuConfig('primary_secondary_menu/primary_cfg/text_style') . ' ' . $_config->getMenuConfig('primary_secondary_menu/primary_cfg/text_weight') . ' ' . $menuCenterClass;
+?>
+<div class="megamenu-container clearfix">
+    <?php if ($type == "horizontal") { ?>
+        <nav class="megamenu-nav horizontal-type <?php echo $itemStyleClass; ?>">
+            <ul class="megamenu-items">
+                <?= /* @noEscape */
+                $_menuHtml ?>
+                <?= $block->getChildHtml() ?>
+            </ul>
+        </nav>
+    <?php } else { ?>
+        <div class="megamenu-vertical">
+            <div class="megamenu-title">
+                <span><?php echo $escaper->escapeHtml($_config->getMenuConfig('primary_secondary_menu/primary_cfg/vertical_title')) ?></span>
+            </div>
+
+            <div class="mega-dropdown">
+                <nav class="megamenu-nav vertical-type <?php echo $itemStyleClass; ?>">
+                    <ul class="megamenu-items">
+                        <?= /* @noEscape */
+                        $_menuHtml ?>
+                        <?= $block->getChildHtml() ?>
+                    </ul>
+                    <div class="more-items">
+                        <span data-more="<?php echo $escaper->escapeHtml(__('Show more')) ?>"
+                              data-less="<?php echo $escaper->escapeHtml(__('Show less')) ?>"></span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("BzoTech_Megamenu::html/secondary-menu.phtml")->toHtml() ?>
+    <?php } ?>
+</div>

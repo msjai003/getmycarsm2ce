@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <buy>
+            <buy_cfg>
+                <buy_enable>0</buy_enable>
+                <livechat_code>
+                    <![CDATA[
+                    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="b6488791-5d2b-43c5-a981-133887265de7";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+                    ]]>
+                </livechat_code>
+            </buy_cfg>
+        </buy>
+    </default>
+</config>

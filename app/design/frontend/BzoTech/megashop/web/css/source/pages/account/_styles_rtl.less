@@ -1,0 +1,142 @@
+.account .toolbar.wishlist-toolbar {
+    margin-bottom: 0;
+
+    .toolbar-amount {
+        margin-top: 5px;
+    }
+}
+
+.account .form-wishlist-items {
+    margin-bottom: 30px;
+}
+
+.account .form-wishlist-items .products-grid {
+    padding-top: 30px;
+}
+
+.wishlist-toolbar .pages {
+    display: none;
+}
+
+.account .form-wishlist-items ~ .wishlist-toolbar {
+    br,
+    .toolbar-amount,
+    .limiter {
+        display: none;
+    }
+
+    .pages {
+        display: block;
+        position: static;
+        margin-bottom: 30px;
+
+        .pages-items {
+            display: block;
+        }
+    }
+}
+
+.form-wishlist-items .actions-toolbar button.action.update {
+    display: none;
+}
+
+.form-wishlist-items .actions-toolbar .primary {
+    float: right;
+
+    button {
+        margin-left: 5.75px;
+        margin-right: 0;
+    }
+}
+
+.block-collapsible-nav-content {
+    .nav.items {
+        display: unset;
+
+        .nav.item {
+            display: block;
+        }
+    }
+}
+
+.account .page-title-wrapper .page-title, [class^='sales-guest-'] .page-title-wrapper .page-title, .sales-guest-view .page-title-wrapper .page-title {
+    margin-right: 0;
+    margin-left: 0;
+    color: #2d3054;
+}
+
+/**
+ * Wishlist
+ */
+.products-grid.wishlist {
+    .btn-quickview {
+        display: none !important;
+    }
+
+    .product-item-inner {
+        .field.comment-box,
+        .box-tocart {
+            display: none;
+        }
+    }
+
+    .product-item .price-box {
+        position: static;
+    }
+}
+
+.wishlist-index-index .products-grid.wishlist .product-item-info {
+    width: 100%;
+    padding: 20px 20px 10px;
+}
+
+.wishlist-index-index .form-wishlist-items .actions-toolbar {
+    padding-top: 30px;
+}
+
+@media (min-width: 1024px) {
+    .wishlist-index-index .products-grid .product-items {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px !important;
+    }
+
+    .wishlist-index-index .products-grid .product-item {
+        width: 33.3333% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 15px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid.wishlist .product-item-actions {
+        margin-left: 105px;
+    }
+}
+
+@media (max-width: 767px) {
+    .account {
+        .column.main {
+            padding-top: 30px;
+        }
+
+        .block-collapsible-nav {
+            top: 0;
+            right: -15px;
+            left: -15px;
+            width: unset;
+
+            .block-collapsible-nav-title {
+                text-transform: uppercase;
+                color: #222;
+            }
+        }
+    }
+}
+.customer-account-login .actions-toolbar .action.primary, .actions-toolbar .action-primary {
+    background: @theme_color;
+}
+.login-container .block .login .actions-toolbar > .secondary {
+    margin-top: 10px;
+}

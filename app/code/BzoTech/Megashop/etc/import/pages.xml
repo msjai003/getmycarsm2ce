@@ -1,0 +1,884 @@
+<?xml version="1.0"?>
+<root>
+  <pages>
+    <cms_item>
+      <title>404 Not Found</title>
+      <identifier>no-route</identifier>
+      <content_heading></content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="notfound-container"&gt;
+    &lt;div class="image-notfound"&gt;
+        &lt;img src="{{media url=wysiwyg/notfound/404notfound.png}}" alt="404 Not Found" width="695" height="386" /&gt;
+    &lt;/div&gt;
+
+    &lt;div class="notfound-info"&gt;
+        &lt;div class="title google-element-font"&gt;Oop, That Link Is Broken.&lt;/div&gt;
+        &lt;div class="description"&gt;
+            Page doesn’t exist or some other error occured. Go to our
+            Previous page or go back to Home page
+        &lt;/div&gt;
+
+        &lt;div class="notfound-action"&gt;
+            &lt;a class="go-back" href="javascript:void(0)" onclick="history.go(-1); return false;"&gt;Go Back&lt;/a&gt;
+            &lt;a class="go-home" href="{{store url=""}}"&gt;Home Page&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>Home Demo 1</title>
+      <identifier>home-demo-1</identifier>
+      <content_heading></content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="slideshow-home slidershow-nav-1 hover-show-nav mb-desktop-100 mb-mobile-20"&gt;
+    &lt;div class="container"&gt;
+       &lt;div class="slideshow-wapper"&gt;
+        &lt;div class=" owl-carousel owl-theme" data-mage-init='{"bzo_carousel":{"nav": false, "dots": true, "items": 1, "margin": 0, "loop": true, "autoplay": true, "autoplayHoverPause": true}}'&gt;
+            &lt;div class="item"&gt;
+                &lt;a href="#"&gt;
+                    &lt;img src="{{media url=wysiwyg/slider/home-1/slideshow1.png}}" alt="Slidershow" width="1278" height="625" /&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="item"&gt;
+                &lt;a href="#"&gt;
+                    &lt;img src="{{media url=wysiwyg/slider/home-1/slideshow2.png}}" alt="Slidershow" width="1278" height="625" /&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="item"&gt;
+                &lt;a href="#"&gt;
+                    &lt;img src="{{media url=wysiwyg/slider/home-1/slideshow3.png}}" alt="Slidershow" width="1278" height="625" /&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+       &lt;div class="slider-loading"&gt;
+                    &lt;span&gt;Loading...&lt;/span&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="block block-cate-home nav-1 hover-show-nav hidden-block-title mb-desktop-70 mb-mobile-20"&gt;
+     &lt;div class="container"&gt;
+        &lt;div class="block-content"&gt;
+            {{widget type="BzoTech\Categories\Block\Widget\Categories" widget_style="grid" categories_title="Hot Categories" category_ids="373,374,375,376,377,378,379,381,382,383" display_parent_image="true" sub_limit="10" display_product_count="true"}}
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="block block-product-home product-item-shadow hidden-block-title nav-1 hover-show-nav mb-desktop-50 mb-mobile-30"&gt;
+     &lt;div class="container"&gt;
+        &lt;div class="block-title title-center"&gt;
+            &lt;strong class="google-element-font"&gt;New products&lt;/strong&gt;
+        &lt;/div&gt;
+        
+        {{widget type="BzoTech\WidgetProducts\Block\Widget\Slider" widget_style="slider" widget_grid_title="New products" product_source="lastest_products" select_category="243" product_order_by="DESC" countdown_timer="1" product_limitation="6" margin="8" autoplay="false" loop="false" nav="true" dots="false" mouse_drag="true" touch_drag="true" screen_0="1" screen_1="2" screen_2="2" screen_3="3" screen_4="3" screen_5="4" screen_6="4" screen_7="4"}}
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="banners columns3 mb-desktop-70 mb-mobile-20"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-4 col-sm-4"&gt;
+                &lt;div class="banner1 banner-image"&gt;
+                    &lt;div class="info-block"&gt;
+                        &lt;div class="heading-1"&gt;New Arrivals&lt;/div&gt;
+                        &lt;div class="heading-2"&gt;Beats Studio 4&lt;/div&gt;
+                        &lt;div class="desc-text"&gt;season essential!&lt;/div&gt;
+                        &lt;a href="#" class="element-font shopnow"&gt;Shop Now&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class="image-block"&gt;
+                        &lt;img class="lazyload" src="{{media url=lazyloading/blank.png}}" data-src="{{media url=wysiwyg/banner/banner3-1.png}}" alt="Banner" width="630" height="357" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-lg-4 col-sm-4"&gt;
+                &lt;div class="banner2 banner-image"&gt;
+                    &lt;div class="info-block"&gt;
+                        &lt;div class="heading-1"&gt;New 2022&lt;/div&gt;
+                        &lt;div class="heading-2"&gt;Samsung Grear&lt;/div&gt;
+                        &lt;div class="desc-text"&gt;season sale 20%&lt;/div&gt;
+                        &lt;a href="#" class="element-font shopnow"&gt;Shop Now&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class="image-block"&gt;
+                        &lt;img class="lazyload" src="{{media url=lazyloading/blank.png}}" data-src="{{media url=wysiwyg/banner/banner-12.png}}" alt="Banner" width="630" height="357" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        
+            &lt;div class="col-lg-4 col-sm-4"&gt;
+                &lt;div class="banner3 banner-image"&gt;
+                    &lt;div class="info-block"&gt;
+                        &lt;div class="heading-1"&gt;New Series&lt;/div&gt;
+                        &lt;div class="heading-2"&gt;Apple Watch 5&lt;/div&gt;
+                        &lt;div class="desc-text"&gt;best up to 60%&lt;/div&gt;
+                        &lt;a href="#" class="element-font shopnow"&gt;Shop Now&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class="image-block"&gt;
+                        &lt;img class="lazyload" src="{{media url=lazyloading/blank.png}}" data-src="{{media url=wysiwyg/banner/banner-13.png}}" alt="Banner" width="630" height="357" /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="block block-product-home product-item-shadow hidden-block-title nav-1 hover-show-nav mb-desktop-50 mb-mobile-30"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="block-title title-center"&gt;
+            &lt;strong class="google-element-font"&gt;Best sellers&lt;/strong&gt;
+        &lt;/div&gt;
+
+        {{widget type="BzoTech\WidgetProducts\Block\Widget\Slider" widget_style="slider" widget_grid_title="Best Selling" product_source="lastest_products" select_category="237" product_order_by="DESC" countdown_timer="0" product_limitation="6" margin="8" autoplay="false" loop="false" nav="true" dots="false" mouse_drag="true" touch_drag="true" screen_0="1" screen_1="2" screen_2="2" screen_3="3" screen_4="3" screen_5="4" screen_6="4" screen_7="4"}}
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="block block-product-home product-item-shadow hidden-block-title nav-1 hover-show-nav mb-desktop-100 mb-mobile-30"&gt;
+     &lt;div class="container"&gt;
+        &lt;div class="block-title title-center"&gt;
+            &lt;strong class="google-element-font"&gt;Deals of the week&lt;/strong&gt;
+        &lt;/div&gt;
+       {{widget type="BzoTech\WidgetProducts\Block\Widget\Slider" widget_style="slider" widget_grid_title="Deals of the week" product_source="special_products" select_category="244" product_order_by="DESC" countdown_timer="1" product_limitation="10" custom_template="widget/slider-special.phtml" margin="30" autoplay="false" loop="false" nav="true" dots="false" mouse_drag="true" touch_drag="true" screen_0="1" screen_1="1" screen_2="1" screen_3="1" screen_4="1" screen_5="1" screen_6="1" screen_7="1"}}
+     &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="banners columns2 mb-desktop-100 mb-mobile-20"&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="col-lg-6 col-sm-6"&gt;
+            &lt;div class="banner1 banner-image"&gt;
+                &lt;div class="image-block"&gt;
+                    &lt;img class="lazyload" src="{{media url=lazyloading/blank.png}}" data-src="{{media url=wysiwyg/banner/banner-21.png}}" alt="Banner" width="630" height="357" /&gt;
+                &lt;/div&gt;
+                &lt;div class="info-block"&gt;
+                    &lt;div class="heading-2"&gt;New Camera Canon EOS 2000D &lt;/div&gt;
+                    &lt;div class="desc-text"&gt;No EMI  Exchange offer with 7 days&lt;/div&gt;
+                    &lt;a href="#" class="element-font shopnow"&gt;Shop Now&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-lg-6 col-sm-6"&gt;
+            &lt;div class="banner2 banner-image"&gt;
+                &lt;div class="image-block"&gt;
+                    &lt;img class="lazyload" src="{{media url=lazyloading/blank.png}}" data-src="{{media url=wysiwyg/banner/banner-22.png}}" alt="Banner" width="630" height="357" /&gt;
+                &lt;/div&gt;
+                &lt;div class="info-block"&gt;
+                    &lt;div class="heading-2"&gt;Meta Quest 2 - Advanced All-In-One Virtual&lt;/div&gt;
+                    &lt;div class="desc-text"&gt;Extra save 10% on order $99&lt;/div&gt;
+                    &lt;a href="#" class="element-font shopnow"&gt;Shop Now&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+     &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="block block-product-home product-item-shadow nav-1 hover-show-nav mb-desktop-50 mb-mobile-30"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="block block-tab-home product-item-shadow hidden-block-title nav-1 hover-show-nav"&gt;
+            &lt;div class="block-title"&gt;
+                &lt;strong class="google-element-font"&gt;Shop By Categories&lt;/strong&gt;
+            &lt;/div&gt;   
+     
+            {{block class="BzoTech\ProductTabs\Block\ProductTabs" template="BzoTech_ProductTabs::default.phtml" link_all="shop.html" title="New Arrivals" type_show="slider" type_listing="all" display_countdown="0" type_filter="categories" category_tabs="420,421,422,423,424,425,426,427" order_dir="DESC" limitation="18" margin="8" autoplay="0" loop="0" nav="1" dots="0" mousedrag="1" touchdrag="1" product_row="2" screen_0="2" screen_1="2" screen_2="3" screen_3="3" screen_4="3" screen_5="3" screen_6="3" screen_7="3"}}
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="block block-product-home hidden-block-title block-last-news mb-desktop-85 mb-mobile-35"&gt;
+   &lt;div class="container"&gt;
+        &lt;div class="block-title"&gt;
+            &lt;strong class="google-element-font"&gt;Latest news&lt;/strong&gt;
+            &lt;a href='{{store url=""}}blog'&gt;See All&lt;/a&gt;
+        &lt;/div&gt;
+        {{widget type="Magefan\Blog\Block\Widget\Recent" title="Latest news" no_repeat_posts_enable="1" number_of_posts="6" category_id="10" tag_id="0" author_id="0"}}
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="block block-logos nav-1 mb-desktop-85 mb-mobile-35"&gt;
+   &lt;div class="container"&gt;
+        {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="28"}}
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="block block-services mb-desktop-85 mb-mobile-35"&gt;
+   &lt;div class="container"&gt;
+        {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="29"}}
+    &lt;/div&gt;
+&lt;/div&gt;
+</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[<!--
+    <referenceContainer name="right">
+        <referenceBlock name="catalog.compare.sidebar" remove="true" />
+    </referenceContainer>-->]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>About Us</title>
+      <identifier>about-us</identifier>
+      <content_heading></content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="container" style="padding: 0; width: 100%; padding: 0 15px;"&gt;
+    &lt;div class="about-container"&gt;
+        &lt;div class="row mb-desktop-40 mb-mobile-0"&gt;
+            &lt;div class="col-lg-7"&gt;
+                &lt;div class="about-content mb-desktop-30"&gt;
+                    &lt;div class="about-title google-element-font"&gt;Hello, With 25+ Years Of Experience&lt;/div&gt;
+
+                    &lt;p&gt;Simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's
+                        standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                        to make
+                        a type specimen book.&lt;/p&gt;
+
+                    &lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots piece classical
+                        Latin
+                        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+                        Hampden-Sydney College in Virginia, looked up one of the more.&lt;/p&gt;
+
+                    &lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots piece classical
+                        Latin
+                        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+                        Hampden-Sydney College in Virginia, looked up one of the more.&lt;/p&gt;
+
+                    &lt;div class="row"&gt;
+                        &lt;div class="col-lg-6"&gt;
+                            &lt;div class="sub-title google-element-font"&gt;Our Vision&lt;/div&gt;
+                            &lt;p&gt;Lorem simply dummy text the arm printing typesetting industry the industry standard dummy
+                                ever
+                                since the unknown printer a took galley of type and scrambled&lt;/p&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="col-lg-6"&gt;
+                            &lt;div class="sub-title google-element-font"&gt;Our Mission&lt;/div&gt;
+                            &lt;p&gt;It is a long established fact that a reader will be distracted by the readable content of
+                                a page
+                                when looking at its layout. The point of using suffered alterationmore&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-lg-5"&gt;
+                &lt;div class="about-image mb-desktop-30"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/about-1.jpg}}" alt="About Us" width="607"
+                         height="514"/&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="row change-block mb-desktop-40 mb-mobile-0"&gt;
+            &lt;div class="col-lg-7 change"&gt;
+                &lt;div class="about-content mb-desktop-30"&gt;
+                    &lt;div class="about-title google-element-font"&gt;We Are Proud To Provide The Best Service For
+                        Customers
+                    &lt;/div&gt;
+
+                    &lt;p&gt;consectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Duis
+                        aute
+                        irure dolor in reprehenderit in voluptate velit.&lt;/p&gt;
+
+                    &lt;div class="sub-title google-element-font"&gt;Our History&lt;/div&gt;
+
+                    &lt;p&gt;We must explain to you how all this mistaken idea of denouncing pleasure and praising paint was
+                        born and
+                        I will give you acomplete account of the system, and expound actual teachings of the great
+                        explorer of
+                        the truth, the master-builder of human happiness.&lt;/p&gt;
+
+                    &lt;div class="sub-title google-element-font"&gt;Operations&lt;/div&gt;
+
+                    &lt;p&gt;Accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+                        corrupti
+                        quos dolores et quasa molestias excepturi sint occaecati cupiditate provident, similique sunt in
+                        culpa
+                        qui officia deserunt mollitia animi,&lt;/p&gt;
+
+
+                    &lt;div class="sig-about"&gt;
+                        &lt;div class="sig"&gt;&lt;img src="{{media url=wysiwyg/about-contact/sig.png}}"
+                                              alt="About Us" width="147"
+                                              height="60"/&gt;&lt;/div&gt;
+                        &lt;strong class="google-element-font"&gt;James Smith&lt;/strong&gt; / Ceo
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-lg-5"&gt;
+                &lt;div class="about-image mb-desktop-30 mb-mobile-0"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/about-2.jpg}}" alt="About Us" width="595"
+                         height="660"/&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class="about-full"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-7"&gt;
+                &lt;div class="about-title google-element-font"&gt;Frequently Asked Questions&lt;/div&gt;
+
+                &lt;div class="accordion about-accordion" id="accordionGeneral"&gt;
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title google-element-font" data-toggle="collapse"
+                                 data-target="#accordion-1"
+                                 aria-expanded="true"&gt;
+                                What Shipping Methods Are Available?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-1" class="collapse show" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;On the other hand, we are denounce with righteous arm indignation and dislike mena
+                                    who are sonen beguiled and demoralized by the charms of pleasured of the moment,
+                                    blinded by arm desire, that they cannot foresee the pain trouble.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title google-element-font collapsed" data-toggle="collapse"
+                                 data-target="#accordion-2"&gt;
+                                Can Ink Or Other Stains Be Washed Off?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-2" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;On the other hand, we are denounce with righteous arm indignation and dislike mena
+                                    who are sonen beguiled and demoralized by the charms of pleasured of the moment,
+                                    blinded by arm desire, that they cannot foresee the pain trouble.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title google-element-font collapsed" data-toggle="collapse"
+                                 data-target="#accordion-3"&gt;
+                                How Long Will It Take To Get My Package?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-3" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;On the other hand, we are denounce with righteous arm indignation and dislike mena
+                                    who are sonen beguiled and demoralized by the charms of pleasured of the moment,
+                                    blinded by arm desire, that they cannot foresee the pain trouble.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title google-element-font collapsed" data-toggle="collapse"
+                                 data-target="#accordion-4"&gt;
+                                What Is The Difference Between Emulsions And Distempers?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-4" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;On the other hand, we are denounce with righteous arm indignation and dislike mena
+                                    who are sonen beguiled and demoralized by the charms of pleasured of the moment,
+                                    blinded by arm desire, that they cannot foresee the pain trouble.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title google-element-font collapsed" data-toggle="collapse"
+                                 data-target="#accordion-5"&gt;
+                                Can The Products Be Applied During Rainy Season?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-5" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;On the other hand, we are denounce with righteous arm indignation and dislike mena
+                                    who are sonen beguiled and demoralized by the charms of pleasured of the moment,
+                                    blinded by arm desire, that they cannot foresee the pain trouble.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-lg-5"&gt;
+                &lt;div class="about-image-r"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/about-3.png}}" alt="About Us" width="608"
+                         height="757"/&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="container" style="padding: 0 15px;"&gt;
+    &lt;div class="block team-about-us pt-desktop-70 pb-desktop-20 pt-mobile-30 pb-mobile-0"&gt;
+        &lt;div class="block-title title-center"&gt;
+            &lt;strong class="google-element-font"&gt;Our Team&lt;/strong&gt;
+        &lt;/div&gt;
+
+        &lt;div class="team-list"&gt;
+            &lt;div class="item"&gt;
+                &lt;div class="team-image"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/team-1.jpg}}" alt="About Us" width="190"
+                         height="190"/&gt;
+                &lt;/div&gt;
+
+                &lt;div class="team-info"&gt;
+                    &lt;div class="name google-element-font"&gt;Lusineh Tatev&lt;/div&gt;
+                    &lt;div class="job"&gt;Founder&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="item"&gt;
+                &lt;div class="team-image"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/team-2.jpg}}" alt="About Us" width="190"
+                         height="190"/&gt;
+                &lt;/div&gt;
+
+                &lt;div class="team-info"&gt;
+                    &lt;div class="name google-element-font"&gt;Anahit Narine&lt;/div&gt;
+                    &lt;div class="job"&gt;Assistent&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="item"&gt;
+                &lt;div class="team-image"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/team-3.jpg}}" alt="About Us" width="190"
+                         height="190"/&gt;
+                &lt;/div&gt;
+
+                &lt;div class="team-info"&gt;
+                    &lt;div class="name google-element-font"&gt;Gohar Arsen&lt;/div&gt;
+                    &lt;div class="job"&gt;Manager&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="item"&gt;
+                &lt;div class="team-image"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/team-4.jpg}}" alt="About Us" width="190"
+                         height="190"/&gt;
+                &lt;/div&gt;
+
+                &lt;div class="team-info"&gt;
+                    &lt;div class="name google-element-font"&gt;Rudolf Sevan&lt;/div&gt;
+                    &lt;div class="job"&gt;Marketing Manager&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="item"&gt;
+                &lt;div class="team-image"&gt;
+                    &lt;img src="{{media url=wysiwyg/about-contact/team-5.jpg}}" alt="About Us" width="190"
+                         height="190"/&gt;
+                &lt;/div&gt;
+
+                &lt;div class="team-info"&gt;
+                    &lt;div class="name google-element-font"&gt;Nare Mariam&lt;/div&gt;
+                    &lt;div class="job"&gt;Designer&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .page-main {
+        max-width: unset !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+&lt;/style&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>Partner</title>
+      <identifier>partner</identifier>
+      <content_heading></content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="partner-container"&gt;
+    &lt;div class="partner-brand nav-1 mb-desktop-70"&gt;
+        &lt;div class="block-title title-center" style="margin-top: -20px"&gt;
+            &lt;strong class="google-element-font"&gt;Featured Brands&lt;/strong&gt;&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class="block-content"&gt;
+            &lt;div class="owl-carousel owl-theme"
+                 data-mage-init='{"bzo_carousel":{"nav": true, "dots": false, "margin": 30, "responsive":{"0":{"items": 1}, "481":{"items": 2}, "768":{"items": 2}, "992":{"items": 4}, "1200":{"items": 4}, "1441":{"items": 4}, "1681":{"items": 4}, "1921":{"items": 4}}}}'&gt;
+                &lt;div class="item"&gt;
+                    &lt;div class="item-inner"&gt;
+                        &lt;div class="image"&gt;
+                            &lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/partner-1.jpg}}" alt="Brand"
+                                             width="295" height="72"/&gt;&lt;/a&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="info"&gt;
+                            &lt;div class="name"&gt;&lt;a href="#"&gt;Apple&lt;/a&gt;&lt;/div&gt;
+                            &lt;div class="description"&gt;
+                                Other haind denounces with righteous indignationa dislike men who beguiled and
+                                demoralized by the charms.
+                            &lt;/div&gt;
+                            &lt;div class="go-shop"&gt;&lt;a href="#"&gt;Go Shop&lt;/a&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="item"&gt;
+                    &lt;div class="item-inner"&gt;
+                        &lt;div class="image"&gt;
+                            &lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/partner-2.jpg}}" alt="Brand"
+                                             width="311" height="52"/&gt;&lt;/a&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="info"&gt;
+                            &lt;div class="name"&gt;&lt;a href="#"&gt;Samsung&lt;/a&gt;&lt;/div&gt;
+                            &lt;div class="description"&gt;
+                                Vero accusamus iuston a dignissimos ducimus blanditiis praesentium volupe deleniti atque
+                                corrupti quos.
+                            &lt;/div&gt;
+                            &lt;div class="go-shop"&gt;&lt;a href="#"&gt;Go Shop&lt;/a&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="item"&gt;
+                    &lt;div class="item-inner"&gt;
+                        &lt;div class="image"&gt;
+                            &lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/partner-3.jpg}}" alt="Brand"
+                                             width="339" height="62"/&gt;&lt;/a&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="info"&gt;
+                            &lt;div class="name"&gt;&lt;a href="#"&gt;Huawei&lt;/a&gt;&lt;/div&gt;
+                            &lt;div class="description"&gt;
+                                Blinded by desire, that they an foresee the pain and trouble that are bound to ensue;
+                                and equal blame.
+                            &lt;/div&gt;
+                            &lt;div class="go-shop"&gt;&lt;a href="#"&gt;Go Shop&lt;/a&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="item"&gt;
+                    &lt;div class="item-inner"&gt;
+                        &lt;div class="image"&gt;
+                            &lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/partner-4.jpg}}" alt="Brand"
+                                             width="224" height="80"/&gt;&lt;/a&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="info"&gt;
+                            &lt;div class="name"&gt;&lt;a href="#"&gt;LG&lt;/a&gt;&lt;/div&gt;
+                            &lt;div class="description"&gt;
+                                Great explorer of the truth, the master builder of human happiness. Rejects a dislikes,
+                                avoids pleasure itself.
+                            &lt;/div&gt;
+                            &lt;div class="go-shop"&gt;&lt;a href="#"&gt;Go Shop&lt;/a&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="item"&gt;
+                    &lt;div class="item-inner"&gt;
+                        &lt;div class="image"&gt;
+                            &lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/partner-5.jpg}}" alt="Brand"
+                                             width="224" height="52"/&gt;&lt;/a&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="info"&gt;
+                            &lt;div class="name"&gt;&lt;a href="#"&gt;Asus&lt;/a&gt;&lt;/div&gt;
+                            &lt;div class="description"&gt;
+                                Vero accusamus iuston a dignissimos ducimus blanditiis praesentium volupe deleniti atque
+                                corrupti quos.
+                            &lt;/div&gt;
+                            &lt;div class="go-shop"&gt;&lt;a href="#"&gt;Go Shop&lt;/a&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="item"&gt;
+                    &lt;div class="item-inner"&gt;
+                        &lt;div class="image"&gt;
+                            &lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/partner-6.jpg}}" alt="Brand"
+                                             width="273" height="52"/&gt;&lt;/a&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="info"&gt;
+                            &lt;div class="name"&gt;&lt;a href="#"&gt;Nokia&lt;/a&gt;&lt;/div&gt;
+                            &lt;div class="description"&gt;
+                                Vero accusamus iuston a dignissimos ducimus blanditiis praesentium volupe deleniti atque
+                                corrupti quos.
+                            &lt;/div&gt;
+                            &lt;div class="go-shop"&gt;&lt;a href="#"&gt;Go Shop&lt;/a&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="brand-partner mb-desktop-40"&gt;
+        &lt;div class="block-title title-center"&gt;
+            &lt;strong class="google-element-font"&gt;Popular Brands&lt;/strong&gt;
+        &lt;/div&gt;
+
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-1.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-2.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-3.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-4.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-5.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-6.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-7.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-8.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-9.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-10.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-11.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-12.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-13.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-14.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/partner/brand-15.jpg}}" alt="Brand" width="232"
+                                 height="98"/&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>FAQs</title>
+      <identifier>faqs</identifier>
+      <content_heading>FAQs</content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="faqs-container"&gt;
+    &lt;div class="faq-title google-element-font"&gt;Frequently Asked Questions&lt;/div&gt;
+    &lt;div class="faq-description mb-desktop-25"&gt;This Agreement was last modified on 18th february 2022&lt;/div&gt;
+
+    &lt;div class="row"&gt;
+        &lt;div class="col-lg-6"&gt;
+            &lt;div class="list-faqs list-left mb-desktop-30"&gt;
+                &lt;div class="sub-title google-element-font"&gt;General Questions&lt;/div&gt;
+
+                &lt;div class="accordion" id="accordionGeneral"&gt;
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title" data-toggle="collapse" data-target="#accordion-1"
+                                 aria-expanded="true"&gt;
+                                What Shipping Methods Are Available?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-1" class="collapse show" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#accordion-2"&gt;
+                                How Long Should One Wait Before Painting In Case Of A New Construction?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-2" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#accordion-3"&gt;
+                                Can Ink Or Other Stains Be Washed Off?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-3" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#accordion-4"&gt;
+                                How Do The Stains On The Floor Be Removed After The Painting Is Over?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-4" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#accordion-5"&gt;
+                                What Is The Difference Between Emulsions And Distempers?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="accordion-5" class="collapse" data-parent="#accordionGeneral"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-lg-6"&gt;
+            &lt;div class="list-faqs list-right mb-desktop-30"&gt;
+                &lt;div class="sub-title google-element-font"&gt;Other Questions&lt;/div&gt;
+
+                &lt;div class="accordion" id="accordionOther"&gt;
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#other-1"&gt;
+                                How Long Will It Take To Get My Package?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="other-1" class="collapse" data-parent="#accordionOther"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#other-2"&gt;
+                                Can The Products Be Applied During Rainy Season?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="other-2" class="collapse" data-parent="#accordionOther"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#other-3"&gt;
+                                How Do The Stains On The Floor Be Removed After The Painting Is Over?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="other-3" class="collapse" data-parent="#accordionOther"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#other-4"&gt;
+                                What Is The Expiry Date Of The Paints?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="other-4" class="collapse" data-parent="#accordionOther"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="accordion-item"&gt;
+                        &lt;div class="accordion-header"&gt;
+                            &lt;div class="accordion-title collapsed" data-toggle="collapse" data-target="#other-5"&gt;
+                                What Is The Difference Between Emulsions And Distempers?
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div id="other-5" class="collapse" data-parent="#accordionOther"&gt;
+                            &lt;div class="accordion-content"&gt;
+                                &lt;p&gt;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorema laudantium, totam anaperiam, eaque ipsa quae illo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quian an voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>New Arrivals</title>
+      <identifier>new-arrivals</identifier>
+      <content_heading>New Arrivals</content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="hidden-block-title mb-desktop-30"&gt;
+    {{widget type="BzoTech\WidgetProducts\Block\Widget\WidgetProducts" widget_style="grid" widget_grid_title="New Arrivals" product_source="lastest_products" select_category="242,248,248,250,251,288,289" product_order_by="DESC" countdown_timer="0" product_limitation="50" custom_template="widget/grid-custom.phtml"}}
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>Best Sellers</title>
+      <identifier>best-sellers</identifier>
+      <content_heading>Best Sellers</content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="page-best-seller page-tab-product hidden-block-title mb-desktop-30"&gt;
+    {{widget type="BzoTech\WidgetProducts\Block\Widget\WidgetProducts" widget_style="grid" widget_grid_title="Best sellers" product_source="lastest_products" select_category="242,248,248,250,251,288,289" product_order_by="DESC" countdown_timer="0" product_limitation="50" custom_template="widget/grid-custom.phtml"}}
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>Special products</title>
+      <identifier>special-products</identifier>
+      <content_heading>Special products</content_heading>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="page-tab-product hidden-block-title mb-desktop-30"&gt;
+{{widget type="BzoTech\WidgetProducts\Block\Widget\WidgetProducts" widget_style="grid" widget_grid_title="Special products" product_source="special_products" select_category="242,248,248,250,251,288,289" product_order_by="DESC" countdown_timer="0" product_limitation="50" custom_template="widget/grid-custom.phtml"}}
+&lt;/div&gt;
+</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <layout_update_xml><![CDATA[]]></layout_update_xml>
+      <store_id>0</store_id>
+    </cms_item>
+  </pages>
+</root>

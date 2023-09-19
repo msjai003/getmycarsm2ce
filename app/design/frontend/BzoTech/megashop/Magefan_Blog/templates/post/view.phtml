@@ -1,0 +1,102 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog post view template
+ *
+ * @var $block \Magefan\Blog\Block\Post\View
+ */
+?>
+<?php
+$_post     = $block->getPost();
+$_postUrl  = $_post->getPostUrl();
+$_postName = $block->escapeHtml($_post->getTitle(), null);
+?>
+<div class="post-title">
+            <?= $block->escapeHtml($_postName) ?>
+</div>
+<div class="post-view">
+    <div class="post-holder post-holder-<?= (int)$_post->getId() ?>">
+        <div class="post-top-info">
+            <?php if ($block->authorEnabled()) { ?>
+                <?php if ($_author = $_post->getAuthor()) { ?>
+                    <div class="top-author">
+                        <span class="label"><?= $block->escapeHtml(__('Author:')) ?></span>
+                        <span class="value">
+                <?php if ($authorPageEnabled = $block->authorPageEnabled()) { ?>
+                <a title="<?= $block->escapeHtml($_author->getTitle()) ?>"
+                   href="<?= $block->escapeUrl($_author->getAuthorUrl()) ?>">
+                <?php } ?>
+
+                <?= $block->escapeHtml($_author->getTitle()) ?>
+
+                <?php if ($authorPageEnabled) { ?>
+                </a>
+                <?php } ?>
+            </span>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+
+            <?php if ($_post->isPublishDateEnabled()) { ?>
+                <div class="top-date">
+                    <span class="label"><?= $block->escapeHtml(__('Posted:')) ?></span>
+                    <span class="value"><?= $block->escapeHtml($_post->getPublishDate()) ?></span>
+                </div>
+            <?php } ?>
+
+            <?php if ($block->magefanCommentsEnabled() && $_post->getCommentsCount()) { ?>
+                <div class="top-comments">
+                    <span class="label"><?= $block->escapeHtml(__('Comments:')) ?></span>
+                    <a title="<?= $block->escapeHtml($_post->getTitle()) ?>"
+                       href="<?= $block->escapeUrl($_post->getPostUrl()) ?>#post-comments"
+                    ><?= $block->escapeHtml($_post->getCommentsCount()) ?> <?= $block->escapeHtml(__('Comment(s)')) ?></a>
+                </div>
+            <?php } ?>
+
+        </div>
+
+        <div class="post-content">
+            <div class="post-description clearfix">
+                <div class="post-text-hld">
+                    <?= /*@noEscape*/
+                    $block->getContent() ?>
+                    <div class="clear clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-info-custom">
+            <?php if ($_tagsCount = $_post->getTagsCount()) { ?>
+                <div class="post-bototom-tags">
+                    <span class="bottom-label"><?= $block->escapeHtml(__('Tags:')) ?></span>
+                    <?php $n = 0; ?>
+                    <?php foreach ($_post->getRelatedTags() as $tag) { ?>
+                        <?php $n++; ?>
+                        <a title="<?= $block->escapeHtml($tag->getTitle()) ?>"
+                           href="<?= $block->escapeUrl($tag->getTagUrl()) ?>"
+                        ><?= $block->escapeHtml($tag->getTitle()) ?></a><?= ($n != $_tagsCount) ? ',' : '' ?>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+
+            <?php if ($block->displayAddThisToolbox()) : ?>
+                <div class="blog-share">
+                    <div class="share-title"><?php echo __('Share:') ?></div>
+                    <div class="addthis_inline_share_toolbox_r81k"
+                         addthis:url="<?= $block->escapeUrl($_postUrl) ?>"></div>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="post-bottom">
+            <?= $block->getChildHtml('blog.post.bottom') ?>
+        </div>
+    </div>
+</div>

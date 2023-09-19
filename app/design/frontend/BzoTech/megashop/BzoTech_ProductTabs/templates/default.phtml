@@ -1,0 +1,72 @@
+<?php
+/**
+ * @category BZOTech
+ * @package BzoTech_ProductTabs
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+
+$list   = $this->_getList();
+$tag_id = $this->_tagId();
+if (!empty($list)) {
+    ?>
+    <div id="<?php echo $tag_id; ?>"
+         class="block bzo-product-tabs tab-loader-first <?php echo $this->_getConfig('type_show'); ?>">
+        <div class="block-title">
+            <strong><?php echo $this->_getConfig('title', 'Product Tabs'); ?></strong>
+        </div>
+
+        <div class="block-content">
+            <div class="tabs-wrapper">
+                <?php echo $this->getLayout()->createBlock("BzoTech\ProductTabs\Block\ProductTabs")->setData(['list' => $list, 'config' => $this->_getConfig()])->setTemplate("BzoTech_ProductTabs::default_tabs.phtml")->toHtml(); ?>
+                <div class="tabs-product-wrapper ">
+                    <?php foreach ($list as $items) {
+                        $products = isset($items['products_list']) ? $items['products_list'] : '';
+                        $cls      = (isset($items['sel'])) ? ' tab-active tab-loaded ' : '';
+                        ?>
+                        <div class="tab-content-items <?php echo $cls; ?> <?php echo 'tab-content-items-' . $items['id_tab']; ?>">
+                            <div class="tab-inner">
+                                <?php if (!empty($products)) {
+                                    echo $this->getLayout()->createBlock("BzoTech\ProductTabs\Block\ProductTabs")->setData(['products' => $products, 'config' => $this->_getConfig()])->setTemplate("BzoTech_ProductTabs::default_items.phtml")->toHtml();
+                                } else {
+                                    ?>
+                                    <div class="tab-loader"></div>
+                                <?php } ?>
+                            </div>
+
+                            <?php if ($this->_getConfig('type_show') == 'loadmore') { ?>
+                                <?php $classloaded = ($this->_getConfig('limitation', 2) == 0) ? 'loaded' : ''; ?>
+                                <div class="loadmore-container">
+                                    <div class="loadmore-button <?php echo $classloaded ?>"
+                                         data-label=" <?php echo ($classloaded) ? __('All ready') : __('Load more'); ?>"
+                                         data-tabid="<?php echo $items['id_tab']; ?>"
+                                         data-catids="<?php echo $items['cat_children'] ?>"
+                                         data-start="<?php echo $this->_getConfig('limitation', 2) ?>"
+                                         data-ready="<?php echo __('All ready'); ?>"
+                                    >
+                                        <span class="loadmore-loading"></span>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+                </div>
+
+                <?php echo $this->getLayout()->createBlock("BzoTech\ProductTabs\Block\ProductTabs")->setData(['tagid' => $this->_tagId(), 'config' => $this->_getConfig()])->setTemplate("BzoTech_ProductTabs::default_js.phtml")->toHtml(); ?>
+            </div>
+        </div>
+    </div>
+    <?php
+} else { ?>
+    <div class="message info empty">
+        <div><?php /* @escapeNotVerified */
+            echo __('We can\'t find products matching the selection.') ?></div>
+    </div>
+    <?php
+} ?>
+
+
+

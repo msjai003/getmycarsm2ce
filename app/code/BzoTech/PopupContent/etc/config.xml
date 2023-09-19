@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_PopupContent
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company  
+ *   
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <popupcontent>
+            <pc_general>
+                <enable_popupcontent>1</enable_popupcontent>
+                <popup_max_width>600</popup_max_width>
+                <popup_delay>0</popup_delay>
+                <shown_home_only>0</shown_home_only>
+                <show_again>1</show_again>
+                <transparent_background>0</transparent_background>
+            </pc_general>
+
+            <pc_content>
+                <content>POPUP CONTENT</content>
+            </pc_content>
+        </popupcontent>
+    </default>
+</config>

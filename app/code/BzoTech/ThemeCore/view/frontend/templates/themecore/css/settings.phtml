@@ -1,0 +1,90 @@
+<?php
+$_config                 = $this->helper('BzoTech\ThemeCore\Helper\Data');
+$baseUrl                 = $_config->getUrl();
+$store_id                = $_config->getStoreId();
+$mediaUrl                = $_config->getMediaUrl();
+$storeView               = $this->_coreRegistry->registry('cssgen_store');
+$themeColor              = $_config->getCoreConfig('general/primary_color/theme_color', $storeView);
+$themeColorDarken        = $_config->adjustBrightness($themeColor, -0.07);
+$textOnThemeColor        = $_config->getCoreConfig('general/primary_color/text_on_theme_color', $storeView);
+$linkOnThemeColor        = $_config->getCoreConfig('general/primary_color/link_on_theme_color', $storeView);
+$linkHoverOnThemeColor   = $_config->getCoreConfig('general/primary_color/linkhover_on_theme_color', $storeView);
+$bodyFont                = $_config->getCoreConfig('general/bodyfont_group/body_font', $storeView);
+$bodyFontSize            = $_config->getCoreConfig('general/bodyfont_group/font_size', $storeView);
+$bodyGoogleFontFamily    = $_config->getCoreConfig('general/bodyfont_group/body_googlefont_family', $storeView);
+$bodyGoogleFontWeight    = $_config->getCoreConfig('general/bodyfont_group/body_googlefont_weight', $storeView);
+$linkColor               = $_config->getCoreConfig('general/bodyfont_group/body_link_color', $storeView);
+$linkHoverColor          = $_config->getCoreConfig('general/bodyfont_group/body_link_hover_color', $storeView);
+$textColor               = $_config->getCoreConfig('general/bodyfont_group/body_text_color', $storeView);
+$backgroundColor         = $_config->getCoreConfig('general/background_group/body_background_color', $storeView);
+$useBackgroundImage      = $_config->getCoreConfig('general/background_group/use_background_image', $storeView);
+$backgroundRepeat        = $_config->getCoreConfig('general/background_group/background_repeat', $storeView);
+$backgroundPosition      = $_config->getCoreConfig('general/background_group/background_position', $storeView);
+$bodyBackgroundImage     = $_config->getCoreConfig('general/background_group/body_background_image', $storeView);
+$enableElementGoogleFont = $_config->getCoreConfig('general/element_googlefont_group/use_element_googlefont', $storeView);
+$elementGoogleFontFamily = $_config->getCoreConfig('general/element_googlefont_group/element_googlefont_family', $storeView);
+$elementGoogleFontTarget = $_config->getCoreConfig('general/element_googlefont_group/google_font_targets', $storeView);
+$elementGoogleFontWeight = $_config->getCoreConfig('general/element_googlefont_group/element_googlefont_weight', $storeView);
+$maxWidth                = $_config->getCoreConfig('theme_layout/max_width', $storeView);
+$showAddtoCart           = $_config->getCoreConfig('advanced/product_group/show_addtocart_button', $storeView);
+$showAddtoCompare        = $_config->getCoreConfig('advanced/product_group/show_compare_button', $storeView);
+$showAddtoWishlist       = $_config->getCoreConfig('advanced/product_group/show_wishlist_button', $storeView);
+$enableCustomCss         = $_config->getCoreConfig('advanced/developer_group/enable_custom_css', $storeView);
+$customCss               = $_config->getCoreConfig('advanced/developer_group/custom_css', $storeView);
+$homeBackgroundColor     = $_config->getCoreConfig('home_page/home_background_color', $storeView);
+?>
+
+    /**
+    * THIS FILE IS GENERATED AUTOMATICALLY WHEN SAVING CONFIGURE. YOUR DATA WILL BE LOST WHEN YOU EDIT THIS FILE
+    */
+
+    /**
+    * GENERAL
+    */
+
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/general.phtml")); ?>
+
+    /**
+    * THEME LAYOUT
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/layout.phtml")); ?>
+
+    /**
+    * THEME HEADER COLOR
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/header.phtml")); ?>
+
+    /**
+    * THEME HOME
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/home.phtml")); ?>
+
+    /**
+    * THEME FOOTER
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/footer.phtml")); ?>
+
+    /**
+    * THEME PRODUCT
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/product.phtml")); ?>
+
+    /**
+    * CATEGORY PAGE
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/category.phtml")); ?>
+
+    /**
+    * DETAIL PAGE
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/detail.phtml")); ?>
+
+    /**
+    * OTHER PAGE
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/pages.phtml")); ?>
+
+    /**
+    * THEME PRODUCT
+    */
+<?php include($block->getTemplateFile("BzoTech_ThemeCore::themecore/css/customcss.phtml")); ?>

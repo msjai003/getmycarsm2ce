@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="head.additional">
+            <block class="BzoTech\Megashop\Block\Template" name="theme.config"/>
+        </referenceContainer>
+
+        <referenceBlock name="top.links">
+            <block class="Magento\Customer\Block\Account\Customer" name="custom.links"
+                   template="BzoTech_Megashop::html/custom-links.phtml"/>
+        </referenceBlock>
+
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_width" xsi:type="number">184</argument>
+                <argument name="logo_height" xsi:type="number">43</argument>
+            </arguments>
+        </referenceBlock>
+
+        <!-- <referenceContainer name="page.top">
+            <container name="title.breadcrumbs" label="Title Breadcrumbs" htmlTag="div" htmlClass="breadcrumbs-title"/>
+        </referenceContainer> -->
+
+        <referenceContainer name="page.wrapper">
+            <block class="BzoTech\Megashop\Block\Header" name="theme_header"
+                   template="BzoTech_Megashop::html/header.phtml"
+                   before="-">
+
+                <block class="Magento\Theme\Block\Html\Header" name="welcome-customer" as="welcome-customer"
+                       template="BzoTech_Megashop::html/customer.phtml">
+                    <arguments>
+                        <argument name="show_part" xsi:type="string">welcome</argument>
+                    </arguments>
+                </block>
+
+                <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">header links</argument>
+                    </arguments>
+                </block>
+
+                <block class="BzoTech\Megashop\Block\Search\Term" name="header.searchterm"
+                       template="Magento_Search::term-header.phtml"/>
+
+                <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language"
+                       template="switch/languages.phtml"/>
+
+                <block class="Magento\Framework\View\Element\Template" name="compare_header"
+                       template="Magento_Catalog::product/compare/link.phtml">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="compareProducts" xsi:type="array">
+                                    <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+
+                <block class="Magento\Wishlist\Block\Customer\Sidebar" name="wishlist_header"
+                       template="Magento_Wishlist::wishlist-header.phtml"/>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="before.body.end">
+            <container name="overlay.modal" htmlTag="div" htmlClass="overlay-modal">
+                <block class="Magento\Framework\View\Element\Template" name="overlay.content"
+                       template="BzoTech_Megashop::html/overlay.phtml"/>
+            </container>
+        </referenceContainer>
+
+        <move element="currency" destination="theme_header"/>
+        <move element="logo" destination="theme_header"/>
+        <move element="catalog.topnav" destination="theme_header"/>
+        <move element="catalog.compare.link" destination="theme_header" before="-"/>
+        <move element="top.search" destination="theme_header"/>
+        <move element="minicart" destination="theme_header"/>
+
+        <!-- <move element="page.main.title" destination="title.breadcrumbs" before="-"/>
+        <move element="breadcrumbs" destination="title.breadcrumbs" after="page.main.title"/> -->
+
+        <referenceContainer name="header.container" remove="1"/>
+        <referenceContainer name="header.panel" remove="1"/>
+        <referenceContainer name="header-wrapper" remove="1"/>
+        <referenceBlock name="header" remove="true"/>
+        <referenceBlock name="navigation.sections" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <referenceContainer name="footer" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+
+        <referenceContainer name="footer-container">
+            <block class="Magento\Framework\View\Element\Template" name="footer_block"
+                   template="BzoTech_Megashop::html/footer.phtml">
+                <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="html/copyright.phtml"/>
+                <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher"
+                       template="Magento_Store::switch/stores.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

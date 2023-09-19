@@ -1,0 +1,116 @@
+.opc-wrapper .form-login, .opc-wrapper .form-shipping-address {
+    max-width: 100% !important;
+}
+
+.checkout-container .authentication-wrapper {
+    margin-top: 10px;
+
+    .action-auth-toggle {
+        background: #333;
+        padding: 10px 20px;
+        color: #fff;
+        border-radius: 3px;
+    }
+
+    .authentication-dropdown.modal-custom .action-close {
+        margin: 15px;
+    }
+}
+
+.checkout-index-index .page-title-wrapper {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.opc-block-summary {
+    .items-in-cart > .title {
+        padding: 10px 30px 10px 0;
+
+        &:after {
+            right: 0;
+            left: auto;
+            top: 12px;
+        }
+
+        strong {
+            position: relative;
+            top: 1px;
+        }
+    }
+
+    .minicart-items .product-image-container {
+        float: left;
+        width: 70px !important;
+    }
+
+    .minicart-items .product-item-details {
+        margin-left: 80px;
+        padding: 0;
+    }
+
+    .price-including-tax, .price-excluding-tax {
+        font-size: 100%;
+
+        .price {
+            font-size: 100%;
+            color: #222;
+        }
+    }
+}
+
+.opc-progress-bar-item:before {
+    height: 3px;
+}
+
+.opc-progress-bar-item > span:before, .opc-progress-bar-item > span:after {
+    .border-radius(3px);
+}
+
+.opc-progress-bar-item > span:after {
+    width: 30px;
+    height: 30px;
+    top: 4px;
+    margin-left: -15px;
+    margin-right: 0;
+}
+
+.opc-progress-bar-item._active > span:after {
+    line-height: 1.15;
+}
+
+@media (min-width: 1280px) {
+    .opc-progress-bar {
+        display: flex;
+        padding-right: 36px;
+
+        .opc-progress-bar-item {
+            width: 50%;
+        }
+    }
+}
+@media (max-width: 991px) {
+    body .opc-block-summary .product-item .product-item-inner {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (min-width: 768px) {
+    .authentication-dropdown {
+        margin-top: 10px;
+        .border-radius(6px);
+    }
+
+    .checkout-container {
+        .opc-sidebar {
+            margin: 33px 0 23px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .opc-block-summary {
+        background: #fff;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category BZOTech
+ * @package BzoTech_AjaxCart
+ * @version 1.0.0
+ * @copyright Copyright (c) 2022 BZOTech Company. All Rights Reserved.
+ * @license - Copyrighted Commercial Software
+ * @author BZOTech Company 
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <ajaxcart>
+            <general>
+                <isenabled>1</isenabled>
+                <select_type>both</select_type>
+                <label_button>Quick View</label_button>
+                <countdown_number>5</countdown_number>
+                <element_links>.action.view, .action.add</element_links>
+            </general>
+        </ajaxcart>
+    </default>
+</config>

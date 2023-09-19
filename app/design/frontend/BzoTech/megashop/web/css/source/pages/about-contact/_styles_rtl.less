@@ -1,0 +1,349 @@
+/**
+ * About Us
+ */
+ .about-title {
+    .bzo-font(26px, 600);
+    color: @text_color;
+    line-height: 30px;
+    background: url("../images/bg-title.png") no-repeat bottom right;
+    padding-bottom: 17px;
+    margin-bottom: 22px;
+}
+
+.sub-title {
+    .bzo-font(18px, 600);
+    color: @theme_color;
+}
+
+.about-container {
+    p {
+        margin-bottom: 20px;
+    }
+
+    .about-image {
+        text-align: left;
+    }
+
+    .change-block {
+        .change {
+            order: 2;
+        }
+
+        .about-image {
+            text-align: right;
+        }
+
+        .about-title {
+            margin-top: 20px;
+        }
+    }
+
+    .sig-about {
+        .sig {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-size: 153.846%;
+            color: #2d3054;
+        }
+    }
+}
+
+.about-full {
+    background-color: #E7E9F5;
+    .about-title {
+        padding-top: 90px;
+    }
+}
+
+.about-image-r {
+    text-align: left;
+}
+
+.about-accordion {
+    padding-top: 15px;
+
+    .accordion-item {
+        background-color: #fff;
+        padding: 12px 30px;
+        margin-bottom: 14px;
+        .border-radius(25px);
+    }
+
+    .accordion-title {
+        color: @theme_color;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 600;
+        &:before {
+            float: left;
+            .bzo-icon(e908, 22px);
+        }
+
+        &.collapsed:before {
+            .bzo-icon(e905, 22px);
+            position: relative;
+            bottom: 3px;
+        }
+    }
+
+    .accordion-content {
+        padding-top: 5px;
+    }
+}
+
+.team-about-us {
+    .team-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+    }
+
+    .item {
+        padding: 0 15px;
+        margin-bottom: 30px;
+        text-align: center;
+        width: 20%;
+    }
+
+    .team-image {
+        text-align: center;
+        margin: 0 auto 10px;
+        overflow: hidden;
+
+        img {
+            .border-radius(50%);
+        }
+    }
+
+    .team-info {
+        .name {
+            .bzo-font(16px, 600);
+            color: @text_color;
+        }
+
+        .job {
+            margin-top: -5px;
+        }
+    }
+}
+
+/**
+ * Contact Us
+ */
+
+.contact-block {
+    background: @theme_color;
+    padding: 30px 30px 40px;
+    color: #fff;
+    .border-radius(15px);
+
+    .input-text {
+        border: none !important;
+    }
+
+    .form.contact {
+        width: 100% !important;
+        max-width: unset !important;
+        min-width: unset !important;
+    }
+
+    .fieldset {
+        margin-right: -15px;
+        margin-left: -15px;
+        display: flex;
+        flex-wrap: wrap;
+
+        .field {
+            padding: 0 15px;
+            width: 50%;
+        }
+
+        .field.comment,
+        .field.telephone {
+            width: 100%;
+        }
+
+        textarea {
+            height: 140px;
+        }
+    }
+
+    .title-contact {
+        font-weight: 500;
+        line-height: 1.4;
+
+        strong {
+            font-weight: 500;
+            font-size: 24px;
+        }
+    }
+
+    .form-des {
+        margin-bottom: 25px;
+
+        span {
+            color: #e02b27;
+        }
+    }
+    .primary .action {
+        background: @text_color;
+        font-weight: 600;
+        font-size: 16px;
+        &:hover {
+            background: @text_color;
+            opacity: 0.8;
+        }
+    }
+}
+
+.contact-content {
+    .info-col > div {
+        height: 100%;
+    }
+
+    .contact-col-info {
+        height: 100%;
+        background: #E7E9F5;
+        padding: 30px 40px;
+        .border-radius(15px);
+        .title {
+            .bzo-font(24px, 500);
+            color: @text_color;
+            line-height: 1.4;
+        }
+
+        .contact-des {
+            margin-bottom: 15px;
+        }
+
+        .contact-detail {
+            .remove-ul-ol-style();
+        }
+
+        .contact-detail li {
+            position: relative;
+            padding-right: 44px;
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 8px;
+                background-image: url("../images/contact.png");
+                background-repeat: no-repeat;
+            }
+
+            &.address:before {
+                right: 5px;
+                width: 24px;
+                height: 30px;
+                background-position: -8px -3px;
+            }
+
+            &.phone:before {
+                right: 3px;
+                width: 28px;
+                height: 28px;
+                background-position: -7px -104px;
+            }
+
+            &.mail:before {
+                right: 3px;
+                width: 26px;
+                height: 30px;
+                background-position: -7px -202px;
+            }
+
+            &.time:before {
+                width: 30px;
+                height: 30px;
+                background-position: -6px -303px;
+            }
+
+            .info-title {
+                color: @text_color;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.google-map {
+    line-height: 0;
+
+    iframe {
+        width: 100% !important;
+        height: 568px;
+    }
+}
+
+.contact-index-index .google-map {
+    padding-top: 60px;
+}
+.form.contact .actions-toolbar .primary {
+    float: right;
+}
+.cms-about-us .page-main > .page-title-wrapper .page-title {
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    color: @theme_color;
+}
+.cms-about-us .team-about-us .block-title strong {
+    font-size: 30px;
+}
+/**
+ * Responsive
+ */
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 992px) {
+    .contact-content .contact-col-info {
+        padding-bottom: 100px;
+    }
+
+    .contact-block {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-accordion .accordion-title {
+        font-size: 16px;
+    }
+
+    .about-title {
+        font-size: 22px;
+        line-height: 40px;
+    }
+    .form.contact .actions-toolbar .primary {
+        float: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .team-about-us .team-list {
+        justify-content: center;
+    }
+
+    .team-about-us .item {
+        width: 33.333333%;
+    }
+}
+
+@media (max-width: 560px) {
+    .team-about-us .item {
+        width: 50%;
+    }
+
+    .contact-block .fieldset .field {
+        width: 100%;
+    }
+}
+

@@ -1,0 +1,52 @@
+<?php
+
+use Magento\Framework\App\Action\Action;
+
+$productCollection = $block->getProducts();
+$_helper           = $this->helper('Magento\Catalog\Helper\Output');
+$imageDisplayArea  = 'category_page_grid';
+$pos               = $block->getPositioned();
+$templateType      = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+$countItems        = $productCollection->count();
+?>
+
+<div class="search-popular-products">
+    <div class="search-title"><span><?php echo __('Trending Products') ?></span></div>
+
+    <ol class="product-items">
+        <?php foreach ($productCollection as $_product): ?>
+            <li class="item product product-item">
+                <div class="product-item-info">
+                    <?php
+                    $productImage = $block->getImage($_product, $imageDisplayArea);
+                    if ($pos != null) {
+                        $position = 'left:' . $productImage->getWidth() . 'px;'
+                            . 'top:' . $productImage->getHeight() . 'px;';
+                    }
+                    ?>
+
+                    <a href="<?php /* @escapeNotVerified */
+                    echo $_product->getProductUrl() ?>" class="product photo product-item-photo"
+                       tabindex="-1">
+                        <?php echo $productImage->toHtml(); ?>
+                    </a>
+
+                    <div class="product details product-item-details">
+                        <strong class="product name product-item-name">
+                            <a class="product-item-link"
+                               href="<?php /* @escapeNotVerified */
+                               echo $_product->getProductUrl() ?>">
+                                <?php /* @escapeNotVerified */
+                                echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                            </a>
+                        </strong>
+
+                        <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+
+                        <?php echo $block->getProductPrice($_product) ?>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ol>
+</div>

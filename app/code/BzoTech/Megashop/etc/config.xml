@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <megashop>
+            <theme_layout>
+                <direction_rtl>0</direction_rtl>
+                <layout_header>
+                    <header_style>header-1</header_style>
+                </layout_header>
+                <layout_footer>
+                    <footer_style>footer-1</footer_style>
+                </layout_footer>
+                <layout_product>
+                    <product_style>product-1</product_style>
+                </layout_product>
+            </theme_layout>
+            <theme_info>
+                <empty_field_hidden_cus/>
+            </theme_info>
+            <theme_install>
+                <overwrite_blocks>1</overwrite_blocks>
+                <overwrite_pages>1</overwrite_pages>
+            </theme_install>
+        </megashop>
+    </default>
+</config>

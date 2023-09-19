@@ -1,0 +1,552 @@
+<?xml version="1.0"?>
+<root>
+  <blocks>
+    <cms_item>
+      <title>BZOTech - Footer 1 Content</title>
+      <identifier>footer-1-content</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="footer-top"&gt;
+    &lt;div class="newsletters"&gt;
+        &lt;div class="container"&gt;
+                &lt;div class="ft-block ft-block-newsletter"&gt;
+                        &lt;div class="news-title"&gt;Sign Up For Newsletter&lt;/div&gt;
+                        &lt;div class="text-description"&gt;
+                            Shopping First For Coupon $25 Receive And...
+                        &lt;/div&gt;
+                        {{block class="Magento\Newsletter\Block\Subscribe" template="Magento_Newsletter::subscribe-footer.phtml"}}
+                &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="container"&gt;     
+            &lt;div class="row footer-middle1"&gt;
+                    &lt;div class="col-lg-4 col-sm-12 col-12"&gt;
+                        &lt;div class="ft-block"&gt;
+                            &lt;div class="footer-logo"&gt;
+                                &lt;img src="{{media url=wysiwyg/footer-logo/footer-logo.png}}" alt="Footer logo" /&gt;
+                            &lt;/div&gt;
+                            &lt;div class="ft-content"&gt;
+                                &lt;div class="intro-text"&gt;
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                &lt;/div&gt;
+                                
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="ft-block ft-block-social"&gt;
+                            {{block class="Magento\\Cms\\Block\\Block" block_id="block-social"}}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="col-lg-2 col-sm-3 col-6"&gt;
+                        &lt;div class="ft-block"&gt;
+                            &lt;div class="ft-title"&gt;Products&lt;/div&gt;
+
+                            &lt;div class="ft-content"&gt;
+                                &lt;ul class="links-footer"&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}special-products"&gt;Prices Drop&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}new-arrivals"&gt;New Products&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}best-sellers"&gt;Best Sellers&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}contact"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="col-lg-2 col-sm-3 col-6"&gt;
+                        &lt;div class="ft-block"&gt;
+                            &lt;div class="ft-title"&gt;Our Company&lt;/div&gt;
+
+                            &lt;div class="ft-content"&gt;
+                                &lt;ul class="links-footer"&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}best-sellers"&gt;Delivery&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}privacy-policy-cookie-restriction-mode"&gt;Legal Notice&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}about-us"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}enable-cookies"&gt;Secure Payment&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="{{store url=""}}faqs"&gt;FAQs&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="col-lg-2 col-sm-3 col-6"&gt;
+                        &lt;div class="ft-block"&gt;
+                            &lt;div class="ft-title"&gt;Download App&lt;/div&gt;
+                            &lt;div class="ft-content"&gt;
+                                &lt;div class="links-footer"&gt;
+                                    &lt;div class="intro-text"&gt;Save $3 with app &amp;&lt;br /&gt; new user only&lt;/div&gt;
+                                    &lt;div class="google-play"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/footer/google-play.png}}" alt="Google Play" /&gt;&lt;/a&gt;&lt;/div&gt;
+                                    &lt;div class="app-store"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/footer/app-store.png}}" alt="App Store" /&gt;&lt;/a&gt;&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="col-lg-2 col-sm-3 col-6"&gt;
+                        &lt;div class="ft-block"&gt;
+                            &lt;div class="ft-title"&gt;Store Infomation&lt;/div&gt;                   
+                            &lt;div class="ft-content store-info"&gt;
+                                &lt;div class="text-address"&gt;
+                                    Megashop - Demo Store &lt;br/&gt;
+                                    570 - Union Trade Center United States
+                                &lt;/div&gt;
+                                &lt;div class="call-phone"&gt;&lt;a href="tel:+123 456 789"&gt;+123 456 789&lt;/a&gt;&lt;/div&gt;
+                                &lt;div class="text-email"&gt;
+                                    &lt;a href="mailto:example@yourdomain"&gt;example@yourdomain&lt;/a&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;                   
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="row footer-middle2"&gt;
+                    &lt;div class="col-lg-8 col-sm-12 col-12"&gt;
+                        &lt;ul class="product-tags"&gt;
+                            &lt;li&gt;
+                                &lt;span class="tag-title"&gt;Information:&lt;/span&gt;
+                                &lt;span class="tag-links"&gt;
+                                    &lt;a href="#"&gt;4G Mobiles&lt;/a&gt; /
+                                    &lt;a href="#"&gt;Smartphones&lt;/a&gt; /
+                                    &lt;a href="#"&gt;Samsung Mobiles&lt;/a&gt; /
+                                    &lt;a href="#"&gt;Micromax Mobiles&lt;/a&gt;
+                                &lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;span class="tag-title"&gt;Categories:&lt;/span&gt;
+                                &lt;span class="tag-links"&gt;
+                                    &lt;a href="#"&gt;Soft Mobile Covers&lt;/a&gt; /
+                                    &lt;a href="#"&gt;Pinted Back Covers&lt;/a&gt; /
+                                    &lt;a href="#"&gt;Ambrane P&lt;/a&gt;
+                                &lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;span class="tag-title"&gt;Products:&lt;/span&gt;
+                                &lt;span class="tag-links"&gt;
+                                    &lt;a href="#"&gt;8 GB Memory Cards&lt;/a&gt; /
+                                    &lt;a href="#"&gt;22 GB Memory Cards&lt;/a&gt; /
+                                    &lt;a href="#"&gt;16 GB Memory Cards&lt;/a&gt;
+                                &lt;/span&gt; 
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div class="col-lg-4 col-sm-12 col-12"&gt;
+                        &lt;div class="ft-block"&gt;
+                            &lt;div class="ft-title"&gt;Security Store&lt;/div&gt;
+                            &lt;div class="ft-content"&gt;
+                                &lt;div class="security-store"&gt;
+                                    &lt;div class="security-store-img"&gt;&lt;img src="{{media url=wysiwyg/footer/norton.png}}" alt="Norton" /&gt;&lt;/div&gt;
+                                    &lt;div class="security-store-img"&gt;&lt;img src="{{media url=wysiwyg/footer/trust-e.png}}" alt="Truste" /&gt;&lt;/div&gt;
+                                    &lt;div class="security-store-img"&gt;&lt;img src="{{media url=wysiwyg/footer/trustwave.png}}" alt="Trustwave" /&gt;&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+            &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Block Social</title>
+      <identifier>block-social</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="follow-header"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/social/social-1.png}}" alt="Social" width="32" height="32" /&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/social/social-2.png}}" alt="Social" width="32" height="32" /&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/social/social-3.png}}" alt="Social" width="32" height="32" /&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/social/social-4.png}}" alt="Social" width="32" height="32" /&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/social/social-5.png}}" alt="Social" width="32" height="32" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Detail Sidebar</title>
+      <identifier>detail-sidebar</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="service-sidebar"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;&lt;img src="{{media url=wysiwyg/header/icon-1.png}}" alt="Service" width="26" height="33" /&gt;&lt;/span&gt;Free Same-Day Delivery&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;&lt;img src="{{media url=wysiwyg/header/icon-2.png}}" alt="Service" width="24" height="33" /&gt;&lt;/span&gt;Friendly Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;&lt;img src="{{media url=wysiwyg/header/icon-3.png}}" alt="Service" width="23" height="33" /&gt;&lt;/span&gt;100% Secure Payment&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;&lt;img src="{{media url=wysiwyg/header/icon-4.png}}" alt="Service" width="22" height="33" /&gt;&lt;/span&gt;24/7 Help Center&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;&lt;img src="{{media url=wysiwyg/header/icon-5.png}}" alt="Service" width="22" height="33" /&gt;&lt;/span&gt;30 Days Return&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class="banner-image"&gt;
+    &lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/banner/sidebar-banner.jpg}}" alt="Live Chat" width="346" height="512" /&gt;&lt;/a&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Detail Shipping</title>
+      <identifier>detail-shipping</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;ul class="shipping-detail"&gt;
+    &lt;li class="size-link"&gt;&lt;a href="#"&gt;Size guide&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="shipping-link"&gt;&lt;a href="#"&gt;Shipping&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="ask-question-link"&gt;&lt;a href="#"&gt;Ask a question&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="add-review-link"&gt;&lt;a href="#"&gt;Write a review&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Google Map</title>
+      <identifier>google-map</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="google-map"&gt;
+    &lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.620368427774!2d-122.08643538441451!3d37.42244704012424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb5e784e1a79%3A0xe33e33f2fc7227f7!2s1600%20Amphitheatre%20Pkwy%2C%20Mountain%20View%2C%20CA%2094043!5e0!3m2!1svi!2sus!4v1648192213758!5m2!1svi!2sus"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"&gt;&lt;/iframe&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Contact Info</title>
+      <identifier>contact-info</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="contact-col-info"&gt;
+    &lt;div class="title google-element-font"&gt;Get In Touch&lt;/div&gt;
+    &lt;div class="contact-des"&gt;Parking is only available on weekends. Feel free to buzz 101 at the intercom!&lt;/div&gt;
+
+    &lt;ul class="contact-detail"&gt;
+        &lt;li class="address"&gt;
+            &lt;div class="info-title"&gt;Address&lt;/div&gt;
+            &lt;div class="info-des"&gt;139 Brook Drive South Richmond Hill, New York 1067 USA&lt;/div&gt;
+        &lt;/li&gt;
+
+        &lt;li class="phone"&gt;
+            &lt;div class="info-title"&gt;Phone&lt;/div&gt;
+            &lt;div class="info-des"&gt;
+                &lt;a href="tel:(+718) 859 481 3614"&gt;(+718) 859 481 3614&lt;/a&gt;&lt;br&gt;
+                &lt;a href="tel:(+718) 123 456 789"&gt;(+718) 123 456 789&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+
+        &lt;li class="mail"&gt;
+            &lt;div class="info-title"&gt;Mail&lt;/div&gt;
+            &lt;div class="info-des"&gt;
+                &lt;a href="mailto:example@yourdomain"&gt;example@yourdomain&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+
+        &lt;li class="time"&gt;
+            &lt;div class="info-title"&gt;Openning Time&lt;/div&gt;
+            &lt;div class="info-des"&gt;
+                Monday to Saturday: &lt;span&gt;9:00 AM-18:00 PM&lt;/span&gt;&lt;br&gt;
+                Sunday: &lt;span&gt;10:00 AM-17:30 PM&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Header Contact</title>
+      <identifier>header-contact</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="header-contact"&gt;
+  &lt;a href="tel:0123-456-7890"&gt;
+    &lt;span class="contact-title"&gt;Contact us&lt;/span&gt;
+    &lt;span class="phone-number"&gt;0123456789&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Footer Payment</title>
+      <identifier>footer-payment</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="footer-payment"&gt;
+&lt;img class="lazyload" src="{{media url=lazyloading/blank.png}}" data-src="{{media url=wysiwyg/footer/payments.png}}" alt="Payment" width="270" height="30" /&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Shop menu Dropdown</title>
+      <identifier>shop-menu-dropdown</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="featured-menu"&gt;
+      &lt;div class="row row-cols-5 mb-desktop-50"&gt;
+        &lt;div class="col"&gt;
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Headphones&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Over-Ear Headphones&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;In-Ear Headphones&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Wireless Headphones&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;True Wireless&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;On-Ear Headphones&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Bluetooth Earbuds&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col"&gt;
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Webcams&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;NexiGo&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Logitech&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;EMEET&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;XPCAM&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;ZUCUCUC&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Logitech for Creators&lt;/a&gt;&lt;/li&gt;
+
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col"&gt;
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Laptops&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;HP&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Lenovo&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;ASUS&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Dell&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;SAMSUNG&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Apple&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col"&gt;
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Mouses&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Laser&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Mac Compatible&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Optical&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Wireless&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Wheel&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col"&gt;
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Accessories&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Nintendo Switch&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Xbox Accessories&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Camera Privacy Covers&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Laptop Skins &amp; Decals&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;eBook Readers&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Mouses&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row row-cols-2"&gt;
+         &lt;div class="col"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/menu-banners/menu-shop-banner1.jpg}}" alt="" /&gt;&lt;/a&gt;&lt;/div&gt;
+         &lt;div class="col"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/menu-banners/menu-shop-banner2.jpg}}" alt="" /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Header - Contact - Tracking</title>
+      <identifier>header-contact-tracking</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;ul&gt;
+                            &lt;li class="tracking"&gt;&lt;a href="{{store url=""}}sales/guest/form"&gt;Track Your Order&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Social list</title>
+      <identifier>social-list</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="social-list"&gt;
+                    &lt;ul&gt;
+                        &lt;li class="facebook"&gt;
+                            &lt;a href="#"&gt;&lt;span&gt;Facebook&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+
+                        &lt;li class="twitter"&gt;
+                            &lt;a href="#"&gt;&lt;span&gt;Twitter&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+
+                        &lt;li class="instagram"&gt;
+                            &lt;a href="#"&gt;&lt;span&gt;Instagram&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+
+                        &lt;li class="pinterest"&gt;
+                            &lt;a href="#"&gt;&lt;span&gt;Pinterest&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+
+                        &lt;li class="vimeo"&gt;
+                            &lt;a href="#"&gt;&lt;span&gt;Vimeo&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTech - Features Dropdown</title>
+      <identifier>features-dropdown</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="featured-menu"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-xl-3"&gt;
+            &lt;div class="column-featured mb-desktop-20"&gt;
+                &lt;h3 class="google-element-font"&gt;Layouts&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="#" data-bzo-store="english"&gt;Home Demo 01&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#" data-bzo-store="arabic"&gt;Home Demo 01 - RTL&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Categories&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}shop.html"&gt;Without Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}smartphones-tablets.html"&gt;Left Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}accessories.html"&gt;Right Sidebar&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-xl-3"&gt;
+            &lt;div class="column-featured mb-desktop-20"&gt;
+                &lt;h3 class="google-element-font"&gt;Product Pages&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}dog-food-dispenser-trixie-memory-trainer-activity-innovativ.html"&gt;Without Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}multipet-smiling-dog-loofa-pals-latex-plush-dog-toy-banana-shaped.html"&gt;Left Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}cat-backpack-bubble-bag-pet-space-bag-hiking-dog.html"&gt;Right Sidebar&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Product Types&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}simple-product.html"&gt;Simple Product&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}configurable-product.html"&gt;Configurable Product&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}grouped-product.html"&gt;Grouped Product&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}bundle-product.html"&gt;Bundle Product&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}downloadable-product.html"&gt;Downloadable Product&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-xl-3"&gt;
+            &lt;div class="column-featured mb-desktop-20"&gt;
+                &lt;h3 class="google-element-font"&gt;Blog Category Pages&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}blog/category/without-sidebar"&gt;Without Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}blog/category/left-sidebar"&gt;Left Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}blog/category/right-sidebar"&gt;Right Sidebar&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Blog Detail Pages&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}blog/post/whats-good-about-new-macbook"&gt;Without Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}blog/post/apple-watch-series-6"&gt;Left Sidebar&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}blog/post/apple-wireless-headphones"&gt;Right Sidebar&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-xl-3"&gt;
+            &lt;div class="column-featured"&gt;
+                &lt;h3 class="google-element-font"&gt;Other Pages&lt;/h3&gt;
+                &lt;ul class="featured-items"&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}about-us"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}contact"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}faqs"&gt;FAQs&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}partner"&gt;Partner&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}404page"&gt;404 Page&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}partner"&gt;Brands - Manufactures&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}best-sellers"&gt;Best Sellers&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}new-arrivals"&gt;New Arrivals&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{{store url=""}}special-products"&gt;Special products&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTECH - Logos slider</title>
+      <identifier>logos-slider</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;ul class="manufacture-logos owl-carousel owl-theme" data-mage-init='{"bzo_carousel":{"nav": true, "dots": false, "items": 6, "margin": 38, "loop": true, "autoplay": true, "autoWidth":true, "autoplayHoverPause": true}}'&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/lg.jpg}}" alt="LG" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/apple.jpg}}" alt="Apple" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/asus.jpg}}" alt="Asus" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/nokia.jpg}}" alt="Nokia" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/samsung.jpg}}" alt="Samsung" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/huawei.jpg}}" alt="Huawei" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/sony.jpg}}" alt="Sony" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/xiaomi.jpg}}" alt="Xiaomi" /&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="logo-item"&gt;&lt;a href="#"&gt;&lt;img src="{{media url=wysiwyg/manufacture-logo/oppo.jpg}}" alt="Oppo" /&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTECH - services</title>
+      <identifier>services</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;ul class="services"&gt;
+  &lt;li class="free-shipping"&gt;
+    &lt;a href="#"&gt;
+      &lt;span class="icon-service"&gt;&lt;img src="{{media url=wysiwyg/services/freeship.jpg}}" alt="free shipping" /&gt;&lt;/span&gt;
+      &lt;span class="main-title"&gt;Free Shipping &amp; Return&lt;/span&gt;
+      &lt;span class="details-text"&gt;Free Shipping on all orders over $250&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="refund"&gt;
+    &lt;a href="#"&gt;
+      &lt;span class="icon-service"&gt;&lt;img src="{{media url=wysiwyg/services/money-back.jpg}}" alt="money bag" /&gt;&lt;/span&gt;
+      &lt;span class="main-title"&gt;Refund Policy&lt;/span&gt;
+      &lt;span class="details-text"&gt;25 days money back guarantee&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="payment-sercurity"&gt;
+    &lt;a href="#"&gt;
+      &lt;span class="icon-service"&gt;&lt;img src="{{media url=wysiwyg/services/payment-security.jpg}}" alt="payment sercurity" /&gt;&lt;/span&gt;
+      &lt;span class="main-title"&gt;Payment Security&lt;/span&gt;
+      &lt;span class="details-text"&gt;All payment secured and trusted&lt;/span&gt; 
+    &lt;/a&gt;  
+  &lt;/li&gt;
+  &lt;li class="power-support"&gt;
+    &lt;a href="#"&gt;
+      &lt;span class="icon-service"&gt;&lt;img src="{{media url=wysiwyg/services/power-support.jpg}}" alt="power support" /&gt;&lt;/span&gt;
+      &lt;span class="main-title"&gt;Power Support&lt;/span&gt;
+      &lt;span class="details-text"&gt;We support online 24/7&lt;/span&gt;  
+    &lt;/a&gt; 
+  &lt;/li&gt;
+&lt;/ul&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTECH- Smartphones &amp; Tablets Category</title>
+      <identifier>block-smartphones-tablets-category</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;div class="block-cat-banner"&gt;
+    &lt;div class="block-cat-description"&gt;
+         &lt;h3&gt;Most Popular Phones&lt;/h3&gt;
+         &lt;div class="block-cat-info"&gt;
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="block-cat-image"&gt;
+         &lt;img src="{{media url=wysiwyg/banner/category-block.jpg}}" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+    <cms_item>
+      <title>BZOTECH-category-sidebar</title>
+      <identifier>category-sidebar</identifier>
+      <content><![CDATA[<div data-content-type="html" data-appearance="default" data-element="main">&lt;a href="#"&gt;
+&lt;img src="{{media url=wysiwyg/banner/sidebar-banner.jpg}}" alt="" /&gt;
+&lt;/a&gt;</div>]]></content>
+      <is_active>1</is_active>
+      <store_id>0</store_id>
+    </cms_item>
+  </blocks>
+</root>

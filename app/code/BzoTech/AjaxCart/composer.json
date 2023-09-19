@@ -1,0 +1,22 @@
+{
+    "name": "bzotech/ajaxcart",
+    "description": "BzoTech AjaxCart",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/module-admin-notification": "100.*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "BzoTech\\AjaxCart\\": ""
+        }
+    }
+}

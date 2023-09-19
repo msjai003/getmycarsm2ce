@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="bzotech" translate="label" sortOrder="1">
+			<label>BzoTech</label>
+		</tab>
+		<section id="producttabs" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Product Tabs</label>
+			<tab>bzotech</tab>
+			<resource>BzoTech_ProductTabs::config_producttabs</resource>
+			<group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General Options</label>
+				<field id="isactive" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled Extensions</label>
+					<source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+				</field>
+
+				<field id="title" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Title</label>
+				</field>
+				<field id="type_show" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Type Show</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\LoadMore</source_model>
+				</field>
+				<field id="type_listing" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Type Listing</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\TypeListing</source_model>
+				</field>
+				<field id="under_price" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Price</label>
+					<validate>required-entry float</validate>
+					<depends>
+						<field id="type_listing">under</field>
+					</depends>
+				</field>
+				<field id="display_countdown" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Countdown Timer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+			</group>
+
+			<group id="source_options" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Source Options</label>
+				<field id="type_filter" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Filter Type</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\ListSource</source_model>
+				</field>
+				<field id="field_tabs" translate="label" type="multiselect" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Fields</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\ListField</source_model>
+					<depends>
+						<field id="type_filter">fieldproducts</field>
+					</depends>
+				</field>
+				<field id="category_tabs" translate="label" type="multiselect" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Categories</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\ListCategory</source_model>
+					<depends>
+						<field id="type_filter">categories</field>
+					</depends>
+				</field>
+				<field id="category_select" translate="label" type="multiselect" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Category</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\ListCategory</source_model>
+					<depends>
+						<field id="type_filter">fieldproducts</field>
+					</depends>
+				</field>
+				<field id="order_by" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Order By</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\OrderBy</source_model>
+					<depends>
+						<field id="type_filter">categories</field>
+					</depends>
+				</field>
+				<field id="order_dir" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Ordering Direction</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\OrderDirection</source_model>
+				</field>
+				<field id="limitation" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Product Limitation</label>
+					<validate>required-entry integer</validate>
+				</field>
+			</group>
+
+			<group id="tab_slider" translate="label" type="text" sortOrder="20" showInDefault="1"
+				   showInWebsite="1" showInStore="1">
+				<label>Slider Configuration</label>
+
+				<field id="margin" translate="label" type="text" sortOrder="5" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Margin</label>
+					<validate>validate-greater-than-zero integer required-entry validate-number
+						validate-digits-range digits-range-10-100
+					</validate>
+				</field>
+
+				<field id="autoplay" translate="label" type="select" sortOrder="10" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Autoplay</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="loop" translate="label" type="select" sortOrder="20" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Loop</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="nav" translate="label" type="select" sortOrder="30" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Navigation</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="dots" translate="label" type="select" sortOrder="40" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Dots</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="mousedrag" translate="label" type="select" sortOrder="60" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Mouse Drag</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="touchdrag" translate="label" type="select" sortOrder="70" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Touch Drag</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+
+				<field id="screen_0" translate="label" type="select" sortOrder="80" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on max screen 480px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+
+				<field id="screen_1" translate="label" type="select" sortOrder="90" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on screen 481px -> 767px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+
+				<field id="screen_2" translate="label" type="select" sortOrder="100" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on screen 768px -> 991px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+
+				<field id="screen_3" translate="label" type="select" sortOrder="110" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on screen 992px -> 1199px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+
+				<field id="screen_4" translate="label" type="select" sortOrder="120" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on screen 1200px -> 1440px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+
+				<field id="screen_5" translate="label" type="select" sortOrder="130" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on screen 1441px -> 1680px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+
+				<field id="screen_6" translate="label" type="select" sortOrder="140" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on screen 1681px -> 1920px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+
+				<field id="screen_7" translate="label" type="select" sortOrder="150" showInDefault="1"
+					   showInWebsite="1" showInStore="1">
+					<label>Number columns on screen is greater than 1921px</label>
+					<source_model>BzoTech\ProductTabs\Model\Config\Source\Columns</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

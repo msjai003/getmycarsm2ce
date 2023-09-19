@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <megamenu>
+            <primary_secondary_menu>
+                <megamenu_type>horizontal</megamenu_type>
+                <primary_cfg>
+                    <vertical_title>ALL CATEGORIES</vertical_title>
+                    <vertical_limit>10</vertical_limit>
+                    <text_style>style-capitalize</text_style>
+                    <text_weight>style-bold</text_weight>
+                    <item_center>0</item_center>
+                </primary_cfg>
+
+                <secondary_cfg>
+                    <text_weight_secondary>style-bold</text_weight_secondary>
+                    <item_center_secondary>0</item_center_secondary>
+                </secondary_cfg>
+            </primary_secondary_menu>
+        </megamenu>
+    </default>
+</config>

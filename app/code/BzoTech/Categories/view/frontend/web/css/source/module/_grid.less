@@ -1,0 +1,129 @@
+& when (@media-common = true) {
+    .categories-listing,
+    .categories-listing * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    .boz-cat-image {
+        margin-bottom: 5px;
+
+        a {
+            display: block;
+            overflow: hidden;
+        }
+
+        a img {
+            vertical-align: top;
+            transition: .2s;
+            -webkit-transition: .2s;
+        }
+
+        a img:hover {
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+        }
+    }
+
+    .bzo-categories {
+        .block-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .categories-listing.grid-categories {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+
+        .category-item {
+            padding: 0 15px;
+            margin-bottom: 20px;
+            width: 20%;
+        }
+    }
+
+    .category-item {
+        .parent-image {
+            margin-bottom: 10px;
+        }
+
+        .parent-name {
+            margin-bottom: 10px;
+
+            a {
+                color: #222;
+            }
+        }
+
+        .category-short-des {
+            margin-bottom: 10px;
+        }
+    }
+
+    .child-category-items {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .child-name {
+            font-weight: 400;
+        }
+    }
+
+    /**
+     * Subcategories
+     */
+
+    .sub-categories-container,
+    .sub-categories-container * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    .sub-categories-container {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 40px;
+
+        .sub-items {
+            margin: 0 -15px;
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .sub-item {
+            padding: 0 15px;
+            margin: 0 0 30px;
+            width: 20%;
+        }
+
+        .item-inner {
+            text-align: center;
+        }
+
+        .child-name {
+            font-weight: 400;
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .categories-listing.grid-categories .category-item {
+        width: 33.33333333%;
+    }
+}
+
+@media (max-width: 767px) {
+    .categories-listing.grid-categories .category-item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-listing.grid-categories .category-item {
+        width: 50%;
+    }
+}
