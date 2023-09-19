@@ -18,6 +18,7 @@ namespace Gmc\Catalog\Helper;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Pricing\Helper\Data as PricingHelper;
+//use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -47,7 +48,7 @@ class Data extends AbstractHelper
     /**
      * @var PricingHelper
      */
-    private $pricingHelper;
+    //private $pricingHelper;
 
     /**
      * @var \Magento\Framework\DB\Adapter\AdapterInterface
@@ -57,32 +58,32 @@ class Data extends AbstractHelper
     /**
      * @var ProductRepositoryInterface
      */
-    private $productRepository;
+    //private $productRepository;
 
     /**
      * @var StoreInterface
      */
-    private $storeManager;
+    //private $storeManager;
 
     /**
-     * Data constructor.
-     * @param Context $context Context
+     * @param Context $context
+     * @param PricingHelper $pricingHelper
      * @param ResourceConnection $resource
      * @param ProductRepositoryInterface $productRepository
      * @param StoreInterface $storeManager
      */
     public function __construct(
         Context $context,
-        PricingHelper $pricingHelper,
-        ResourceConnection $resource,
-        ProductRepositoryInterface $productRepository,
-        StoreInterface $storeManager
+        private PricingHelper $pricingHelper,
+        private ResourceConnection $resource,
+        private ProductRepositoryInterface $productRepository,
+        private StoreInterface $storeManager
     ) {
         $this->scopeConfig = $context->getScopeConfig();
         $this->pricingHelper = $pricingHelper;
         $this->connection = $resource->getConnection();
         $this->productRepository = $productRepository;
-        $this->storeManager = $storeManager;
+        //$this->storeManager = $storeManager;
         parent::__construct($context);
     } //end __construct()
 
@@ -125,7 +126,7 @@ class Data extends AbstractHelper
     /**
      * Function to retrieve formatted price
      */
-    private function getFormattedPrice($price)
+    public function getFormattedPrice($price)
     {
         return $this->pricingHelper->currency($price, true, false);
     } //end getFormattedPrice()
@@ -194,5 +195,30 @@ class Data extends AbstractHelper
     public function getTabTwoId()
     {
         return (int) $this->scopeConfig->getValue(self::XML_HOME_PAGE_PRODUCTS_TAB_2);
+    }
+
+    public function getListAttributesValue($product, $codes)
+    {
+        $arr = [];
+        foreach ($codes as $code) {
+            $attribute = $product->getResource()->getAttribute($code);
+            if ($attribute) {
+                $arr[] = [
+                    'label' => $attribute->getStoreLabel(),
+                    'value' => $attribute->getFrontend()->getValue($product)
+                ];
+            }
+        }
+        return $arr;
+    }
+
+    public function getAttributeValue($product, $code)
+    {
+        $val = '';
+        $attribute = $product->getResource()->getAttribute($code);
+        if ($attribute) {
+            $val = $attribute->getFrontend()->getValue($product);
+        }
+        return $val;
     }
 }//end class

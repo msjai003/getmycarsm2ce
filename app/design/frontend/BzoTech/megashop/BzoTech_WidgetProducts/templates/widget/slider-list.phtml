@@ -3,14 +3,15 @@
 use Magento\Framework\App\Action\Action;
 
 $productCollection = $block->getProducts();
-$_helper           = $this->helper('Magento\Catalog\Helper\Output');
-$imageDisplayArea  = 'category_page_grid';
-$pos               = $block->getPositioned();
-$templateType      = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
-$blockPrefix       = 'bzotech-widget-' . rand();
-$countItems        = $productCollection->count();
-$rowProduct        = $block->getData('product_row');
-$_configCore       = $this->helper('BzoTech\ThemeCore\Helper\Data');
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$imageDisplayArea = 'category_page_grid';
+$pos = $block->getPositioned();
+$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+$blockPrefix = 'bzotech-widget-' . rand();
+$countItems = $productCollection->count();
+$rowProduct = $block->getData('product_row');
+$_configCore = $this->helper('BzoTech\ThemeCore\Helper\Data');
+$_gmcCore = $this->helper('Gmc\Catalog\Helper\Data');
 ?>
 
 <?php if (!$countItems): ?>
@@ -102,11 +103,11 @@ $_configCore       = $this->helper('BzoTech\ThemeCore\Helper\Data');
                                         </div>
                                     <?php } ?>
 
-                                    <?php if ($_configCore->getProductCategories($_product->getId())) { ?>
+                                    <?php /*if ($_configCore->getProductCategories($_product->getId())) { */?><!--
                                         <div class="product-cats">
-                                            <?php echo $_configCore->getProductCategories($_product->getId()); ?>
+                                            <?php /*echo $_configCore->getProductCategories($_product->getId()); */?>
                                         </div>
-                                    <?php } ?>
+                                    --><?php /*} */?>
 
                                     <?php
                                     $_productNameStripped = $block->stripTags($_product->getName(), null, true);
@@ -120,11 +121,57 @@ $_configCore       = $this->helper('BzoTech\ThemeCore\Helper\Data');
                                         </a>
                                     </strong>
 
-                                    <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+                                    <div class="price-final_price" data-role="priceBox" data-product-id="<?php echo $_product->getId() ?>"
+                                         data-price-box="product-id-<?php echo $_product->getId() ?>">
+                                        <span class="price-container price-final_price tax weee">
+                                            <span id="product-price" data-price-amount="<?php echo $_product->getPrice() ?>" data-price-type="finalPrice" class="price-wrapper ">
+                                                <span><?= /* @escapeNotVerified */__('Partner Price:') ?></span>
+                                                <span class="price">
+                                                    <?php echo $_gmcCore->getFormattedPrice($_product->getPrice()) ?>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </div>
 
-                                    <?php echo $block->getProductPrice($_product) ?>
+                                    <div class="price-final_price" data-role="priceBox" data-product-id="<?php echo $_product->getId() ?>"
+                                         data-price-box="product-id-<?php echo $_product->getId() ?>">
+                                        <span class="price-container price-final_price tax weee">
+                                            <span id="product-price" data-price-amount="<?php echo $_product->getEstimatedSellingPrice() ?>" data-price-type="finalPrice" class="price-wrapper ">
+                                                <span><?= /* @escapeNotVerified */__('Estd Selling Price:') ?></span>
+                                                <span class="price">
+                                                    <?php echo $_gmcCore->getFormattedPrice($_product->getEstimatedSellingPrice()) ?>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </div>
 
-                                    <?php echo $block->getProductDetailsHtml($_product); ?>
+                                    <?php
+                                    $attrs = ['kilometers', 'fuel_type', 'owner', 'transmission', 'seater'];
+                                    $customAttrs = $_gmcCore->getListAttributesValue($_product, $attrs);
+                                    ?>
+                                    <p>
+                                        <?php foreach ($customAttrs as $attr): ?>
+                                            <span class="attribute"><?php echo $attr['value'] ?></span>
+                                        <?php endforeach; ?>
+                                    </p>
+
+                                    <div class="stock available">
+                                        <span>
+                                            <?php
+                                            $unitsLeft = $_gmcCore->getAttributeValue($_product, 'ticket_size');
+                                            $unitsText = sprintf('Only %d tickets left', $unitsLeft);
+                                            echo $unitsText;
+                                            ?>
+                                        </span>
+                                    </div>
+
+                                    <?php //echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+
+                                    <?php //echo $block->getProductPrice($_product) ?>
+
+                                    <?php //echo $block->getFormattedPriceWithCurrency($_product->getPrice()); ?>
+
+                                    <?php //echo $block->getProductDetailsHtml($_product); ?>
 
                                     <div class="product-item-inner">
                                         <div class="product actions product-item-actions">
@@ -155,7 +202,8 @@ $_configCore       = $this->helper('BzoTech\ThemeCore\Helper\Data');
                                                         <div class="stock available"><span><?= /* @escapeNotVerified */
                                                                 __('In stock') ?></span></div>
                                                     <?php else: ?>
-                                                        <div class="stock unavailable"><span><?= /* @escapeNotVerified */
+                                                        <div
+                                                            class="stock unavailable"><span><?= /* @escapeNotVerified */
                                                                 __('Out of stock') ?></span></div>
                                                     <?php endif; ?>
                                                 <?php endif; ?>
