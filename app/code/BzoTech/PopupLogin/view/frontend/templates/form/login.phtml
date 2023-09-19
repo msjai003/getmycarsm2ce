@@ -17,62 +17,37 @@ $currentPageUrl = $_config->getUrlPage();
 <div class="block block-customer-login">
     <div class="block-content" aria-labelledby="block-customer-login-heading">
         <form class="form form-login"
-              action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+              action="#"
               method="post"
               id="login-form-popup"
               data-mage-init='{"validation":{}}'>
             <?= $block->getBlockHtml('formkey') ?>
-            <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>">
-                <input type="hidden" id="popup-redirect" name="login[redirect]"
-                       value="<?php echo $_config->getRedirectUrl(); ?>">
-
+            <fieldset class="fieldset login" data-hasrequired="<?= __('* Required Fields') ?>">
                 <div class="field email required">
-                    <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                    <label class="label" for="mobile_number_login"><span><?= __('Mobile Number') ?></label>
                     <div class="control">
-                        <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>"
-                            <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
-                               id="email_login" type="email" class="input-text"
-                               title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
-                               data-mage-init='{"mage/trim-input":{}}'
-                               data-validate="{required:true, 'validate-email':true}">
+                        <input type="text" class="input-text" name="mobile_number_login"
+                        id="mobile_number_login"
+                        placeholder="Mobile Number" 
+                        data-validate='{"required":true, "minlength":10, "maxlength":10, "validate-number":true}'
+                        data-mage-init='{"mage/trim-input":{}}'>
                     </div>
                 </div>
-                <div class="field password required">
-                    <label for="pass" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
-                    <div class="control">
-                        <input name="login[password]" type="password"
-                            <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
-                               class="input-text" id="pass_login"
-                               title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
-                               data-validate="{required:true}">
-                    </div>
-                </div>
-
-                <?= $block->getChildHtml('bzotech_form_additional_info_login') ?>
-                <?= $block->getChildHtml('captcha.login.popup') ?>
-                <?= $block->getChildHtml('recaptcha.login') ?>
                 <div class="actions-toolbar">
                     <div class="primary">
                         <button type="submit" class="action login primary" name="send" id="send2_login">
-                            <span><?= $block->escapeHtml(__('Sign In')) ?></span></button>
+                            <span><?= __('Sign In') ?></span></button>
                     </div>
-                    <?php if (!str_contains($currentPageUrl, 'customer/account/forgotpassword')) { ?>
-                        <div class="secondary">
-                            <a class="action remind" href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>">
-                                <span><?= $block->escapeHtml(__('Forgot Your Password?')) ?></span>
-                            </a>
-                        </div>
-                    <?php } ?>
                 </div>
             </fieldset>
         </form>
 
         <?php if (!str_contains($currentPageUrl, 'customer/account/create')) { ?>
             <div class="bottom-popup">
-                <div class="sub-title"><?php echo $block->escapeHtml(__('Don\'t have an account?')) ?></div>
+                <div class="sub-title"><?php echo __('Don\'t have an account?') ?></div>
                 <div class="trigger-button">
                     <a class="trigger-create" href="javascript:void(0)">
-                        <span><?php echo $block->escapeHtml(__('Sign Up Now')) ?></span>
+                        <span><?php echo __('Sign Up Now') ?></span>
                     </a>
                 </div>
             </div>
@@ -88,3 +63,35 @@ $currentPageUrl = $_config->getUrlPage();
         }
     </script>
 </div>
+<script>
+    require(['jquery'], function($) {
+        const loginForm = $('#login-form-popup');
+        loginForm.submit(function (event) {
+            event.preventDefault();
+            if (loginForm.valid()) {
+                const formData = loginForm.serialize();
+                $.ajax({
+                    url: '<?php echo $this->getUrl('mobileauth/account/loginpost') ?>',
+                    type: 'post',
+                    data: formData,
+                    dataType: 'json',
+                    beforeSend:function(xhr) {
+                        $('.submit').attr('disabled', true);
+                    },                    
+                    success: function (response) {
+                        if (response.success === true) {
+                            // Login successful, redirect to account page
+                            window.location.href = '<?php echo $this->getUrl('customer/account') ?>';
+                        } else {
+                            // Show error message
+                            window.location.reload();
+                        }
+                    },
+                    complete:function(xhr) {
+                        $('.submit').attr('disabled', false);
+                    }                    
+                });
+            }            
+        });
+    });
+</script>

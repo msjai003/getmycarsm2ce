@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Gmc_Catalog
+ *
+ * PHP version 8.x
+ *
+ * @category  PHTML
+ * @package   Gmc\Catalog
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+
+/** @var $block \Magento\Catalog\Product\View */
+/** @var $viewModel \Gmc\Catalog\ViewModel\Product\View\Helper */
+
+$viewModel  = $block->getViewModel();
+$ticketsLeft = $viewModel->getTicketsLeft();
+?>
+<div class="price-contribution-form">
+    <h3><?= __('Only %1 tickets left', $ticketsLeft)?></h3>
+</div>

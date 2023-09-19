@@ -33,7 +33,9 @@ class OtpRepository
     public function getOtpByMobile($mobile)
     {
         $otpCollection = $this->otpCollectionFactory->create();
-        $otpCollection->addFieldToFilter('mobile', $mobile);
+        $otpCollection
+        ->addFieldToFilter('mobile', $mobile)
+        ->setOrder('otp_id', 'DESC');
         return $otpCollection->getFirstItem();
     }
     public function deleteOtp($otpId)

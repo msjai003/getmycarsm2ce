@@ -6,52 +6,46 @@ use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Session;
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ActionInterface;
+use Magento\Framework\Message\ManagerInterface as MessageInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Gmc\MobileAuth\Model\OtpRepository;
+use Magento\Framework\App\Request\Http;
 
-class Createaccount extends Action
+class Createaccount implements ActionInterface
 {
     public function __construct(
-        Context $context,
         private JsonFactory $resultJsonFactory,
         private CustomerFactory $customerFactory,
         private AccountManagementInterface $accountManagement,
         private Session $customerSession,
         private CustomerInterfaceFactory $customerInterfaceFactory,
-        private OtpRepository $otpRepository
+        private OtpRepository $otpRepository,
+        private MessageInterface $messageInterface,
+        private Http $request
     ) {
-        parent::__construct($context);
     }
 
 
     public function execute()
     {
         $resultJson = $this->resultJsonFactory->create();
-        $postData = $this->getRequest()->getPostValue();
-
-        //Validate OTP
-        $result = $this->validateOtp(
-            $postData['mobile_number_register'],
-            $postData['otp']
-        );
-
-        if (empty($result) && !$result) {
-            $result = ['success' => false, 'message' => 'Invalid OTP. Please try again.'];
-            return $resultJson->setData($result);
-        }
-
-        $postData = $this->getRequest()->getPostValue();
-        $email = sprintf('%s@example.com', $postData['mobile_number_register']);
+        $postData = $this->request->getPostValue();
+        $result['success'] = false;
         try {
-
+        
+            //Validate OTP
+            $this->validateOtp(
+                $postData['mobile_number'],
+                $postData['otp']
+            );
+            $email = sprintf('%s@example.com', $postData['mobile_number']);
             $customer = $this->customerInterfaceFactory->create();
             $customer->setFirstname($postData['firstname']);
             $customer->setLastname($postData['lastname']);
             $customer->setEmail($email);
-            $customer->setCustomAttribute('mobile_number', $postData['mobile_number_register']);
+            $customer->setCustomAttribute('mobile_number', $postData['mobile_number']);
             $customer->setGroupId(4);
 
             // Create a new customer account
@@ -62,13 +56,16 @@ class Createaccount extends Action
             // Set the customer session as logged in
             $this->customerSession->setCustomerAsLoggedIn($customer);
 
-            $result = ['success' => true];
+            $result = [
+                'success' => true,
+                'redirect' => true
+            ];
         } catch (LocalizedException $e) {
-            // Handle registration error, e.g., email already exists
-            $result = ['success' => false, 'message' => $e->getMessage()];
+            $result['message'] = $e->getMessage();
+            $this->messageInterface->addErrorMessage(__($e->getMessage()));            
         } catch (\Exception $e) {
-            // Handle other exceptions or errors
-            $result = ['success' => false, 'message' => 'Registration failed.'];
+            $result['message'] = $e->getMessage();
+            $this->messageInterface->addErrorMessage(__($e->getMessage()));
         }
 
         return $resultJson->setData($result);
@@ -89,7 +86,7 @@ class Createaccount extends Action
         } else {
             // Redirect back to the OTP verification form.
             // You can customize the URL as needed.
-            return false;
+            throw new LocalizedException(__('Invalid OTP. Please try again.'));
         }
     }
 }

@@ -85,7 +85,15 @@ class Generateotp extends Action
         //Send Otp
         $this->customerSession->setMobileOtp($generatedOtp);
         $resultJson = $this->resultJsonFactory->create();
-        $response = $this->sendOtp($mobile, $generatedOtp);
+        $response = [
+            'success' => true
+        ];
+        try {
+            $this->sendOtp($mobile, $generatedOtp);
+            $response['success'] = true;
+        } catch (\Exception $e) {
+            $this->messageManager->addErrorMessage($e->getMessage());
+        }
         return $resultJson->setData($response);
     }
 
@@ -98,7 +106,7 @@ class Generateotp extends Action
                 $generatedOtp
             );
         } catch (\Exception $e) {
-            echo (string)$e->getMessage();
+            throw new LocalizedException(__($e->getMessage()));
         }
     }
 }

@@ -137,55 +137,38 @@ class Data extends AbstractHelper
      * @param mixed $product
      * @return array
      */
-    public function getPriceContribution($product)
+    public function getTicketsLeft($product)
     {
         if (!$product instanceof ProductInterface) {
             $product = $this->productRepository->getById($product);
         }
-        $productId = $product->getId();
-        $connection = $this->connection;
-
-        $table = $connection->getTableName('gmc_partner_contribution');
-        $select = $connection->select();
-        $select
-        ->from($table, ['SUM(ticket_size_qty) AS ticket_size_ordered'])
-        ->where('product_id = ?', $productId)
-        ->group('product_id');
-
-        $ticketSizeOrdered = (int) $connection->fetchOne($select);
-        $price = $product->getPrice();
+        $ticketSizeOrdered = (int) $this->getTicketsOrdered($product->getId());
         $productTicketSize = $product->getTicketSize();
         if (empty($ticketSizeOrdered)) {
-            return [
-                'contribution_booked' => 0
-            ];
+            return $productTicketSize;
         }
         if ($ticketSizeOrdered >= $productTicketSize) {
-            return [
-                'contribution_booked' => 100
-            ];
+            return 0;
         }
-        $contributionBooked = $this->getContributionBooked($productId);
-        $result['contribution_booked'] = (int) (($contributionBooked / $price) * 100);
-        return $result;
-    } //end getPriceContribution()
+        return (int) $productTicketSize - $ticketSizeOrdered;
+    } //end getTicketsLeft()
 
     /**
-     * Function to retrieve total contribution booked by product ID
+     * Function to retrieve total tickets ordered by product ID
      *
      * @return int
      */
-    public function getContributionBooked($productId)
+    public function getTicketsOrdered($productId)
     {
         $connection = $this->connection;
         $table = $connection->getTableName('gmc_partner_contribution');
         $select = $connection->select();
         $select
-            ->from($table, ['SUM(amount_contributed)'])
+            ->from($table, ['SUM(ticket_size_qty)'])
             ->where('product_id = ?', $productId)
             ->group('product_id');
         return (int) $connection->fetchOne($select);
-    } //end getContributionBooked()
+    } //end getTicketsOrdered()
 
     public function getTabOneId()
     {

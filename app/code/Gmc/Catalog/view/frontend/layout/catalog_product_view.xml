@@ -13,7 +13,7 @@
 -->
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <referenceContainer name="product.info.main">
-        <block class="Magento\Catalog\Block\Product\View" name="partner.price.contribution.range" template="Gmc_Catalog::product/view/price_contribution.phtml">
+        <block class="Magento\Catalog\Block\Product\View" name="partner.tickets.left" template="Gmc_Catalog::product/view/tickets_left.phtml">
             <arguments>
                 <argument name="view_model" xsi:type="object">Gmc\Catalog\ViewModel\Product\View\Helper</argument>
             </arguments>

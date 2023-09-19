@@ -52,13 +52,13 @@ class Helper extends DataObject implements ArgumentInterface
     }
 
     /**
-     * Function to retrieve price contribution details
+     * Function to retrieve tickets left
      */
-    public function getPriceContribution()
+    public function getTicketsLeft()
     {
         $product = $this->registry->registry('product');
-        return $this->dataHelper->getPriceContribution($product);
-    } //end getPriceContribution()
+        return $this->dataHelper->getTicketsLeft($product);
+    } //end getTicketsLeft()
 
     /**
      * Function to retrieve currency symbol
