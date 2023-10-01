@@ -27,7 +27,7 @@ class CategoryProducts extends Template
         PriceCurrencyInterface $priceCurrency,
         UrlInterface $urlInterface,
         Data $helper,
-        CustomerSession $customerSession
+        CustomerSession $customerSession,
         array $data = []
     ) {
         parent::__construct($context, $data);
