@@ -23,6 +23,7 @@ use Magento\Framework\DataObject;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Customer\Model\Session as CustomerSession;
 
 /**
  * Class Quote
@@ -31,11 +32,6 @@ use Magento\Framework\Exception\LocalizedException;
 class Quote
 {
     /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
      * @var AdapterInterface
      */
     private $connection;
@@ -43,14 +39,15 @@ class Quote
     /**
      * Quote constructor.
      *
-     * @param LoggerInterface $logger LoggerInterface
-     * @param ResourceConnection $resourceConnection ResourceConnection
+     * @param LoggerInterface $logger
+     * @param ResourceConnection $resourceConnection
+     * @param CustomerSession $customerSession
      */
     public function __construct(
-        LoggerInterface $logger,
-        ResourceConnection $resourceConnection
+        private LoggerInterface $logger,
+        private ResourceConnection $resourceConnection,
+        private CustomerSession $customerSession
     ) {
-        $this->logger = $logger;
         $this->connection = $resourceConnection->getConnection();
     } //end __construct
 
@@ -66,6 +63,10 @@ class Quote
         Product     $product,
         $request = null
     ) {
+        $isCustomerLoggedIn = $this->customerSession->isLoggedIn();
+        if (!$isCustomerLoggedIn) {
+            throw new LocalizedException(__('Booking not allowed for Guest customer!'));
+        }
         if (!$request instanceof DataObject) {
             return;
         }

@@ -41,17 +41,17 @@ $popupType = $_config->getPopupLoginConfig('general/popup_type');
             var url = $(this).attr('href');
 
             if (typeof (url) !== "undefined") {
-                if (url.toLowerCase().indexOf("customer/account/login") >= 0 && currentUrl.toLowerCase().indexOf("customer/account/login") == -1) {
+                if (url.toLowerCase().indexOf("customer/account/login") >= 0) {
                     $(this).addClass('open-popup-login');
                     $(this).attr('href', 'javascript:void(0)');
                 }
 
-                if (url.toLowerCase().indexOf("customer/account/create") >= 0 && currentUrl.toLowerCase().indexOf("customer/account/create") == -1) {
+                if (url.toLowerCase().indexOf("customer/account/create") >= 0) {
                     $(this).addClass('open-popup-create');
                     $(this).attr('href', 'javascript:void(0)');
                 }
 
-                if (url.toLowerCase().indexOf("customer/account/forgotpassword") >= 0 && currentUrl.toLowerCase().indexOf("customer/account/forgotpassword") == -1) {
+                if (url.toLowerCase().indexOf("customer/account/forgotpassword") >= 0) {
                     $(this).addClass('open-popup-forgot');
                     $(this).attr('href', 'javascript:void(0)');
                 }

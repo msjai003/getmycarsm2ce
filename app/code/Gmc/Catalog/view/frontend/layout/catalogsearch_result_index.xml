@@ -12,11 +12,14 @@
  */
 -->
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <referenceContainer name="product.info.main">
-        <block class="Magento\Catalog\Block\Product\View" name="product.additional.info" template="Gmc_Catalog::product/view/additional_info.phtml">
+    <body>
+        <referenceBlock name="search_result_list">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Gmc_Catalog::product/list.phtml</argument>
+            </action>
             <arguments>
                 <argument name="view_model" xsi:type="object">Gmc\Catalog\ViewModel\Product\View\Helper</argument>
-            </arguments>
-        </block>        
-    </referenceContainer>
+            </arguments>                 
+        </referenceBlock>
+    </body>    
 </page>

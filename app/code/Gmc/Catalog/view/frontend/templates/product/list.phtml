@@ -45,6 +45,8 @@ $_helper = $block->getData('outputHelper');
      * Position for actions regarding image size changing in vde if needed
      */
     $pos = $block->getPositioned();
+    $viewModel  = $block->getViewModel();
+    $isCustomerLoggedIn = $viewModel->isCustomerLoggedIn();
     ?>
     <div class="products wrapper <?= /* @noEscape */ $viewMode ?> products-<?= /* @noEscape */ $viewMode ?>">
         <ol class="products list items product-items">
@@ -71,9 +73,31 @@ $_helper = $block->getData('outputHelper');
                                     <?=/* @noEscape */ $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
                                 </a>
                             </strong>
+                            <?php if ($isCustomerLoggedIn) : ?>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <p class="card-text price-label regular">
+                                        <span class="label">Partner Price:</span>
+                                        <?php echo $viewModel->getFormattedPrice($_product->getPrice()); ?>
+                                    </p>
+                                    <p class="card-text price-label sale">
+                                        <span class="label">Estd Selling Price:</span>
+                                        <?php echo $viewModel->getFormattedPrice($_product->getEstimatedSellingPrice()); ?>
+                                    </p>
+                                </div>   
+                            <?php endif;?>                         
                             <?php
+                                $cardAttributes = $viewModel->getProductCardAttributes($_product);
                                 $ticketsLeft = $_product->getTicketsLeft();
-                            ?>
+                                $count = count($cardAttributes);
+                                $km = $_product->getKilometers();
+                            ?>                            
+                            <p class="card-text attributes">
+                                <span class="attribute"><?php echo ($km) ? $km. ' km |' : '' ?></span>
+                                <?php $inc = 0; foreach ($cardAttributes as $optionLabel): $inc++;?>
+                                    <span class="attribute"><?php echo $optionLabel ?></span>
+                                    <?php echo ($inc < $count) ? '|' : '' ?>
+                                <?php endforeach; ?>
+                            </p>                            
                             <h3><?= __('Only %1 tickets left',$ticketsLeft)?></h3>                           
                             <?= $block->getReviewsSummaryHtml($_product, $templateType) ?>
                             <?= /* @noEscape */ $block->getProductPrice($_product) ?>

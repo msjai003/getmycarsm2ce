@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Gmc_Catalog
+ *
+ * PHP version 8.x
+ *
+ * @category  XML
+ * @package   Gmc\Catalog
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Pricing\Render">
+        <plugin name="Gmc_Catalog::hidePriceForGuest" type="Gmc\Catalog\Plugin\Product\HidePriceForGuest"/>
+    </type> 
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Gmc_MobileAuth
+ *
+ * PHP version 8.x
+ *
+ * @category  XML
+ * @package   Gmc\MobileAuth
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="customer_form_login">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Gmc_MobileAuth::form/login.phtml</argument>
+        </action>
+        <arguments>
+            <argument name="view_model" xsi:type="object">Gmc\Catalog\ViewModel\Product\View\Helper</argument>
+        </arguments>                  
+    </referenceBlock>
+</page>

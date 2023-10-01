@@ -10,6 +10,8 @@
 <?php
 $tabOneId = $block->getTabOneId();
 $productsTabOne = $block->getCategoryProducts($tabOneId);
+$viewModel  = $block->getViewModel();
+$isCustomerLoggedIn = $viewModel->isCustomerLoggedIn();
 ?>
 
 <ul class="nav nav-tabs" id="categoryTabs" role="tablist">
@@ -34,16 +36,18 @@ $productsTabOne = $block->getCategoryProducts($tabOneId);
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $product->getName() ?></h5>
-                                <div class="d-flex justify-content-between mb-2">
-                                    <p class="card-text price-label regular">
-                                        <span class="label">Partner Price:</span>
-                                        <?php echo $block->getFormattedPriceWithCurrency($product->getPrice()); ?>
-                                    </p>
-                                    <p class="card-text price-label sale">
-                                        <span class="label">Estd Selling Price:</span>
-                                        <?php echo $block->getFormattedPriceWithCurrency($product->getEstimatedSellingPrice()); ?>
-                                    </p>
-                                </div>
+                                <?php if ($isCustomerLoggedIn) : ?>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <p class="card-text price-label regular">
+                                            <span class="label">Partner Price:</span>
+                                            <?php echo $block->getFormattedPriceWithCurrency($product->getPrice()); ?>
+                                        </p>
+                                        <p class="card-text price-label sale">
+                                            <span class="label">Estd Selling Price:</span>
+                                            <?php echo $block->getFormattedPriceWithCurrency($product->getEstimatedSellingPrice()); ?>
+                                        </p>
+                                    </div>
+                                <?php endif; ?>
 
                                 <?php
                                 $attrs = ['kilometers', 'fuel_type', 'owner', 'transmission', 'seater'];
@@ -58,10 +62,9 @@ $productsTabOne = $block->getCategoryProducts($tabOneId);
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="units-left">
                                         <?php
-                                        $unitsLeft = $block->getAttributeValue($product, 'ticket_size');
-                                        $unitsText = sprintf('Only %d tickets left', $unitsLeft);
-                                        echo $unitsText;
+                                            $ticketsLeft = $_product->getTicketsLeft();
                                         ?>
+                                        <h3><?= __('Only %1 tickets left',$ticketsLeft)?></h3> 
                                     </div>
                                     <a href="<?php echo $block->getProductUrl($product) ?><!--" class="btn btn-primary btn-lg">
                                         <?php echo $escaper->escapeHtml(__('Book Now')) ?>

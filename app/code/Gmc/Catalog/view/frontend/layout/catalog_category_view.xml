@@ -16,7 +16,10 @@
         <referenceBlock name="category.products.list">
             <action method="setTemplate">
                 <argument name="template" xsi:type="string">Gmc_Catalog::product/list.phtml</argument>
-            </action>        
+            </action>
+            <arguments>
+                <argument name="view_model" xsi:type="object">Gmc\Catalog\ViewModel\Product\View\Helper</argument>
+            </arguments>                  
         </referenceBlock>
     </body>    
 </page>

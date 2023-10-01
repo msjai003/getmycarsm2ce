@@ -6,6 +6,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\UrlInterface;
 use Gmc\Catalog\Helper\Data;
+use Magento\Customer\Model\Session as CustomerSession;
 
 class CategoryProducts extends Template
 {
@@ -18,12 +19,15 @@ class CategoryProducts extends Template
 
     protected $helper;
 
+    private $customerSession;
+
     public function __construct(
         Template\Context $context,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
         PriceCurrencyInterface $priceCurrency,
         UrlInterface $urlInterface,
         Data $helper,
+        CustomerSession $customerSession
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -31,6 +35,7 @@ class CategoryProducts extends Template
         $this->priceCurrency = $priceCurrency;
         $this->urlInterface = $urlInterface;
         $this->helper = $helper;
+        $this->customerSession = $customerSession;
     }
 
     /**
@@ -112,4 +117,12 @@ class CategoryProducts extends Template
         }
         return $val;
     }
+
+    /**
+     * Function to check is customer logged in
+     */
+    public function isCustomerLoggedIn()
+    {
+        return $this->customerSession->isLoggedIn();
+    } //end isCustomerLoggedIn()     
 }

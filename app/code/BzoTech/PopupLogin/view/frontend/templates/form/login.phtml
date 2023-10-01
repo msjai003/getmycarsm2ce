@@ -42,16 +42,14 @@ $currentPageUrl = $_config->getUrlPage();
             </fieldset>
         </form>
 
-        <?php if (!str_contains($currentPageUrl, 'customer/account/create')) { ?>
-            <div class="bottom-popup">
-                <div class="sub-title"><?php echo __('Don\'t have an account?') ?></div>
-                <div class="trigger-button">
-                    <a class="trigger-create" href="javascript:void(0)">
-                        <span><?php echo __('Sign Up Now') ?></span>
-                    </a>
-                </div>
+        <div class="bottom-popup">
+            <div class="sub-title"><?php echo __('Don\'t have an account?') ?></div>
+            <div class="trigger-button">
+                <a class="trigger-create" href="javascript:void(0)">
+                    <span><?php echo __('Sign Up Now') ?></span>
+                </a>
             </div>
-        <?php } ?>
+        </div>
     </div>
     <script type="text/x-magento-init">
         {
@@ -81,7 +79,8 @@ $currentPageUrl = $_config->getUrlPage();
                     success: function (response) {
                         if (response.success === true) {
                             // Login successful, redirect to account page
-                            window.location.href = '<?php echo $this->getUrl('customer/account') ?>';
+                            //window.location.href = '<?php echo $this->getUrl('customer/account') ?>';
+                            window.location.reload();
                         } else {
                             // Show error message
                             window.location.reload();

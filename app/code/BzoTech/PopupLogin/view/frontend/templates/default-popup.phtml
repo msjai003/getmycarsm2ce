@@ -31,17 +31,13 @@ $logoConfig     = $_config->getPopupLoginConfig('general/popup_logo');
         </div>
     <?php } ?>
 
-    <?php if (!str_contains($currentPageUrl, 'customer/account/login')) { ?>
-        <div id="bzo-login-popup" class="bzo-popup-modal bzo-login-container">
-            <?= $block->getChildHtml('bzotech.popup.login') ?>
-        </div>
-    <?php } ?>
+    <div id="bzo-login-popup" class="bzo-popup-modal bzo-login-container">
+        <?= $block->getChildHtml('bzotech.popup.login') ?>
+    </div>
 
-    <?php if (!str_contains($currentPageUrl, 'customer/account/create')) { ?>
-        <div id="bzo-login-create" class="bzo-popup-modal bzo-register-container">
-            <?= $block->getChildHtml('bzotech.popup.register') ?>
-        </div>
-    <?php } ?>
+    <div id="bzo-login-create" class="bzo-popup-modal bzo-register-container">
+        <?= $block->getChildHtml('bzotech.popup.register') ?>
+    </div>
 
     <?php if (!str_contains($currentPageUrl, 'customer/account/forgotpassword')) { ?>
         <div id="bzo-login-forgot" class="bzo-popup-modal bzo-forgot-container">

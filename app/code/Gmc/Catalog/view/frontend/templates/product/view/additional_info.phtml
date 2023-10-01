@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * Gmc_Catalog
+ *
+ * PHP version 8.x
+ *
+ * @category  PHTML
+ * @package   Gmc\Catalog
+ * @author    Gmc
+ * @copyright 2023 Copyright Gmc
+ */
+
+/** @var $block \Magento\Catalog\Product\View */
+/** @var $viewModel \Gmc\Catalog\ViewModel\Product\View\Helper */
+
+$product = $block->getProduct();
+$viewModel  = $block->getViewModel();
+$ticketsLeft = $viewModel->getTicketsLeft();
+$cardAttributes = $viewModel->getProductCardAttributes($product);
+$count = count($cardAttributes);
+$km = $product->getKilometers();
+$isCustomerLoggedIn = $viewModel->isCustomerLoggedIn();
+?>
+<?php if ($isCustomerLoggedIn) : ?>
+    <div class="d-flex justify-content-between mb-2">
+        <p class="card-text price-label regular">
+            <span class="label">Partner Price:</span>
+            <?php echo $viewModel->getFormattedPrice($product->getPrice()); ?>
+        </p>
+        <p class="card-text price-label sale">
+            <span class="label">Estd Selling Price:</span>
+            <?php echo $viewModel->getFormattedPrice($product->getEstimatedSellingPrice()); ?>
+        </p>
+    </div> 
+<?php endif;?>
+<p class="card-text attributes">
+    <span class="attribute"><?php echo ($km) ? $km. ' km |' : '' ?></span>
+    <?php $inc = 0; foreach ($cardAttributes as $optionLabel): $inc++;?>
+        <span class="attribute"><?php echo $optionLabel ?></span>
+        <?php echo ($inc < $count) ? '|' : '' ?>
+    <?php endforeach; ?>
+</p> 
+<div class="price-contribution-form">
+    <h3><?= __('Only %1 tickets left', $ticketsLeft)?></h3>
+</div>

@@ -19,36 +19,31 @@ use Magento\Framework\DataObject;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\Registry;
 use Gmc\Catalog\Helper\Data as DataHelper;
+use Gmc\Catalog\Model\AttributeOptions;
+use Magento\Customer\Model\Session as CustomerSession;
 
 /**
  * Product helper view model.
  */
 class Helper extends DataObject implements ArgumentInterface
 {
-    // Constants
-    const XML_PATH_PRICE_CONTRIBUTION_STEP = 'partner_settings/general/contribution_price_step';
-
-    /**
-     * @var DataHelper
-     */
-    private $dataHelper;
-
-    /**
-     * @var Registry
-     */
-    private $registry;
+    const CARD_ATTRIBUTES = [
+        'fuel_type', 'owner', 'transmission', 'seater'
+    ];
 
     /**
      * @param DataHelper $dataHelper
      * @param Registry $registry
+     * @param AttributeOptions $attributeOptions
+     * @param CustomerSession $customerSession
      */
     public function __construct(
-        DataHelper $dataHelper,
-        Registry $registry,
+        private DataHelper $dataHelper,
+        private Registry $registry,
+        private AttributeOptions $attributeOptions,
+        private CustomerSession $customerSession
     ) {
         parent::__construct();
-        $this->dataHelper = $dataHelper;
-        $this->registry = $registry;
     }
 
     /**
@@ -66,5 +61,32 @@ class Helper extends DataObject implements ArgumentInterface
     public function getCurrencySymbol()
     {
         return $this->dataHelper->getCurrencySymbol();
-    } //end getCurrencySymbol()    
+    } //end getCurrencySymbol()
+
+    /**
+     * Function to retrieve formatted price
+     */
+    public function getFormattedPrice($price)
+    {
+        return $this->dataHelper->getFormattedPrice($price);
+    } //end getFormattedPrice()     
+
+    /**
+     * Function to retrieve product card attributes
+     */    
+    public function getProductCardAttributes($product)
+    {
+        $optionIds =  array_map(function($attributeCode) use($product) {
+            return $product->getData($attributeCode);
+        }, self::CARD_ATTRIBUTES);
+        return $this->attributeOptions->getOptionsArray($optionIds, self::CARD_ATTRIBUTES);
+    }//end getProductCardAttributes()
+
+    /**
+     * Function to check is customer logged in
+     */
+    public function isCustomerLoggedIn()
+    {
+        return $this->customerSession->isLoggedIn();
+    } //end isCustomerLoggedIn()     
 }

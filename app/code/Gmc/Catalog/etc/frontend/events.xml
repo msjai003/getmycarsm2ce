@@ -16,5 +16,10 @@
     <event name="catalog_product_collection_load_after">
         <observer instance="Gmc\Catalog\Observer\ProductCollection\SetTicketsLeft"
                   name="Gmc_Catalog::setTicketsLeft"/>
-    </event> 
+    </event>
+    <!-- Catalog product set salable after -->
+    <event name="catalog_product_is_salable_after">
+        <observer instance="Gmc\Catalog\Observer\Product\SetSalable"
+                  name="Gmc_Catalog::setSalable"/>
+    </event>      
 </config>
