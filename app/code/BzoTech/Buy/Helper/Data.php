@@ -2,6 +2,7 @@
 
 namespace BzoTech\Buy\Helper;
 
+use Magento\Framework\Module\Manager;
 use Magento\Store\Model\StoreManagerInterface;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
@@ -12,13 +13,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     protected $layout;
 
     public function __construct(
-        StoreManagerInterface $storeManagerInterface,
-        \Magento\Framework\Module\Manager $moduleManager,
+        private StoreManagerInterface $_storeManager,
+        private Manager $moduleManager,
         \Magento\Framework\App\Helper\Context $context
     )
     {
-        $this->moduleManager = $moduleManager;
-        $this->_storeManager = $storeManagerInterface;
+        //$this->moduleManager = $moduleManager;
+        //$this->_storeManager = $storeManagerInterface;
         parent::__construct($context);
     }
 
