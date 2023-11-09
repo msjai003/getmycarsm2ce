@@ -21,9 +21,9 @@ $productsTabOne = $block->getCategoryProducts($tabOneId);
                         <img src="<?php echo $block->getImageUrl($product, 'thumbnail') ?>" class="card-img-top"
                                      alt="<?php echo $product->getName() ?>" style="object-fit: cover; height: 100%;">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $product->getName() ?></h5>
+                            <h4 class="card-title"><?= $product->getName() ?></h5>
                             <?php
-                                $attrs = ['kilometers', 'fuel_type', 'owner', 'seater'];
+                                $attrs = ['kilometers', 'fuel_type', 'owner', 'seater', 'transmission'];
                                 $customAttrs = $block->getListAttributesValue($product, $attrs);
                                 ?>
                             <div class="product-attributes">
@@ -33,11 +33,104 @@ $productsTabOne = $block->getCategoryProducts($tabOneId);
                                     <?php endforeach; ?>
                                 </div>
                             </div>
-                            <button class="quick-buy-button" style="background-color: #ff6600; color: #fff; padding: 5px;">Quick Buy</button>
+                            <div class="d-flex justify-content-between mb-2">
+                                <p class="card-text price-label sale">
+                                    <span class="label">Estd Selling Price:</span>
+                                    <?php echo $block->getFormattedPriceWithCurrency($product->getEstimatedSellingPrice()); ?>
+                                </p>
+                            </div>
+                            <!-- Add a button to load product details -->
+                             <!-- <button class="btn btn-primary load-product-details-button" data-product-id="<?= $product->getId() ?>">Quick View</button> -->
+                            <button class="btn btn-primary buy-now-button" data-product-id="<?= $product->getId() ?>">Buy Now</button>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </main>
+
+     <!-- Modal for displaying product details -->
+    <div class="modal fade" id="productDetailsModal" tabindex="-1" role="dialog" aria-labelledby="productDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productDetailsModalLabel">Product Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="productDetailsContent">
+                    <!-- Content will be loaded here via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            $('.load-product-details-button').on('click', function () {
+                var productId = $(this).data('product-id');
+                // Make an AJAX request to the custom controller
+                $.ajax({
+                    url: '<?php echo $block->getUrl('gmc_catalog/index/productdetailsajax'); ?>',
+                    data: {product_id: productId},
+                    type: 'GET',
+                    success: function (data) {
+                        if (data.error) {
+                            alert('Error loading product details: ' + data.error);
+                        } else {
+                            // Update the modal content with the received data
+                            $('#productDetailsContent').html('Product Name: ' + data.name +
+                                '<br>Product Description: ' + data.description +
+                                '<br>Price: ' + data.price +
+                                '<br>Images: ' + data.images.join(', ') +
+                                '<br>Attributes: ' + JSON.stringify(data.attributes));
+                            // Show the modal
+                            $('#productDetailsModal').modal('show');
+                        }
+                    },
+                    error: function () {
+                        alert('Error loading product details.');
+                    }
+                });
+            });
+        });
+    });
+
+    require(['jquery'], function ($) {
+    $(document).ready(function () {
+        $('.buy-now-button').on('click', function () {
+            var productId = $(this).data('product-id');
+
+            $.ajax({
+                url: '<?php echo $block->getUrl('gmc_catalog/index/quickbuy'); ?>',
+                data: {product_id: productId},
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.success) {
+                        // Order placement was successful, and payment redirection was handled by the observer
+                        // You can display a success message or perform any other post-success actions
+                        alert('Order placed successfully. Redirecting to the payment gateway.');
+
+                        // Redirect to the order confirmation or payment gateway page
+                        window.location.href = response.redirect_url;
+                    } else {
+                        // Order placement failed
+                        alert('Order placement failed: ' + response.message);
+                    }
+                },
+                error: function () {
+                    // AJAX request error
+                    alert('Error adding the product to the cart.');
+                }
+            });
+        });
+    });
+});
+
+</script>
