@@ -1,0 +1,81 @@
+<?php
+
+use Magento\Framework\App\Action\Action;
+
+$productCollection = $block->getProducts();
+$_helper           = $this->helper('Magento\Catalog\Helper\Output');
+$imageDisplayArea  = 'category_page_grid';
+$pos               = $block->getPositioned();
+$templateType      = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+$blockPrefix       = 'bzotech-widget-' . rand();
+$countItems        = $productCollection->count();
+$rowProduct        = $block->getData('product_row');
+?>
+<div class="container">
+    <main class="mt-3">
+        <div class="row">
+                <?php foreach ($productCollection as $_product): ?>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card">
+
+                        <?php
+                            $productImage = $block->getImage($_product, $imageDisplayArea);
+                            if ($pos != null) {
+                                $position = 'left:' . $productImage->getWidth() . 'px;'
+                                    . 'top:' . $productImage->getHeight() . 'px;';
+                                }            
+                        ?>
+                        <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                           <?php echo $productImage->toHtml(); ?>
+                        </a>
+
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?></h4>
+
+                            <?php
+                                $attrs = ['kilometers', 'owner', 'seater', 'transmission'];
+                                $customAttrs = $block->getListAttributesValue($_product, $attrs);
+                                ?>
+                    
+                            <div class="product-attributes">
+                                <div class="attribute">
+                                    <?php foreach ($customAttrs as $attr): ?>
+                                       <span style="background-color: #eee; color: #333; padding: 5px;"><?php echo $attr['value'] ?></span>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <p class="card-text price-label sale">
+                                    <span class="label">Estd Selling Price:</span>
+                                    <?php echo $block->getProductPrice($_product) ?>
+                                </p>
+                            </div>
+                            
+                            <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                            <form data-role="tocart-form"
+                                  data-product-sku="<?= $block->escapeHtml($_product->getSku()) ?>"
+                                  action="<?= /* @NoEscape */
+                                  $postParams['action'] ?>" method="post">
+                                <input type="hidden" name="product"
+                                       value="<?= /* @escapeNotVerified */
+                                       $postParams['data']['product'] ?>">
+                                <input type="hidden" name="<?= /* @escapeNotVerified */
+                                Action::PARAM_NAME_URL_ENCODED ?>"
+                                       value="<?= /* @escapeNotVerified */
+                                       $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+                                <?= $block->getBlockHtml('formkey') ?>
+                                <button type="submit"
+                                        title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                                        class="action tocart primary">
+                                    <span><?= /* @escapeNotVerified */
+                                        __('Add to Cart') ?></span>
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
+</div>

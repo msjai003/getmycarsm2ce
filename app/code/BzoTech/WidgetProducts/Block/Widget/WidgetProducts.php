@@ -373,5 +373,20 @@ class WidgetProducts extends \Magento\Catalog\Block\Product\AbstractProduct impl
 
         return $thumbs;
     }
+
+    public function getListAttributesValue(\Magento\Catalog\Model\Product $_product, $codes)
+    {
+        $arr = [];
+        foreach ($codes as $code) {
+            $attribute = $_product->getResource()->getAttribute($code);
+            if ($attribute) {
+                $arr[] = [
+                    'label' => $attribute->getStoreLabel(),
+                    'value' => $attribute->getFrontend()->getValue($_product)
+                ];
+            }
+        }
+        return $arr;
+    }
     
 }
