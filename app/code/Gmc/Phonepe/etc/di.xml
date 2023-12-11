@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Gmc\Phonepe\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">Gmc_Phonepe</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="custom" xsi:type="object">Gmc\Phonepe\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Checkout\Controller\Onepage\SaveOrder" type="Gmc\Phonep\Controller\Onepage\SaveOrder"/>
+</config>
